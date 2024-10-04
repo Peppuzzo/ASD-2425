@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es1;
 
@@ -12,7 +12,7 @@ package it.unicam.cs.asdl2425.es1;
  * momento la soluzione dell'equazione esiste con il metodo
  * <code>isSolved()</code>. Qualora la soluzione corrente non esista e si tenti
  * di ottenerla verrà lanciata una eccezione.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: Collettiva da Esercitazione a
  *         Casa
  *
@@ -36,8 +36,8 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
     /**
      * Costruisce una equazione di secondo grado modificabile. All'inizio
      * l'equazione non è risolta.
-     * 
-     * 
+     *
+     *
      * @param a
      *              coefficiente del termine x^2, deve essere diverso da zero.
      * @param b
@@ -47,7 +47,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      * @throws IllegalArgumentException
      *                                      se il parametro <code>a</code> è
      *                                      zero
-     * 
+     *
      */
     public EquazioneSecondoGradoModificabileConRisolutore(double a, double b,
             double c) {
@@ -64,14 +64,14 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
     /**
      * Cambia il parametro a di questa equazione. Dopo questa operazione
      * l'equazione andrà risolta di nuovo.
-     * 
+     *
      * @param a
      *              il nuovo valore del parametro a
      * @throws IllegalArgumentException
      *                                      se il nuovo valore è zero
      */
     public void setA(double a) {
-        // TODO implementare
+        this.a = a;
     }
 
     /**
@@ -84,12 +84,12 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
     /**
      * Cambia il parametro b di questa equazione. Dopo questa operazione
      * l'equazione andrà risolta di nuovo.
-     * 
+     *
      * @param b
      *              il nuovo valore del parametro b
      */
     public void setB(double b) {
-        // TODO implementare
+      this.b = b;
     }
 
     /**
@@ -102,7 +102,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
     /**
      * Cambia il parametro c di questa equazione. Dopo questa operazione
      * l'equazione andrà risolta di nuovo.
-     * 
+     *
      * @param c
      *              il nuovo valore del parametro c
      */
@@ -112,7 +112,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
 
     /**
      * Determina se l'equazione, nel suo stato corrente, è già stata risolta.
-     * 
+     *
      * @return true se l'equazione è risolta, false altrimenti
      */
     public boolean isSolved() {
@@ -132,7 +132,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      * Restituisce la soluzione dell'equazione risultante dai parametri
      * correnti. L'equazione con i parametri correnti deve essere stata
      * precedentemente risolta.
-     * 
+     *
      * @return la soluzione
      * @throws IllegalStateException
      *                                   se l'equazione risulta non risolta,
