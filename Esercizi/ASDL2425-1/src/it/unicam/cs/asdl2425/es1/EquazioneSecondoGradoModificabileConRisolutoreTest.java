@@ -51,8 +51,11 @@ class EquazioneSecondoGradoModificabileConRisolutoreTest {
 
     @Test
     final void testSetA() {
-        // TODO implementare
-        fail("Test non implementato");
+      // credo un oggetto e2 per testare se il valore del coefficiente a e' stato settato
+      EquazioneSecondoGradoModificabileConRisolutore e2 = new EquazioneSecondoGradoModificabileConRisolutore(
+        10, 20, 30);
+      e2.setA(15);
+      assertEquals(e2.getA() , 15);
     }
 
     @Test

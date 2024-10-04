@@ -51,7 +51,18 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      */
     public EquazioneSecondoGradoModificabileConRisolutore(double a, double b,
             double c) {
-        // TODO implementare
+
+      // I parametri sono settati e all'inizio l'equazione non è risolta.
+      this.a = a;
+      this.b = b;
+      this.c = c;
+      this.solved = false;
+
+      // lancio dell'eccezione se il parametro a e' minore di una cosatnte EPSILON
+      if(Math.abs(a) < EPSILON){
+        throw new IllegalArgumentException("Il paametro a deve essere diverso da 0.");
+      }
+
     }
 
     /**
@@ -72,6 +83,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      */
     public void setA(double a) {
         this.a = a;
+        this.solved = false;
     }
 
     /**
@@ -90,6 +102,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      */
     public void setB(double b) {
       this.b = b;
+      this.solved = false;
     }
 
     /**
@@ -107,7 +120,9 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      *              il nuovo valore del parametro c
      */
     public void setC(double c) {
-        // TODO implementare
+        // setto il valore alla variabile corrente del parametro c
+      this.c = c;
+      this.solved = false;
     }
 
     /**
@@ -125,7 +140,45 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      * risolta di nuovo.
      */
     public void solve() {
-        // TODO implementare
+        // controllo se l'equazione è risolta con gli stessi identici parametri
+      EquazioneSecondoGrado equ = new EquazioneSecondoGrado(this.a, this.b, this.c);
+      // calcolo della nuova soluzione solo se non è stat risolta
+      if(this.solved != true){
+        double x1 = 0;
+        double x2 = 0;
+
+        // calcolo del delta
+        double delta = Math.pow(this.b, 2) - 4*(this.a * this.c);
+
+        if(delta < EPSILON) {
+
+          lastSolution = new SoluzioneEquazioneSecondoGrado(equ);
+
+          System.out.println("Non esistono soluzioni reali in R.");
+
+        } else if (delta > EPSILON) {
+
+          // calcolo dei due estremi x1 e x2
+          x1 = - this.b + (Math.sqrt(delta) / 2 * this.a);
+          x2 = - this.b - (Math.sqrt(delta) / 2 * this.a);
+
+          lastSolution = new SoluzioneEquazioneSecondoGrado(equ, x1, x2);
+
+          System.out.println("Esistono due soluzioni reali distinte.");
+
+        }
+        else {
+
+          // un unica soluzione coincidente
+          double x = - (this.b / 2*this.a);
+
+          lastSolution = new SoluzioneEquazioneSecondoGrado(equ, x);
+
+          System.out.println("Esistono due soluzioni coincidenti");
+
+        }
+        this.solved = true;
+      }
     }
 
     /**
@@ -140,8 +193,11 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      *                                   almeno uno dei parametri
      */
     public SoluzioneEquazioneSecondoGrado getSolution() {
-        // TODO implementare
-        return null;
+
+      if(this.solved == false)
+        throw new IllegalStateException("L'equazione non risulta essere risolta.");
+
+      return lastSolution;
     }
 
 }
