@@ -60,26 +60,38 @@ class EquazioneSecondoGradoModificabileConRisolutoreTest {
 
     @Test
     final void testGetB() {
-        // TODO implementare
-        fail("Test non implementato");
+        double y = 10;
+        // creo un oggetto per poter testare la uguaglianza con il valore del parametro b
+      EquazioneSecondoGradoModificabileConRisolutore e3 = new EquazioneSecondoGradoModificabileConRisolutore(
+        10, y, 30);
+      assertTrue(y == e3.getB());
     }
 
     @Test
     final void testSetB() {
-        // TODO implementare
-        fail("Test non implementato");
+        // verifico se il test per il parametro b verra' settato
+      EquazioneSecondoGradoModificabileConRisolutore e4 = new EquazioneSecondoGradoModificabileConRisolutore(
+        10, 20, 30);
+      e4.setB(30);
+      assertEquals(e4.getB(), 30);
     }
 
     @Test
     final void testGetC() {
-        // TODO implementare
-        fail("Test non implementato");
+        double z = 45;
+        EquazioneSecondoGradoModificabileConRisolutore e5 = new EquazioneSecondoGradoModificabileConRisolutore(
+          10, 25, z);
+        //assertEquals(z == e5.getC());
+        assertTrue(z == e5.getC());
     }
 
     @Test
     final void testSetC() {
-        // TODO implementare
-        fail("Test non implementato");
+      // creo un oggetto per verifica se il valore di c verra' settato
+      EquazioneSecondoGradoModificabileConRisolutore e6 = new EquazioneSecondoGradoModificabileConRisolutore(
+        10, 11, 22);
+      e6.setC(55);
+      assertEquals(e6.getC(), 55);
     }
 
     @Test
