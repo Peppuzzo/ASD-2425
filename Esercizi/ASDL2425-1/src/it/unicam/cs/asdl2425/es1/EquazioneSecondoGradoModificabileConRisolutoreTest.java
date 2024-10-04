@@ -96,14 +96,18 @@ class EquazioneSecondoGradoModificabileConRisolutoreTest {
 
     @Test
     final void testIsSolved() {
-        // TODO implementare
-        fail("Test non implementato");
+      EquazioneSecondoGradoModificabileConRisolutore e7 = new EquazioneSecondoGradoModificabileConRisolutore(
+        1, 2, 3);
+      e7.solve();
+      // verifico se l'equivalenza per il test con una soluzione di equazione e' valida
+      assertEquals(e7.isSolved(), true);
+
     }
 
     @Test
     final void testSolve() {
         EquazioneSecondoGradoModificabileConRisolutore e3 = new EquazioneSecondoGradoModificabileConRisolutore(
-                1, 1, 3);
+                10, -5, 3);
         // controllo semplicemente che la chiamata a solve() non generi errori
         e3.solve();
         // i test con i valori delle soluzioni vanno fatti nel test del metodo
