@@ -106,18 +106,25 @@ class EquazioneSecondoGradoModificabileConRisolutoreTest {
 
     @Test
     final void testSolve() {
-        EquazioneSecondoGradoModificabileConRisolutore e3 = new EquazioneSecondoGradoModificabileConRisolutore(
+        EquazioneSecondoGradoModificabileConRisolutore e8 = new EquazioneSecondoGradoModificabileConRisolutore(
                 10, -5, 3);
         // controllo semplicemente che la chiamata a solve() non generi errori
-        e3.solve();
+        e8.solve();
         // i test con i valori delle soluzioni vanno fatti nel test del metodo
         // getSolution()
     }
 
     @Test
     final void testGetSolution() {
-        // TODO implementare
-        fail("Test non implementato");
+      // verifico se date due soluzioni identiche (con stssi parametri) il metoo GetSolution funzioni correttamente.
+        EquazioneSecondoGradoModificabileConRisolutore e9 = new EquazioneSecondoGradoModificabileConRisolutore(
+          10, 20, 30);
+        EquazioneSecondoGradoModificabileConRisolutore e10 = new EquazioneSecondoGradoModificabileConRisolutore(
+          10, 20, 30);
+        
+          e9.solve();
+          e10.solve();
+        assertEquals(e9.getSolution(), e10.getSolution());
     }
 
 }
