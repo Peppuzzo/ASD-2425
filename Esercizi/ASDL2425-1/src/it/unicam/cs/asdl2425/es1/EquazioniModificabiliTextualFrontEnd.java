@@ -5,6 +5,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
+ * SOLUZIONE PROPRIA DEL FILE EquazioniModificabiliTextualFrontEnd.java
+ *
+ * Il codice e' stato modicato nella prima sitruzione dopo il do-while.
+ * La motivazione sta nel fatto che, dopo vaer sbagliato (propositamente) l'input da tastiera, la variabile
+ * "retry" rimarra' sempre true, e quindi dalla coda del while non uscuira' mai.
+ *
+ * Si noti che lo stesso principio vale per le variabili a,b e c.
+ */
+
+
+/**
  * Front-end testuale per permettere l'uso delle classi di <i>core business
  * logic</i> che risolvono le equazioni di secondo grado, in particolare le
  * classi EquazioneSecondoGradoModificabileConRisolutore e
@@ -30,9 +41,10 @@ public class EquazioniModificabiliTextualFrontEnd {
             // leggo il parametro a
             boolean retry = false;
             do {
-                
+
                 System.out.println(
                         "Inserisci il valore del parametro a e premi INVIO");
+              retry = false;
                 try {
                     String aInput = input.readLine();
                     a = Double.parseDouble(aInput);
@@ -55,6 +67,7 @@ public class EquazioniModificabiliTextualFrontEnd {
             do {
                 System.out.println(
                         "Inserisci il valore del parametro b e premi INVIO");
+              retry = false;
                 try {
                     String aInput = input.readLine();
                     b = Double.parseDouble(aInput);
@@ -71,6 +84,7 @@ public class EquazioniModificabiliTextualFrontEnd {
             do {
                 System.out.println(
                         "Inserisci il valore del parametro c e premi INVIO");
+              retry = false;
                 try {
                     String aInput = input.readLine();
                     c = Double.parseDouble(aInput);

@@ -121,7 +121,7 @@ class EquazioneSecondoGradoModificabileConRisolutoreTest {
           10, 20, 30);
         EquazioneSecondoGradoModificabileConRisolutore e10 = new EquazioneSecondoGradoModificabileConRisolutore(
           10, 20, 30);
-        
+
           e9.solve();
           e10.solve();
         assertEquals(e9.getSolution(), e10.getSolution());
