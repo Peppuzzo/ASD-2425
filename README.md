@@ -13,13 +13,16 @@ This repository contains weekly exercises and mini projects developed as part of
 
 To run the exercises and projects, ensure you have the following software installed:
 
-1. **Java JDK**: The projects are developed in Java, so make sure you have the latest version of the JDK installed 8for these exercises java 8 will be used).  
+1. **Java JDK**: The projects are developed in Java, so make sure you have the latest version of the JDK installed. For these exercises, Java 8 will be used.  
    [Download Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-   
-2. **IDE (Optional)**: You can use any IDE of your choice, such as:
-   - [IntelliJ IDEA]
-   - [Eclipse]
-   - [VSCode]
+
+2. **JUnit 5**: We use JUnit 5 for testing the exercises. You can add it to your project using Maven or Gradle, or download it manually.  
+   [Download JUnit 5](https://junit.org/junit5/)
+
+3. **IDE (Optional)**: You can use any IDE of your choice, such as:
+   - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+   - [Eclipse](https://www.eclipse.org/downloads/)
+   - [VSCode](https://code.visualstudio.com/)
 
 ## How to Contribute
 
