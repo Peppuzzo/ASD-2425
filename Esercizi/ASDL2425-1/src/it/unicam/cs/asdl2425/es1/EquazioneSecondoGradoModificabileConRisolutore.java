@@ -51,18 +51,16 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
      */
     public EquazioneSecondoGradoModificabileConRisolutore(double a, double b,
             double c) {
+      // lancio dell'eccezione se il parametro a e' minore di una cosatnte EPSILON
+      if(Math.abs(a) < EPSILON){
+        throw new IllegalArgumentException("Il paametro a deve essere diverso da 0.");
+      }
 
       // I parametri sono settati e all'inizio l'equazione non è risolta.
       this.a = a;
       this.b = b;
       this.c = c;
       this.solved = false;
-
-      // lancio dell'eccezione se il parametro a e' minore di una cosatnte EPSILON
-      if(Math.abs(a) < EPSILON){
-        throw new IllegalArgumentException("Il paametro a deve essere diverso da 0.");
-      }
-
     }
 
     /**
