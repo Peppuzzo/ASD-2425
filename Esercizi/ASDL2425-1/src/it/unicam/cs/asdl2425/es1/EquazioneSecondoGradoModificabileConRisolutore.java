@@ -163,7 +163,7 @@ public class EquazioneSecondoGradoModificabileConRisolutore {
           lastSolution = new SoluzioneEquazioneSecondoGrado(equ, x1, x2);
 
           System.out.println("Esistono due soluzioni reali distinte.");
-
+gggg
         }
         else {
 
