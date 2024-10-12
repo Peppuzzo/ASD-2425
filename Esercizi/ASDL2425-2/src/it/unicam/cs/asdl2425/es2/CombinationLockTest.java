@@ -113,7 +113,7 @@ class CombinationLockTest {
         c.setPosition('C');
         c.setPosition('A');
         c.open();
-        assertTrue(c.isOpen());  
+        assertTrue(c.isOpen());
         c.lockAndChangeCombination("BCA");
         c.open();
         assertFalse(c.isOpen());

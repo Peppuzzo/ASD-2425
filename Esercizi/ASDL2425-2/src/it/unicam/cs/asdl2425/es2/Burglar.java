@@ -20,10 +20,9 @@ public class Burglar {
      * @throw NullPointerException se la cassaforte passata è nulla
      */
     public Burglar(CombinationLock aCombinationLock) {
-        // TODO implementare
-      if(aCombinationLock == null){
+      if(aCombinationLock == null)
         throw new NullPointerException("Errore: la ombinazione passata e' nulla.");
-      }
+
       this.combination = aCombinationLock;
     }
 

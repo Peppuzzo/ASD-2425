@@ -5,16 +5,19 @@ package it.unicam.cs.asdl2425.es2;
  * impostata su certe posizioni contrassegnate da lettere maiuscole. La
  * serratura si apre solo se le ultime tre lettere impostate sono uguali alla
  * combinazione segreta.
- * 
+ *
  * @author Luca Tesei
  */
 public class CombinationLock {
 
     // TODO inserire le variabili istanza che servono
+    private char currentChar;
+
+    String combination = "";
 
     /**
      * Costruisce una cassaforte <b>aperta</b> con una data combinazione
-     * 
+     *
      * @param aCombination
      *                         la combinazione che deve essere una stringa di 3
      *                         lettere maiuscole dell'alfabeto inglese
@@ -24,11 +27,36 @@ public class CombinationLock {
      */
     public CombinationLock(String aCombination) {
         // TODO implementare
+
+      // Eccezione per la verifica della combinazione passata che non sia NULL
+      if (aCombination == null) {
+        throw new NullPointerException("Error: la combinazione passata non puo' essere nulla.");
+      }
+
+      // Eccezione per la verifica che la combinazione passata non sia < di 3 caratteri
+      if (aCombination.length() != 3) {
+        throw new IllegalArgumentException("La combinazione deve essere lunga tre caratteri.");
+      }
+
+      // Controllo per ogni lettera nella combinazione
+      for (int i = 0; i < aCombination.length(); i++) {
+        this.currentChar = aCombination.charAt(i);
+        // In quesro caso, verifichiamo se il carattere corertne abbia un valore ASCII compreso tra 65 e 90.
+        boolean isUpperCase = (currentChar >= 'A' && currentChar <= 'Z'); // Verifica se la lettera è maiuscola
+
+        // Se il carattere non è maiuscolo, lancia un'eccezione
+        if (!isUpperCase) {
+          throw new IllegalArgumentException("Error: non e' consentito che la combinazione abbia una lettera minuscola!");
+        }
+      }
+
+      this.combination = aCombination; // Imposta la combinazione se tutti i controlli passano
+
     }
 
     /**
      * Imposta la manopola su una certaposizione.
-     * 
+     *
      * @param aPosition
      *                      un carattere lettera maiuscola su cui viene
      *                      impostata la manopola
@@ -53,7 +81,7 @@ public class CombinationLock {
 
     /**
      * Determina se la cassaforte è aperta.
-     * 
+     *
      * @return true se la cassaforte è attualmente aperta, false altrimenti
      */
     public boolean isOpen() {
@@ -78,7 +106,7 @@ public class CombinationLock {
      * rimane chiusa e la combinazione non viene cambiata, ma in questo caso le
      * le lettere impostate precedentemente non devono essere considerate per i
      * prossimi tentativi di apertura.
-     * 
+     *
      * @param aCombination
      *                         la nuova combinazione che deve essere una stringa
      *                         di 3 lettere maiuscole dell'alfabeto inglese
