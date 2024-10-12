@@ -13,7 +13,9 @@ public class CombinationLock {
     // TODO inserire le variabili istanza che servono
     private char currentChar;
 
-    String combination = "";
+    private String combinationCurrent = "";
+
+    private boolean StatoCassaforte;
 
     /**
      * Costruisce una cassaforte <b>aperta</b> con una data combinazione
@@ -50,7 +52,8 @@ public class CombinationLock {
         }
       }
 
-      this.combination = aCombination; // Imposta la combinazione se tutti i controlli passano
+      this.StatoCassaforte = true;
+      this.combinationCurrent = aCombination; // Imposta la combinazione se tutti i controlli passano
 
     }
 
@@ -66,7 +69,12 @@ public class CombinationLock {
      *                                      inglese
      */
     public void setPosition(char aPosition) {
-        // TODO implementare
+        boolean isUppercase = (!(aPosition >= 'A' && aPosition <= 'Z'));
+
+        if(isUppercase) {
+          throw new IllegalArgumentException("Il carattere fornito deve essere una lettera maiuscola dell'alfabeto inglese!");
+        }
+
     }
 
     /**
@@ -85,8 +93,10 @@ public class CombinationLock {
      * @return true se la cassaforte è attualmente aperta, false altrimenti
      */
     public boolean isOpen() {
-        // TODO implementare
-        return false;
+        if(this.StatoCassaforte == false)
+          return false;
+
+        return true;
     }
 
     /**
