@@ -3,27 +3,33 @@ package it.unicam.cs.asdl2425.es2;
 /**
  * Uno scassinatore è un oggetto che prende una certa cassaforte e trova la
  * combinazione utilizzando la "forza bruta".
- * 
+ *
  * @author Luca Tesei
  *
  */
 public class Burglar {
 
     // TODO inserire le variabili istanza che servono
+  CombinationLock combination;
+
 
     /**
      * Costruisce uno scassinatore per una certa cassaforte.
-     * 
+     *
      * @param aCombinationLock
      * @throw NullPointerException se la cassaforte passata è nulla
      */
     public Burglar(CombinationLock aCombinationLock) {
         // TODO implementare
+      if(aCombinationLock == null){
+        throw new NullPointerException("Errore: la ombinazione passata e' nulla.");
+      }
+      this.combination = aCombinationLock;
     }
 
     /**
      * Forza la cassaforte e restituisce la combinazione.
-     * 
+     *
      * @return la combinazione della cassaforte forzata.
      */
     public String findCombination() {
@@ -34,7 +40,7 @@ public class Burglar {
     /**
      * Restituisce il numero di tentativi che ci sono voluti per trovare la
      * combinazione. Se la cassaforte non è stata ancora forzata restituisce -1.
-     * 
+     *
      * @return il numero di tentativi che ci sono voluti per trovare la
      *         combinazione, oppure -1 se la cassaforte non è stata ancora
      *         forzata.
