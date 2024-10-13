@@ -93,10 +93,10 @@ public class CombinationLock {
      * @return true se la cassaforte è attualmente aperta, false altrimenti
      */
     public boolean isOpen() {
-        if(this.StatoCassaforte == false)
-          return false;
+        if(this.StatoCassaforte == true)
+          return true;
 
-        return true;
+        return false;
     }
 
     /**
@@ -108,6 +108,7 @@ public class CombinationLock {
      */
     public void lock() {
         // TODO implementare
+      this.StatoCassaforte = false;
     }
 
     /**
