@@ -16,7 +16,7 @@ public class CombinationLock {
     // La combinazione corretta della cassafrote
     private String combinationCurrent = "";
 
-    private String charManopolaAttuale = "\u0000, \u0000, \u0000";
+    private String charManopolaAttuale = "\u0000\u0000\u0000";
 
     private char[] arrayChar = new char[3];
 
@@ -98,8 +98,8 @@ public class CombinationLock {
         this.charManopolaAttuale = new String(this.arrayChar);
 
         // Rimuovi le virgole (e spazi se presenti) nella stringa
-        this.charManopolaAttuale = this.charManopolaAttuale.replaceAll("[,\\s]", "");
-    } 
+        //this.charManopolaAttuale = this.charManopolaAttuale.replaceAll("[,\\s]", "");
+    }
 
     /**
      * Tenta di aprire la serratura considerando come combinazione fornita le
@@ -108,7 +108,17 @@ public class CombinationLock {
      * prossimi tentativi di apertura.
      */
     public void open() {
-        // TODO implementare
+
+        if(this.charManopolaAttuale.charAt(0) == this.combinationCurrent.charAt(0) &&
+              this.charManopolaAttuale.charAt(1) == this.combinationCurrent.charAt(1) &&
+              this.charManopolaAttuale.charAt(2) == this.combinationCurrent.charAt(2)){
+
+          this.StatoCassaforte = true;
+        }
+        else {
+          this.StatoCassaforte = false;
+          this.charManopolaAttuale = "\u0000\u0000\u0000";
+        }
     }
 
     /**
@@ -117,10 +127,7 @@ public class CombinationLock {
      * @return true se la cassaforte è attualmente aperta, false altrimenti
      */
     public boolean isOpen() {
-        if(this.StatoCassaforte == true)
-          return true;
-
-        return false;
+        return this.StatoCassaforte;
     }
 
     /**
