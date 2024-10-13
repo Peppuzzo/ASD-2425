@@ -96,7 +96,10 @@ public class CombinationLock {
 
         // creo una nuova stringa che abbia settato le lettere in una data posizione.
         this.charManopolaAttuale = new String(this.arrayChar);
-    }
+
+        // Rimuovi le virgole (e spazi se presenti) nella stringa
+        this.charManopolaAttuale = this.charManopolaAttuale.replaceAll("[,\\s]", "");
+    } 
 
     /**
      * Tenta di aprire la serratura considerando come combinazione fornita le
