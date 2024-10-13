@@ -90,7 +90,7 @@ public class CombinationLock {
           // verifico se e' presente un carattere nullo
           if(this.arrayChar[i] == '\u0000' ){
             this.arrayChar[i] = aPosition;
-            break;
+            break; // se ha impostato una lettera, termina il ciclo.
           }
         }
 
@@ -109,12 +109,11 @@ public class CombinationLock {
      */
     public void open() {
 
-        if(this.charManopolaAttuale.charAt(0) == this.combinationCurrent.charAt(0) &&
-              this.charManopolaAttuale.charAt(1) == this.combinationCurrent.charAt(1) &&
-              this.charManopolaAttuale.charAt(2) == this.combinationCurrent.charAt(2)){
-
+      // controllo se le due combinazioni del ladro e della cassaforte coincidono
+        if(this.charManopolaAttuale.equals(this.combinationCurrent)){
           this.StatoCassaforte = true;
         }
+        // non aprire la cassaforte e resetta la combinazione provata
         else {
           this.StatoCassaforte = false;
           this.charManopolaAttuale = "\u0000\u0000\u0000";
@@ -139,7 +138,7 @@ public class CombinationLock {
      */
     public void lock() {
         // TODO implementare
-      //this.StatoCassaforte = false;
+      
     }
 
     /**
