@@ -13,7 +13,7 @@ public class CombinationLock {
     // TODO inserire le variabili istanza che servono
     private char currentChar;
 
-    // La combinazione corretta della cassafrote
+    // La combinazione corretta della cassaforte
     private String combinationCurrent = "";
 
     private String charManopolaAttuale = "\u0000\u0000\u0000";
@@ -86,6 +86,8 @@ public class CombinationLock {
         // Converti la stringa con le posizioni settate (se presenti) in un array di char
          this.arrayChar = this.charManopolaAttuale.toCharArray();
 
+
+        // TODO modificare il for
         for(int i = 0; i < this.arrayChar.length; i++){
           // verifico se e' presente un carattere nullo
           if(this.arrayChar[i] == '\u0000' ){
@@ -137,8 +139,14 @@ public class CombinationLock {
      * sono proprio la combinazione attuale.
      */
     public void lock() {
-        // TODO implementare
-      
+
+      this.StatoCassaforte = false;
+
+      // se la cassaforte è chiusa, resetta la combinazione della manopola attuale
+      if(!(this.StatoCassaforte)) {
+        this.charManopolaAttuale = "\u0000\u0000\u0000";
+      }
+
     }
 
     /**
