@@ -59,7 +59,7 @@ public class CombinationLock {
     }
 
     /**
-     * Imposta la manopola su una certaposizione.
+     * Imposta la manopola su una certa posizione.
      *
      * @param aPosition
      *                      un carattere lettera maiuscola su cui viene

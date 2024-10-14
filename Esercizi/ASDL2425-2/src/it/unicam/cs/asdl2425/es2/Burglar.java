@@ -9,8 +9,10 @@ package it.unicam.cs.asdl2425.es2;
  */
 public class Burglar {
 
-    // TODO inserire le variabili istanza che servono
   CombinationLock combination;
+
+  // tentativi di scassinatura fatti
+  int tentativi = 0;
 
 
     /**
@@ -20,8 +22,8 @@ public class Burglar {
      * @throw NullPointerException se la cassaforte passata è nulla
      */
     public Burglar(CombinationLock aCombinationLock) {
-      if(aCombinationLock == null)
-        throw new NullPointerException("Errore: la ombinazione passata e' nulla.");
+      if(aCombinationLock.equals(null))
+        throw new NullPointerException("Errore: la combinazione passata non puo' essere nulla.");
 
       this.combination = aCombinationLock;
     }
@@ -32,8 +34,32 @@ public class Burglar {
      * @return la combinazione della cassaforte forzata.
      */
     public String findCombination() {
-        // TODO implementare
-        return null;
+
+      this.combination.lock();
+
+      // i caratteri da dover confrontare per ogni combinazione
+      char car1, car2, car3;
+
+      for(car1 = 'A'; car1 <= 'Z'; car1++){
+        for(car2 = 'A'; car2 <= 'Z'; car2++){
+          for(car3 = 'A'; car3 <= 'Z'; car3++){
+            this.combination.setPosition(car1);
+            this.combination.setPosition(car2);
+            this.combination.setPosition(car3);
+            this.tentativi++;
+            this.combination.open();
+            if(this.combination.isOpen()){
+              // visto che siano in complessità O(n^3), per non sprecare memoria utilizzeremo un buffer di stringhe
+              StringBuffer combinationFinal = new StringBuffer();
+              combinationFinal.append(car1);
+              combinationFinal.append(car2);
+              combinationFinal.append(car3);
+              return combinationFinal.toString();
+            }
+          }
+        }
+      }
+      return "";
     }
 
     /**
@@ -45,7 +71,6 @@ public class Burglar {
      *         forzata.
      */
     public long getAttempts() {
-        // TODO implementare
-        return -1;
+        return this.tentativi;
     }
 }
