@@ -16,7 +16,7 @@ public class CombinationLock {
     // La combinazione corretta della cassaforte
     private String combinationCurrent = "";
 
-    // TODO cercare uan soluzione migliore per la manopola impostata. 
+    // TODO cercare uan soluzione migliore per la manopola impostata.
     private String charManopolaAttuale = "\u0000\u0000\u0000";
 
     private char[] arrayChar = new char[3];
@@ -144,10 +144,9 @@ public class CombinationLock {
       this.StatoCassaforte = false;
 
       // se la cassaforte è chiusa, resetta la combinazione della manopola attuale
-      if(!(this.StatoCassaforte)) {
+      if((!this.StatoCassaforte)) {
         this.charManopolaAttuale = "\u0000\u0000\u0000";
       }
-
     }
 
     /**
