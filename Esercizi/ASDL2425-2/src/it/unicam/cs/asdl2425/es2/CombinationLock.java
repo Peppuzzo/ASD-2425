@@ -10,20 +10,13 @@ package it.unicam.cs.asdl2425.es2;
  */
 public class CombinationLock {
 
-    // TODO inserire le variabili istanza che servono
-    private char currentChar;
 
-    // La combinazione corretta della cassaforte
+  // La combinazione corretta della cassaforte
     private String combinationCurrent = "";
 
-    // TODO cercare uan soluzione migliore per la manopola impostata.
     private String charManopolaAttuale = "\u0000\u0000\u0000";
 
-    private char[] arrayChar = new char[3];
-
-
-
-    // Stato attuale della cassaforte aperta/chiusa
+  // Stato attuale della cassaforte aperta/chiusa
     private boolean StatoCassaforte;
 
     /**
@@ -37,7 +30,6 @@ public class CombinationLock {
      * @throw NullPointerException se la combinazione fornita è nulla
      */
     public CombinationLock(String aCombination) {
-        // TODO implementare
 
       // Eccezione per la verifica della combinazione passata che non sia NULL
       if (aCombination == null) {
@@ -51,8 +43,8 @@ public class CombinationLock {
 
       // Controllo per ogni lettera nella combinazione
       for (int i = 0; i < aCombination.length(); i++) {
-        this.currentChar = aCombination.charAt(i);
-        // In quesro caso, verifichiamo se il carattere corertne abbia un valore ASCII compreso tra 65 e 90.
+        char currentChar = aCombination.charAt(i);
+        // In questo caso, verifichiamo se il carattere corertne abbia un valore ASCII compreso tra 65 e 90.
         boolean isUpperCase = (currentChar >= 'A' && currentChar <= 'Z'); // Verifica se la lettera è maiuscola
 
         // Se il carattere non è maiuscolo, lancia un'eccezione
@@ -78,30 +70,34 @@ public class CombinationLock {
      *                                      inglese
      */
     public void setPosition(char aPosition) {
-        boolean isUppercase = (!(aPosition >= 'A' && aPosition <= 'Z'));
+
+        int index = 0; // indice di controllo fino alla lunghezza dell'array
+        boolean flag = true;
+        boolean isUppercase = (!(aPosition >= 'A' && aPosition <= 'Z')); // verifico se rientra nel range dell'alfabeto inglese
 
         if(isUppercase) {
           throw new IllegalArgumentException("Il carattere fornito deve essere una lettera maiuscola dell'alfabeto inglese!");
         }
 
         // Converti la stringa con le posizioni settate (se presenti) in un array di char
-         this.arrayChar = this.charManopolaAttuale.toCharArray();
+      char[] arrayChar = this.charManopolaAttuale.toCharArray();
 
+        do{
 
-        // TODO modificare il for
-        for(int i = 0; i < this.arrayChar.length; i++){
-          // verifico se e' presente un carattere nullo
-          if(this.arrayChar[i] == '\u0000' ){
-            this.arrayChar[i] = aPosition;
-            break; // se ha impostato una lettera, termina il ciclo.
+          if(index < arrayChar.length){
+            if(arrayChar[index] == '\u0000'){
+              arrayChar[index] = aPosition;
+              flag = false;
+            }
           }
-        }
+
+          index++;
+
+        } while(flag);
 
         // creo una nuova stringa che abbia settato le lettere in una data posizione.
-        this.charManopolaAttuale = new String(this.arrayChar);
+        this.charManopolaAttuale = new String(arrayChar);
 
-        // Rimuovi le virgole (e spazi se presenti) nella stringa
-        //this.charManopolaAttuale = this.charManopolaAttuale.replaceAll("[,\\s]", "");
     }
 
     /**
@@ -144,16 +140,14 @@ public class CombinationLock {
       this.StatoCassaforte = false;
 
       // se la cassaforte è chiusa, resetta la combinazione della manopola attuale
-      if((!this.StatoCassaforte)) {
-        this.charManopolaAttuale = "\u0000\u0000\u0000";
-      }
+      this.charManopolaAttuale = "\u0000\u0000\u0000";
     }
 
     /**
      * Chiude la cassaforte e modifica la combinazione. Funziona solo se la
      * cassaforte è attualmente aperta. Se la cassaforte è attualmente chiusa
      * rimane chiusa e la combinazione non viene cambiata, ma in questo caso le
-     * le lettere impostate precedentemente non devono essere considerate per i
+     * lettere impostate precedentemente non devono essere considerate per i
      * prossimi tentativi di apertura.
      *
      * @param aCombination
@@ -164,6 +158,28 @@ public class CombinationLock {
      * @throw NullPointerException se la combinazione fornita è nulla
      */
     public void lockAndChangeCombination(String aCombination) {
-        // TODO implementare
+
+      if(this.StatoCassaforte){
+
+        int count = 0;
+
+        if(aCombination.length() != 3){
+          throw new IllegalArgumentException("Error: La combinazione deve essere composta da tre caratteri");
+        }
+
+        do {
+
+          if (!(aCombination.charAt(count) >= 'A' && aCombination.charAt(count) <= 'Z')) {
+            throw new IllegalArgumentException("La string contiene una o piu' caratteri non " +
+              "corrispondenti all'alfabeto inglese.");
+          }
+          count++;
+        } while (count < 3);
+
+        this.combinationCurrent = aCombination;
+        this.StatoCassaforte = false;
+
+      }
+      this.charManopolaAttuale = "\u0000\u0000\u0000"; // si dovra' anche resettare la manopola attuale oltre la iniziale
     }
 }
