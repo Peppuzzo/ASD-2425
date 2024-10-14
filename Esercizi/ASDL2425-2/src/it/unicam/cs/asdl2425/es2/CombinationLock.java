@@ -16,6 +16,7 @@ public class CombinationLock {
     // La combinazione corretta della cassaforte
     private String combinationCurrent = "";
 
+    // TODO cercare uan soluzione migliore per la manopola impostata. 
     private String charManopolaAttuale = "\u0000\u0000\u0000";
 
     private char[] arrayChar = new char[3];
