@@ -46,8 +46,8 @@ public class Burglar {
             this.combination.setPosition(car1);
             this.combination.setPosition(car2);
             this.combination.setPosition(car3);
-            this.tentativi++;
             this.combination.open();
+            this.tentativi++;
             if(this.combination.isOpen()){
               // visto che siano in complessità O(n^3), per non sprecare memoria utilizzeremo un buffer di stringhe
               StringBuffer combinationFinal = new StringBuffer();
