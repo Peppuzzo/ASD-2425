@@ -2,7 +2,7 @@ package it.unicam.cs.asdl2425.es3;
 
 /**
  * Una prenotazione riguarda una certa aula per un certo time slot.
- * 
+ *
  * @author Luca Tesei
  *
  */
@@ -18,7 +18,7 @@ public class Prenotazione implements Comparable<Prenotazione> {
 
     /**
      * Costruisce una prenotazione.
-     * 
+     *
      * @param aula
      *                     l'aula a cui la prenotazione si riferisce
      * @param timeSlot
@@ -33,9 +33,13 @@ public class Prenotazione implements Comparable<Prenotazione> {
      */
     public Prenotazione(String aula, TimeSlot timeSlot, String docente,
             String motivo) {
-        // TODO implementare
+        if(aula == null || timeSlot == null || docente == null || motivo == null){
+          throw  new NullPointerException("Error: Non e' consentito avere caratteri nulli");
+        }
         this.aula = aula;
         this.timeSlot = timeSlot;
+        this.docente = docente;
+        this.motivo = motivo;
     }
 
     /**
