@@ -76,7 +76,12 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     @Override
     public boolean equals(Object obj) {
-        // TODO implementare
+
+      TimeSlot t = (TimeSlot) obj;
+
+      if(this.getStart().equals(t.getStart()) == this.getStop().equals(t.getStop()))
+        return true;
+
         return false;
     }
 
@@ -87,8 +92,13 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     @Override
     public int hashCode() {
-        // TODO implementare
-        return -1;
+
+      int result = 13;
+
+      result = 37 * result + (getStart() != null ? getStart().hashCode() : 0);
+      result = 37 * result + (getStop() != null ? getStop().hashCode() : 0);
+
+        return result;
     }
 
     /*
