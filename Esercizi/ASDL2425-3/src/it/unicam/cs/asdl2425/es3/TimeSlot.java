@@ -4,6 +4,7 @@
 package it.unicam.cs.asdl2425.es3;
 
 // TODO completare gli import se necessario
+import java.util.Calendar.*;
 
 import java.util.GregorianCalendar;
 
@@ -123,12 +124,12 @@ public class TimeSlot implements Comparable<TimeSlot> {
       if(this.getStart().after(o.getStart()))
         return 1;
 
-      // verifico se l'inizio e la fien tra i due calendari coincidono (e quindi sono uguali)
+      // verifico se l'inizio e la fine tra i due calendari coincidono (e quindi sono uguali)
       if(this.start.compareTo(o.getStart()) == o.getStart().compareTo(this.getStart()) && this.stop.compareTo(o.stop) ==
       o.getStop().compareTo(this.stop))
         return 0;
 
-        return -1;
+      return -1;
     }
 
     /**
@@ -154,7 +155,15 @@ public class TimeSlot implements Comparable<TimeSlot> {
      *                                      superano Integer.MAX_VALUE
      */
     public int getMinutesOfOverlappingWith(TimeSlot o) {
-        // TODO implementare
+
+      if(o == null)
+        throw new NullPointerException("Error: parametro passato is null");
+
+      if(this.getStop().getTimeInMillis() == o.getStart().getTimeInMillis() ||
+        this.getStart().getTimeInMillis() == this.getStop().getTimeInMillis())
+        return -1;
+
+
         return -1;
     }
 
@@ -175,7 +184,9 @@ public class TimeSlot implements Comparable<TimeSlot> {
       if(o == null)
         return false;
 
-        return false;
+
+
+      return false;
     }
 
     /*
