@@ -77,12 +77,22 @@ public class TimeSlot implements Comparable<TimeSlot> {
     @Override
     public boolean equals(Object obj) {
 
-      TimeSlot t = (TimeSlot) obj;
-
-      if(this.getStart().equals(t.getStart()) == this.getStop().equals(t.getStop()))
+      if (this == obj)
         return true;
-
+      if (!(obj instanceof TimeSlot))
         return false;
+      TimeSlot t = (TimeSlot) obj;
+      if (getStart() == null) {
+        if (t.getStart() != null)
+          return false;
+      } else if (!getStart().equals(t.getStart()))
+        return false;
+      if (getStop() == null) {
+        if (t.getStop() != null)
+          return false;
+      } else if (!this.getStop().equals(t.getStop()))
+        return false;
+      return true;
     }
 
     /*
