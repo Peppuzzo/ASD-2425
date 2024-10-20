@@ -171,7 +171,10 @@ public class TimeSlot implements Comparable<TimeSlot> {
      *                                  se il time slot passato è nullo
      */
     public boolean overlapsWith(TimeSlot o) {
-        // TODO implementare
+
+      if(o == null)
+        return false;
+      
         return false;
     }
 
