@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es3;
 
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Classe di test per prenotazioni.
- * 
+ *
  * @author Luca Tesei
  *
  */

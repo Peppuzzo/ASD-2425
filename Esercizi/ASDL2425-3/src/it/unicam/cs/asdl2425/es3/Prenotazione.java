@@ -137,13 +137,14 @@ public class Prenotazione implements Comparable<Prenotazione> {
     @Override
     public int compareTo(Prenotazione o) {
 
-      if(this.timeSlot.compareTo(o.timeSlot) > o.timeSlot.compareTo(this.timeSlot))
-        return 1;
+      // Confronta i time slot
+      int timeSlotComparison = this.timeSlot.compareTo(o.timeSlot);
+      if (timeSlotComparison != 0) {
+        return timeSlotComparison; // Se sono diversi, restituisci il risultato del confronto
+      }
 
-      if(this.timeSlot.compareTo(o.timeSlot) == o.timeSlot.compareTo(this.timeSlot))
-        return 0;
-
-        return -1;
+      // Se i time slot sono uguali, confronta le aule
+      return this.aula.compareTo(o.aula); // Confronto delle aule
     }
 
     @Override
