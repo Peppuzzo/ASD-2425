@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es3;
 
@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
  * Un time slot è un intervallo di tempo continuo che può essere associato ad
  * una prenotazione. Gli oggetti della classe sono immutabili. Non sono ammessi
  * time slot che iniziano e finiscono nello stesso istante.
- * 
+ *
  * @author Luca Tesei
  *
  */
@@ -30,7 +30,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
 
     /**
      * Crea un time slot tra due istanti di inizio e fine
-     * 
+     *
      * @param start
      *                  inizio del time slot
      * @param stop
@@ -43,7 +43,14 @@ public class TimeSlot implements Comparable<TimeSlot> {
      *                                      stop
      */
     public TimeSlot(GregorianCalendar start, GregorianCalendar stop) {
-        // TODO implementare
+
+      if(start == null || stop == null)
+        throw new NullPointerException("Error: L'inizio e la fine del TimeSlot non possono essere nulli!");
+
+      if(start.after(getStop()) && start.equals(getStop()))
+        throw new IllegalArgumentException("Error: Lo start non puo' essere maggiore o uguale dello stop.");
+
+
         this.start = start;
         this.stop = stop;
     }
@@ -98,7 +105,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
     /**
      * Determina il numero di minuti di sovrapposizione tra questo timeslot e
      * quello passato.
-     * 
+     *
      * @param o
      *              il time slot da confrontare con questo
      * @return il numero di minuti di sovrapposizione tra questo time slot e
@@ -125,7 +132,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
     /**
      * Determina se questo time slot si sovrappone a un altro time slot dato,
      * considerando la soglia di tolleranza.
-     * 
+     *
      * @param o
      *              il time slot che viene passato per il controllo di
      *              sovrapposizione
@@ -141,11 +148,11 @@ public class TimeSlot implements Comparable<TimeSlot> {
 
     /*
      * Ridefinisce il modo in cui viene reso un TimeSlot con una String.
-     * 
+     *
      * Esempio 1, stringa da restituire: "[4/11/2019 11.0 - 4/11/2019 13.0]"
-     * 
+     *
      * Esempio 2, stringa da restituire: "[10/11/2019 11.15 - 10/11/2019 23.45]"
-     * 
+     *
      * I secondi e i millisecondi eventuali non vengono scritti.
      */
     @Override
