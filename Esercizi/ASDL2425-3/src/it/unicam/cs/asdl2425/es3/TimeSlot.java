@@ -47,7 +47,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
       if(start == null || stop == null)
         throw new NullPointerException("Error: L'inizio e la fine del TimeSlot non possono essere nulli!");
 
-      if(start.after(getStop()) && start.equals(getStop()))
+      if(start.after(stop) || start.equals(stop))
         throw new IllegalArgumentException("Error: Lo start non puo' essere maggiore o uguale dello stop.");
 
 
