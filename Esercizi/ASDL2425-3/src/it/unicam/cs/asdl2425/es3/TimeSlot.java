@@ -98,7 +98,16 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     @Override
     public int compareTo(TimeSlot o) {
-        // TODO implementare
+
+      // controllo se l'inzio del calendario e' superiore a l'altro
+      if(this.getStart().after(o.getStart()))
+        return 1;
+
+      // verifico se l'inzio e la fien tra i due calendari coincidono (e quindi sono uguali)
+      if(this.start.compareTo(o.getStart()) == o.getStart().compareTo(this.getStart()) && this.stop.compareTo(o.stop) ==
+      o.getStop().compareTo(this.stop))
+        return 0;
+
         return -1;
     }
 
