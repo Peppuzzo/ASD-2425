@@ -159,12 +159,14 @@ public class TimeSlot implements Comparable<TimeSlot> {
       if(o == null)
         throw new NullPointerException("Error: parametro passato is null");
 
-      if(this.getStop().getTimeInMillis() == o.getStart().getTimeInMillis() ||
-        this.getStart().getTimeInMillis() == this.getStop().getTimeInMillis())
+      if(this.getStop().getTimeInMillis() == o.getStart().getTimeInMillis())
+        return -1;
+
+      if(this.getStart().getTimeInMillis() == o.getStop().getTimeInMillis())
         return -1;
 
 
-        return -1;
+      return -1;
     }
 
     /**
