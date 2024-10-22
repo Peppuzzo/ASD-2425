@@ -202,8 +202,13 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     @Override
     public String toString() {
-        // TODO implementare
-        return null;
+
+      String one = "[4/11/2019 11.0 - 4/11/2019 13.0]";
+      String two = "[10/11/2019 11.15 - 10/11/2019 23.45]";
+
+
+
+      return null;
     }
 
 }
