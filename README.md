@@ -21,7 +21,7 @@ This repository contains weekly exercises and mini projects developed as part of
  ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂 es1  
  ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜 Exercise1.java  
  ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜 Exercise2.java  
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜 Exercise3.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜 Exercise3.java  .....
  ┣ 📂 Mini_Projects  
 
 
