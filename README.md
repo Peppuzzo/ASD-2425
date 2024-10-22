@@ -10,19 +10,20 @@ This repository contains weekly exercises and mini projects developed as part of
 - **`Mini_Projects/`**: Includes more substantial projects that involve complex algorithmic challenges and multiple data structures.
 
 
-📦Esercizi-ASDL2425
- ┣ 📂Week_x # Contains exercises for week x
- ┃ ┣ 📂ASDL2425-x
- ┃ ┃ ┣ 📂src
- ┃ ┃ ┃ ┗ 📂it
- ┃ ┃ ┃ ┃ ┗ 📂unicam
- ┃ ┃ ┃ ┃ ┃ ┗ 📂cs
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂asdl2425
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂es1
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Exercise1.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Exercise2.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Exercise3.java .......
- ┣ 📂Mini_Projects
+📦 Esercizi-ASDL2425  
+ ┣ 📂 Week_x  
+ ┃ ┣ 📂 ASDL2425-x  
+ ┃ ┃ ┣ 📂 src  
+ ┃ ┃ ┃ ┗ 📂 it  
+ ┃ ┃ ┃ ┃ ┗ 📂 unicam  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂 cs  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂 asdl2425  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂 es1  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜 Exercise1.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜 Exercise2.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜 Exercise3.java  
+ ┣ 📂 Mini_Projects  
+
 
  
 ## Installation and Usage
