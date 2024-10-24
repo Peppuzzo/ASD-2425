@@ -3,9 +3,7 @@
  */
 package it.unicam.cs.asdl2425.es3;
 
-// TODO completare gli import se necessario
-import java.util.Calendar.*;
-
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -203,12 +201,14 @@ public class TimeSlot implements Comparable<TimeSlot> {
     @Override
     public String toString() {
 
-      String one = "[4/11/2019 11.0 - 4/11/2019 13.0]";
-      String two = "[10/11/2019 11.15 - 10/11/2019 23.45]";
-
-
-
-      return null;
+      return "[" + start.get(Calendar.DAY_OF_MONTH) + "/"
+        + (start.get(Calendar.MONTH) + 1) + "/"
+        + start.get(Calendar.YEAR) + " "
+        + start.get(Calendar.HOUR_OF_DAY) + "."
+        + start.get(Calendar.MINUTE) + " - "
+        + stop.get(Calendar.DAY_OF_MONTH) + "/"
+        + (stop.get(Calendar.MONTH) + 1) + "/" + stop.get(Calendar.YEAR)
+        + " " + stop.get(Calendar.HOUR_OF_DAY) + "."
+        + stop.get(Calendar.MINUTE) + "]";
     }
-
 }
