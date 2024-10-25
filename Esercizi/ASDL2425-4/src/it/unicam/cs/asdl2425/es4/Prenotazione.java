@@ -2,7 +2,7 @@ package it.unicam.cs.asdl2425.es4;
 
 /**
  * Una prenotazione riguarda una certa aula per un certo time slot.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: Collective
  *
  */
@@ -18,7 +18,7 @@ public class Prenotazione implements Comparable<Prenotazione> {
 
     /**
      * Costruisce una prenotazione.
-     * 
+     *
      * @param aula
      *                     l'aula a cui la prenotazione si riferisce
      * @param timeSlot
@@ -33,11 +33,14 @@ public class Prenotazione implements Comparable<Prenotazione> {
      */
     public Prenotazione(Aula aula, TimeSlot timeSlot, String docente,
             String motivo) {
-        // TODO implementare
-        this.aula = aula;
-        this.timeSlot = timeSlot;
-        this.docente = docente;
-        this.motivo = motivo;
+
+      if(aula == null || timeSlot == null || docente == null || motivo == null)
+        throw new NullPointerException("I parametri passati al costruttore non possono essere nulli!");
+
+      this.aula = aula;
+      this.timeSlot = timeSlot;
+      this.docente = docente;
+      this.motivo = motivo;
     }
 
     /**
@@ -84,8 +87,13 @@ public class Prenotazione implements Comparable<Prenotazione> {
 
     @Override
     public int hashCode() {
-        // TODO implementare
-        return -1;
+
+        int result = 11; // si utilizzera' un numero primo per evitare possibili collisioni.
+
+        result = 31 * result + (getAula() != null ? getAula().hashCode() : 0);
+        result = 31 * result + (getTimeSlot() != null ? getTimeSlot().hashCode() : 0);
+
+        return result;
     }
 
     /*

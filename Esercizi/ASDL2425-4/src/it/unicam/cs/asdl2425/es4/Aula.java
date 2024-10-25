@@ -3,7 +3,7 @@ package it.unicam.cs.asdl2425.es4;
 /**
  * Un oggetto della classe aula rappresenta una certa aula con le sue facilities
  * e le sue prenotazioni.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: Collective
  *
  */
@@ -56,20 +56,25 @@ public class Aula implements Comparable<Aula> {
     /**
      * Costruisce una certa aula con nome e location. Il set delle facilities è
      * vuoto. L'aula non ha inizialmente nessuna prenotazione.
-     * 
+     *
      * @param nome
      *                     il nome dell'aula
      * @param location
      *                     la location dell'aula
-     * 
+     *
      * @throws NullPointerException
      *                                  se una qualsiasi delle informazioni
      *                                  richieste è nulla
      */
     public Aula(String nome, String location) {
-        // TODO implementare
-        this.nome = nome;
-        this.location = location;
+
+      if(nome.equals(null) || location.equals(null))
+        throw new NullPointerException("Error: il costruttore non puo' avere parametri nulli.");
+
+      this.facilities = new Facility[] {};
+      this.prenotazioni = new Prenotazione[] {};
+      this.nome = nome;
+      this.location = location;
 
     }
 
@@ -141,7 +146,7 @@ public class Aula implements Comparable<Aula> {
     /**
      * Aggiunge una faciltity a questa aula. Controlla se la facility è già
      * presente, nel qual caso non la inserisce.
-     * 
+     *
      * @param f
      *              la facility da aggiungere
      * @return true se la facility non era già presente e quindi è stata
@@ -153,7 +158,7 @@ public class Aula implements Comparable<Aula> {
         /*
          * Nota: attenzione! Per controllare se una facility è già presente
          * bisogna usare il metodo equals della classe Facility.
-         * 
+         *
          * Nota: attenzione bis! Si noti che per le sottoclassi di Facility non
          * è richiesto di ridefinire ulteriormente il metodo equals...
          */
@@ -163,11 +168,11 @@ public class Aula implements Comparable<Aula> {
 
     /**
      * Determina se l'aula è libera in un certo time slot.
-     * 
-     * 
+     *
+     *
      * @param ts
      *               il time slot da controllare
-     * 
+     *
      * @return true se l'aula risulta libera per tutto il periodo del time slot
      *         specificato
      * @throws NullPointerException
@@ -181,7 +186,7 @@ public class Aula implements Comparable<Aula> {
     /**
      * Determina se questa aula soddisfa tutte le facilities richieste
      * rappresentate da un certo insieme dato.
-     * 
+     *
      * @param requestedFacilities
      *                                l'insieme di facilities richieste da
      *                                soddisfare, sono da considerare solo le
@@ -198,7 +203,7 @@ public class Aula implements Comparable<Aula> {
 
     /**
      * Prenota l'aula controllando eventuali sovrapposizioni.
-     * 
+     *
      * @param ts
      * @param docente
      * @param motivo

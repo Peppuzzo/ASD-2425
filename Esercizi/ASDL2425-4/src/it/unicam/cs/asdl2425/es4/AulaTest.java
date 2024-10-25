@@ -1,14 +1,10 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es4;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-
 import java.util.GregorianCalendar;
-
-
 import org.junit.jupiter.api.Test;
 
 /**
@@ -63,7 +59,7 @@ class AulaTest {
         assertTrue(a.getNumeroPrenotazioni() == 0);
     }
 
-    
+
 
     /**
      * Test method for
@@ -219,7 +215,7 @@ class AulaTest {
         // raddoppio dell'array
         a.addFacility(new PresenceFacility("MINNIE", ""));
         assertTrue(a.getNumeroFacilities() == 6);
-        assertTrue(a.getFacilities().length == 10);       
+        assertTrue(a.getFacilities().length == 10);
     }
 
     /**
