@@ -154,18 +154,83 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     public int getMinutesOfOverlappingWith(TimeSlot o) {
 
-      if(o == null)
-        throw new NullPointerException("Error: parametro passato is null");
+      if(o.equals(null))
+        throw new NullPointerException("Error: impossibile calcolare il numero di minuti di sovrapposizione" +
+          "con un TimeSlot NULL");
 
-      if(this.getStop().getTimeInMillis() == o.getStart().getTimeInMillis())
-        return -1;
+      // Controllo tutti i possibili casi di sovrapposizione
+      int svr1 = this.start.compareTo(o.getStart());
+      int svr2 = this.start.compareTo(o.getStop());
+      int svr3 = this.stop.compareTo(o.getStart());
+      int svr4 = this.stop.compareTo(o.getStop());
 
-      if(this.getStart().getTimeInMillis() == o.getStop().getTimeInMillis())
-        return -1;
+      long overlappingMilliseconds;
 
+      if(svr1 <= 0 && svr3 >= 0 && svr4 <= 0){
+        // Questo timeslot inizia prima di quello passato e termina dopo che
+        // quello passato è iniziato
+        // this.start ... [o.start ... this.stop] ... o.stop
 
+        overlappingMilliseconds = this.getStop().getTimeInMillis() - o.getStart().getTimeInMillis();
+
+        return computeMinutes(overlappingMilliseconds);
+      }
+      if (svr1 <= 0 && svr4 >= 0) {
+        // Questo timeslot inizia prima di quello passato e termina dopo che
+        // quello passato è finito
+        // this.start ... [o.start ... o.stop] ... this.stop
+        overlappingMilliseconds = o.stop.getTimeInMillis()
+          - o.start.getTimeInMillis();
+        return computeMinutes(overlappingMilliseconds);
+      }
+
+      if (svr1 >= 0 && svr2 <= 0 && svr4 >= 0) {
+        // Questo timeslot inizia dopo di quello passato e termina dopo che
+        // quello passato è terminato
+        // o.start ... [this.start ... o.stop] ... this.stop
+        overlappingMilliseconds = o.stop.getTimeInMillis()
+          - this.start.getTimeInMillis();
+        return computeMinutes(overlappingMilliseconds);
+      }
+      if (svr1 >= 0 && svr4 <= 0) {
+        // Questo timeslot inizia prima di quello passato e termina dopo che
+        // quello passato è finito
+        // o.start ... [this.start ... this.stop] ... o.stop
+        overlappingMilliseconds = this.stop.getTimeInMillis()
+          - this.start.getTimeInMillis();
+        return computeMinutes(overlappingMilliseconds);
+      }
+      // non c'è sovrapposizione
       return -1;
     }
+
+
+  /**
+   * Calcola il numero di minuti di sovrapposizione a partire dai millisecondi
+   * facendo il troncamento. Gestisce il caso particolare in cui il numero di
+   * millisecondi passati è 0.
+   *
+   * @throws IllegalArgumentException
+   *           se il numero di minuti è troppo grande per un int.
+   *
+   * @return <code> (int) truncatedOverlappingMinutes </code>
+   *                      il cast esplicito per il numero di minuti troncati.
+   */
+  private int computeMinutes(long overlappingMilliseconds) {
+    // Caso particolare di 0 millisecondi di sovrapposizione, da considerare
+    // non sovrapposizione.
+    if (overlappingMilliseconds == 0)
+      return -1;
+    // la divisione intera tra long butta via i decimali
+    // 60000 millisecondi = 1 minuto
+    long truncatedOverlappingMinutes = overlappingMilliseconds / 60000;
+    if (truncatedOverlappingMinutes > Integer.MAX_VALUE)
+      throw new IllegalArgumentException(
+        "Numero di minuti di sovrapposizione troppo grande per un int");
+
+    return (int) truncatedOverlappingMinutes;
+  }
+
 
     /**
      * Determina se questo time slot si sovrappone a un altro time slot dato,
@@ -181,12 +246,17 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     public boolean overlapsWith(TimeSlot o) {
 
-      if(o == null)
+      if(o.equals(null))
+        throw new NullPointerException("Error: il time slot passato è nullo");
+
+      int minutes = this.getMinutesOfOverlappingWith(o);
+
+      if(minutes == -1 || minutes <= MINUTES_OF_TOLERANCE_FOR_OVERLAPPING)
+        // non c'è sovrapposizione oppure la soglia non è superata
         return false;
-
-
-
-      return false;
+      
+      // esiste la sovrapposizione
+      return true;
     }
 
     /*
