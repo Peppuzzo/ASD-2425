@@ -71,8 +71,8 @@ public class Aula implements Comparable<Aula> {
       if(nome.equals(null) || location.equals(null))
         throw new NullPointerException("Error: il costruttore non puo' avere parametri nulli.");
 
-      this.facilities = new Facility[] {};
-      this.prenotazioni = new Prenotazione[] {};
+      this.facilities = new Facility[INIT_NUM_FACILITIES];
+      this.prenotazioni = new Prenotazione[INIT_NUM_PRENOTAZIONI];
       this.nome = nome;
       this.location = location;
 
