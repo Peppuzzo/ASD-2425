@@ -90,15 +90,26 @@ public class Aula implements Comparable<Aula> {
     /* Due aule sono uguali se e solo se hanno lo stesso nome */
     @Override
     public boolean equals(Object obj) {
-        // TODO implementare
+
+      if(this == obj)
+        return true;
+      if(!(obj instanceof Aula))
         return false;
+
+      // In questo caso casto l'oggetto ad Aula per verificare se in accorda con equals hanno lo stesso nome
+      Aula other = (Aula) obj;
+
+      if (!(this.nome.equals(other.nome)))
+        return false;
+
+      return true;
     }
 
     /* L'ordinamento naturale si basa sul nome dell'aula */
     @Override
     public int compareTo(Aula o) {
-        // TODO implementare
-        return -1;
+
+      return this.getNome().compareTo(o.getNome());
     }
 
     /**
