@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es4;
 
@@ -13,13 +13,13 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Classe di test per i time slot.
- * 
+ *
  * @author Luca Tesei
  *
  */
 
 class TimeSlotTest {
-    
+
     @Test
     final void testHashCode() {
         GregorianCalendar g1 = new GregorianCalendar(2019, 10, 4, 11, 00);
@@ -110,7 +110,7 @@ class TimeSlotTest {
         assertTrue(ts2.compareTo(ts1) > 0);
         assertTrue(ts1.compareTo(ts2) < 0);
     }
-    
+
     @Test
     final void testGetMinutesOfOverlappingWith() {
         GregorianCalendar g1 = new GregorianCalendar(2019, 10, 4, 11, 00);

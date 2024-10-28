@@ -88,7 +88,7 @@ public class Prenotazione implements Comparable<Prenotazione> {
     @Override
     public int hashCode() {
 
-        int result = 11; // si utilizzera' un numero primo per evitare possibili collisioni.
+        int result = 11; // si utilizzerà un numero primo per evitare possibili collisioni.
 
         result = 31 * result + (getAula() != null ? getAula().hashCode() : 0);
         result = 31 * result + (getTimeSlot() != null ? getTimeSlot().hashCode() : 0);
@@ -102,8 +102,12 @@ public class Prenotazione implements Comparable<Prenotazione> {
      */
     @Override
     public boolean equals(Object obj) {
-        // TODO implementare
-        return false;
+
+      if (this == obj) return true; // Se i riferimenti sono uguali
+      if (!(obj instanceof Prenotazione)) return false; // Controlla se obj è di tipo Prenotazione
+
+      Prenotazione other = (Prenotazione) obj; // Effettua il cast in modo sicuro
+      return this.aula.equals(other.getAula()) && this.getTimeSlot().equals(other.getTimeSlot());
     }
 
     /*
@@ -113,8 +117,13 @@ public class Prenotazione implements Comparable<Prenotazione> {
      */
     @Override
     public int compareTo(Prenotazione o) {
-        // TODO implementare
-        return -1;
+
+      int TimeSlotComparison = this.getTimeSlot().compareTo(o.getTimeSlot());
+
+      if (TimeSlotComparison != 0)
+        return TimeSlotComparison;
+
+      return this.getAula().compareTo(o.getAula());
     }
 
     @Override

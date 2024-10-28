@@ -115,8 +115,17 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     @Override
     public int compareTo(TimeSlot o) {
-        // TODO implementare - riutilizzare il codice della ES 3 o migliorarlo
-        return -1;
+
+      // controllo se l'inizio del calendario è superiore a l'altro
+      if(this.getStart().after(o.getStart()))
+        return 1;
+
+      // verifico se l'inizio e la fine tra i due calendari coincidono (e quindi sono uguali)
+      if(this.start.compareTo(o.getStart()) == o.getStart().compareTo(this.getStart()) && this.stop.compareTo(o.stop) ==
+        o.getStop().compareTo(this.stop))
+        return 0;
+
+      return -1;
     }
 
     /**
@@ -142,8 +151,55 @@ public class TimeSlot implements Comparable<TimeSlot> {
      *                                      superano Integer.MAX_VALUE
      */
     public int getMinutesOfOverlappingWith(TimeSlot o) {
-        // TODO implementare - riutilizzare il codice della ES 3 o migliorarlo
-        return -1;
+
+      if(o.equals(null))
+        throw new NullPointerException("Error: impossibile calcolare il numero di minuti di sovrapposizione" +
+          "con un TimeSlot NULL");
+
+      // Controllo tutti i possibili casi di sovrapposizione
+      int svr1 = this.start.compareTo(o.getStart());
+      int svr2 = this.start.compareTo(o.getStop());
+      int svr3 = this.stop.compareTo(o.getStart());
+      int svr4 = this.stop.compareTo(o.getStop());
+
+      long overlappingMilliseconds;
+
+      if(svr1 <= 0 && svr3 >= 0 && svr4 <= 0){
+        // Questo timeslot inizia prima di quello passato e termina dopo che
+        // quello passato è iniziato
+        // this.start ... [o.start ... this.stop] ... o.stop
+
+        overlappingMilliseconds = this.getStop().getTimeInMillis() - o.getStart().getTimeInMillis();
+
+        return computeMinutes(overlappingMilliseconds);
+
+      } else if (svr1 <= 0 && svr4 >= 0) {
+        // Questo timeslot inizia prima di quello passato e termina dopo che
+        // quello passato è finito
+        // this.start ... [o.start ... o.stop] ... this.stop
+        overlappingMilliseconds = o.stop.getTimeInMillis()
+          - o.start.getTimeInMillis();
+        return computeMinutes(overlappingMilliseconds);
+
+      } else if (svr1 >= 0 && svr2 <= 0 && svr4 >= 0) {
+        // Questo timeslot inizia dopo di quello passato e termina dopo che
+        // quello passato è terminato
+        // o.start ... [this.start ... o.stop] ... this.stop
+        overlappingMilliseconds = o.stop.getTimeInMillis()
+          - this.start.getTimeInMillis();
+        return computeMinutes(overlappingMilliseconds);
+
+      } else if (svr1 >= 0 && svr4 <= 0) {
+        // Questo timeslot inizia prima di quello passato e termina dopo che
+        // quello passato è finito
+        // o.start ... [this.start ... this.stop] ... o.stop
+        overlappingMilliseconds = this.stop.getTimeInMillis()
+          - this.start.getTimeInMillis();
+        return computeMinutes(overlappingMilliseconds);
+      }
+
+      // non c'è sovrapposizione
+      return -1;
     }
 
     /**
@@ -159,8 +215,17 @@ public class TimeSlot implements Comparable<TimeSlot> {
      *                                  se il time slot passato è nullo
      */
     public boolean overlapsWith(TimeSlot o) {
-        // TODO implementare - riutilizzare il codice della ES 3 o migliorarlo
+      if(o.equals(null))
+        throw new NullPointerException("Error: il time slot passato è nullo");
+
+      int minutes = this.getMinutesOfOverlappingWith(o);
+
+      if(minutes == -1 || minutes <= MINUTES_OF_TOLERANCE_FOR_OVERLAPPING)
+        // non c'è sovrapposizione oppure la soglia non è superata
         return false;
+
+      // esiste la sovrapposizione
+      return true;
     }
 
     /*
@@ -174,11 +239,50 @@ public class TimeSlot implements Comparable<TimeSlot> {
      */
     @Override
     public String toString() {
-        // TODO implementare - riutilizzare il codice della ES 3 o migliorarlo
-        return null;
+        return String.format("[%s - %s]", formatCalendar(getStart()), formatCalendar(getStop()));
     }
 
-    // TODO aggiungere eventuali metodi privati a scopo di implementazione -
-    // riutilizzare il codice della ES 3 o migliorarlo
+
+  /**
+   * Calcola il numero di minuti di sovrapposizione a partire dai millisecondi
+   * facendo il troncamento. Gestisce il caso particolare in cui il numero di
+   * millisecondi passati è 0.
+   *
+   * @throws IllegalArgumentException
+   *           se il numero di minuti è troppo grande per un int.
+   *
+   * @return <code> (int) truncatedOverlappingMinutes </code>
+   *                      il cast esplicito per il numero di minuti troncati.
+   */
+  private int computeMinutes(long overlappingMilliseconds) {
+    // Caso particolare di 0 millisecondi di sovrapposizione, da considerare
+    // non sovrapposizione.
+    if (overlappingMilliseconds == 0)
+      return -1;
+    // la divisione intera tra long butta via i decimali
+    // 60000 millisecondi = 1 minuto
+    long truncatedOverlappingMinutes = overlappingMilliseconds / 60000;
+    if (truncatedOverlappingMinutes > Integer.MAX_VALUE)
+      throw new IllegalArgumentException(
+        "Numero di minuti di sovrapposizione troppo grande per un int");
+
+    return (int) truncatedOverlappingMinutes;
+  }
+
+
+  /**
+   * Il formato del nuovo calendario.
+   *
+   * @param cal il calendario di riferimento
+   * @return il formato per il calendario di riferimento
+   */
+  private String formatCalendar(Calendar cal){
+      return String.format("%d/%d/%d %d.%d",
+        cal.get(Calendar.DAY_OF_MONTH),
+        cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.YEAR),
+        cal.get(Calendar.HOUR_OF_DAY),
+        cal.get(Calendar.MINUTE));
+  }
 
 }
