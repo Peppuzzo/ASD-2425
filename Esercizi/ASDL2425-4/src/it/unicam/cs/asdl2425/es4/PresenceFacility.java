@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es4;
 
@@ -7,7 +7,7 @@ package it.unicam.cs.asdl2425.es4;
  * Una Presence Facility è una facility che può essere presente oppure no. Ad
  * esempio la presenza di un proiettore HDMI oppure la presenza dell'aria
  * condizionata.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: Collective
  *
  */
@@ -15,7 +15,7 @@ public class PresenceFacility extends Facility {
 
     /**
      * Costruisce una presence facility.
-     * 
+     *
      * @param codice
      * @param descrizione
      * @throws NullPointerException
@@ -24,13 +24,13 @@ public class PresenceFacility extends Facility {
      */
     public PresenceFacility(String codice, String descrizione) {
         super(codice, descrizione);
-        // TODO implementare
+
     }
 
     /*
      * Una Presence Facility soddisfa una facility solo se la facility passata è
      * una Presence Facility ed ha lo stesso codice.
-     * 
+     *
      */
     @Override
     public boolean satisfies(Facility o) {

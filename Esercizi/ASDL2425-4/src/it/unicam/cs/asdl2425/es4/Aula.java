@@ -83,8 +83,11 @@ public class Aula implements Comparable<Aula> {
      */
     @Override
     public int hashCode() {
-        // TODO implementare
-        return -1;
+        int result = 13;
+
+        result = 31 * result + (getNome() == null ? 0 : getNome().hashCode());
+
+        return result;
     }
 
     /* Due aule sono uguali se e solo se hanno lo stesso nome */
@@ -190,7 +193,10 @@ public class Aula implements Comparable<Aula> {
      *                                  se il time slot passato è nullo
      */
     public boolean isFree(TimeSlot ts) {
-        // TODO implementare
+      //TODO Implementare
+        if(ts.equals(null))
+          throw new NullPointerException("Error; il TimeSlot passato non può essere nullo!");
+
         return false;
     }
 
@@ -227,7 +233,13 @@ public class Aula implements Comparable<Aula> {
      *                                      richieste è nulla.
      */
     public void addPrenotazione(TimeSlot ts, String docente, String motivo) {
-        // TODO implementare
+
+      //TODO Implementare
+        if(ts.equals(null) || docente.equals(null) || motivo.equals(null))
+          throw new NullPointerException("Error: non è consentito avere valori null. ");
+
+
+
     }
 
     // TODO inserire eventuali metodi privati per questioni di organizzazione

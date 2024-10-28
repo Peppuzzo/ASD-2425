@@ -4,7 +4,7 @@ package it.unicam.cs.asdl2425.es4;
  * Una facility generica è una caratteristica o delle dotazioni che una certa
  * aula può avere. La classe va specificata ulteriormente per definire i diversi
  * tipi di facilities.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: Collective
  *
  */
@@ -16,7 +16,7 @@ public abstract class Facility {
 
     /**
      * Costruisce una certa facility generica.
-     * 
+     *
      * @param codice
      *                        identifica la facility univocamente
      * @param descrizione
@@ -26,7 +26,8 @@ public abstract class Facility {
      *                                  richieste è nulla.
      */
     public Facility(String codice, String descrizione) {
-        // TODO implementare
+        if(codice.equals(null) || descrizione.equals(null))
+          throw new NullPointerException("Error: il costruttore non acetate informazioni di tipo NULL!");
         this.codice = codice;
         this.descrizione = descrizione;
     }
@@ -78,7 +79,7 @@ public abstract class Facility {
      * essa soddisfa ogni altra facility che indica che ci sono un numero di
      * posti minore o uguale a 30. Il metodo dipende dal tipo di facility, per
      * questo è astratto e va definito nelle varie sottoclassi.
-     * 
+     *
      * @param o
      *              l'altra facility con cui determinare la compatibilità
      * @return true se questa facility soddisfa la facility passata, false
