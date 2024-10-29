@@ -178,30 +178,24 @@ public class Aula implements Comparable<Aula> {
          */
 
       for (int i = 0; i < facilities.length; i++){
-        if(f.equals(facilities[i])){
+        if(f.equals(facilities[i])){ // complessità O(n)
           return false;
         }
       }
 
       for(int j = 0; j < facilities.length; j++){
-        if(facilities[j] == null){
+        if(facilities[j] == null){ //complessità O(n)
           facilities[j] = f;
           this.numFacilities++;
           return true;
         }
       }
 
-      this.facilities = new Facility[INIT_NUM_FACILITIES * 2];
+      // Qualora non ci fosse più spazio nell'array, raddoppio la sua dimensione.
+      expandArray();
+      this.facilities[this.numFacilities++] = f;
 
-      for(int z = 0; z < facilities.length; z++){
-        if(facilities[z] == null){
-          facilities[z] = f;
-          this.numFacilities++;
-          return true;
-        }
-      }
-
-        return false;
+      return true;
     }
 
     /**
@@ -264,6 +258,12 @@ public class Aula implements Comparable<Aula> {
 
 
 
+    }
+
+    private void expandArray(){
+      Facility[] newFacility = new Facility[facilities.length * 2];
+      System.arraycopy(this.facilities, 0, newFacility, 0, this.facilities.length);
+      this.facilities = newFacility;
     }
 
     // TODO inserire eventuali metodi privati per questioni di organizzazione
