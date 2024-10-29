@@ -34,8 +34,14 @@ public class PresenceFacility extends Facility {
      */
     @Override
     public boolean satisfies(Facility o) {
-        // TODO implementare
-        return false;
+
+      if(o.equals(null))
+        throw new NullPointerException("Error: La facility passata è NULL!");
+
+      if(o instanceof PresenceFacility && this.getCodice().equals(o.getCodice()))
+        return true;
+
+      return false;
     }
 
 }

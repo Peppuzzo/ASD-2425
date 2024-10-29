@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es4;
 
@@ -7,7 +7,7 @@ package it.unicam.cs.asdl2425.es4;
  * Una Quantitative Facility è una facility che contiene una informazione
  * quantitativa. Ad esempio la presenza di 50 posti a sedere oppure la presenza
  * di 20 thin clients.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: Collective
  *
  */
@@ -17,13 +17,13 @@ public class QuantitativeFacility extends Facility {
 
     /**
      * Costruisce una facility quantitativa.
-     * 
+     *
      * @param codice
      *                        codice identificativo della facility
      * @param descrizione
      *                        descrizione testuale della facility
      * @param quantity
-     *                        quantita' associata alla facility
+     *                        quantità associata alla facility
      * @throws NullPointerException
      *                                  se una qualsiasi delle informazioni
      *                                  {@code codice} e {@code descrizione} è
@@ -32,7 +32,11 @@ public class QuantitativeFacility extends Facility {
     public QuantitativeFacility(String codice, String descrizione,
             int quantity) {
         super(codice, descrizione);
-        this.quantity = quantity;
+
+      /*if(codice.equals(null) || descrizione.equals(null))
+        throw new NullPointerException("Error: Non sono accettati parametri di tipo NULL.");*/
+
+      this.quantity = quantity;
     }
 
     /**
@@ -50,7 +54,12 @@ public class QuantitativeFacility extends Facility {
      */
     @Override
     public boolean satisfies(Facility o) {
-        // TODO implementare
+
+      if(o.equals(null))
+        throw new NullPointerException();
+
+      if(o instanceof QuantitativeFacility && this.getCodice().equals(o.getCodice()) && this.getQuantity() >= ((QuantitativeFacility) o).getQuantity())
+          return true;
         return false;
     }
 
