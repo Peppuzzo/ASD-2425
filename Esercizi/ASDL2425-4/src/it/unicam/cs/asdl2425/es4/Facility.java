@@ -52,8 +52,11 @@ public abstract class Facility {
      */
     @Override
     public int hashCode() {
-        // TODO implementare
-        return -1;
+
+        int hash = 45;
+        hash = 31 * hash + (getCodice() == null ? 0 : getCodice().hashCode());
+
+        return hash;
     }
 
     /*
@@ -61,8 +64,19 @@ public abstract class Facility {
      */
     @Override
     public boolean equals(Object obj) {
-        // TODO implementare
-        return false;
+
+      if(!(this == obj))
+        return  false;
+
+      if(obj instanceof PresenceFacility){
+        PresenceFacility other = (PresenceFacility) obj;
+        return this.codice != null && other.getCodice() != null ? this.codice.equals(other.getCodice()) : false;
+      } else if (obj instanceof QuantitativeFacility) {
+        QuantitativeFacility other = (QuantitativeFacility) obj;
+        return this.codice != null && other.getCodice() != null ? this.codice.equals(other.getCodice()) : false;
+      }
+
+      return false;
     }
 
     @Override
