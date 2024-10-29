@@ -158,8 +158,8 @@ public class Aula implements Comparable<Aula> {
     }
 
     /**
-     * Aggiunge una faciltity a questa aula. Controlla se la facility è già
-     * presente, nel qual caso non la inserisce.
+     * Aggiunge una facility a questa aula. Controlla se la facility è già
+     * presente, in quel caso non la inserisce.
      *
      * @param f
      *              la facility da aggiungere
@@ -176,7 +176,31 @@ public class Aula implements Comparable<Aula> {
          * Nota: attenzione bis! Si noti che per le sottoclassi di Facility non
          * è richiesto di ridefinire ulteriormente il metodo equals...
          */
-        // TODO implementare
+
+      for (int i = 0; i < facilities.length; i++){
+        if(f.equals(facilities[i])){
+          return false;
+        }
+      }
+
+      for(int j = 0; j < facilities.length; j++){
+        if(facilities[j] == null){
+          facilities[j] = f;
+          this.numFacilities++;
+          return true;
+        }
+      }
+
+      this.facilities = new Facility[INIT_NUM_FACILITIES * 2];
+
+      for(int z = 0; z < facilities.length; z++){
+        if(facilities[z] == null){
+          facilities[z] = f;
+          this.numFacilities++;
+          return true;
+        }
+      }
+
         return false;
     }
 
