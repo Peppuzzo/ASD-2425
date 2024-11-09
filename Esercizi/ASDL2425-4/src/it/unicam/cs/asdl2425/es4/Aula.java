@@ -72,7 +72,9 @@ public class Aula implements Comparable<Aula> {
       throw new NullPointerException("Error: il costruttore non puo' avere parametri nulli.");
 
     this.facilities = new Facility[INIT_NUM_FACILITIES];
+    this.numFacilities = 0;
     this.prenotazioni = new Prenotazione[INIT_NUM_PRENOTAZIONI];
+    this.numPrenotazioni = 0;
     this.nome = nome;
     this.location = location;
 
@@ -83,11 +85,7 @@ public class Aula implements Comparable<Aula> {
    */
   @Override
   public int hashCode() {
-    int result = 13;
-
-    result = 31 * result + (getNome() == null ? 0 : getNome().hashCode());
-
-    return result;
+    return this.nome.hashCode();
   }
 
   /* Due aule sono uguali se e solo se hanno lo stesso nome */
@@ -177,24 +175,26 @@ public class Aula implements Comparable<Aula> {
      * è richiesto di ridefinire ulteriormente il metodo equals...
      */
 
-    for (int i = 0; i < facilities.length; i++){
+    for (int i = 0; i < this.numFacilities; i++){
       if(f.equals(facilities[i])){ // complessità O(n)
         return false;
       }
     }
 
-    for(int j = 0; j < facilities.length; j++){
-      if(facilities[j] == null){ //complessità O(n)
-        facilities[j] = f;
-        this.numFacilities++;
-        return true;
-      }
+    if (this.numFacilities < this.facilities.length) {
+      // c'è spazio e la inserisco
+      this.facilities[this.numFacilities] = f;
+      this.numFacilities++;
+
+    } else {
+
+      // se non c'è spazio, raddoppio l'array
+      this.facilities = (Facility[]) raddoppia(this.facilities);
+      // ora c'è spazio e inserisco
+      this.facilities[this.numFacilities] = f;
+      this.numFacilities++;
+
     }
-
-    // Qualora non ci fosse più spazio nell'array, raddoppio la sua dimensione.
-    expandArray();
-    this.facilities[this.numFacilities++] = f;
-
     return true;
   }
 
@@ -215,6 +215,11 @@ public class Aula implements Comparable<Aula> {
     if(ts.equals(null))
       throw new NullPointerException("Error; il TimeSlot passato non può essere nullo!");
 
+    //verifico se è presente sovrapposizione
+    for( int i = 0; i < this.numPrenotazioni; i ++){
+      if(this.prenotazioni[i].getTimeSlot().overlapsWith(ts))
+        return false;
+    }
     return false;
   }
 
@@ -256,15 +261,49 @@ public class Aula implements Comparable<Aula> {
     if(ts.equals(null) || docente.equals(null) || motivo.equals(null))
       throw new NullPointerException("Error: non è consentito avere valori null. ");
 
+    // Cerco se la prenotazione può essere effettuata
+    for (int i = 0; i < this.numPrenotazioni; i++)
+      if (this.prenotazioni[i].getTimeSlot().overlapsWith(ts))
+        throw new IllegalArgumentException(
+          "Tentativo di aggiungere una prenotazione nell'aula in un timeslot che si sovrappone con un'altra prenotazione");
+    // controllo se c'è spazio
+    if (this.numPrenotazioni < this.prenotazioni.length) {
+      // c'è spazio e la inserisco
+      this.prenotazioni[this.numPrenotazioni] = new Prenotazione(this, ts,
+        docente, motivo);
+      this.numPrenotazioni++;
+    } else {
+      // non c'è spazio, raddoppio l'array
+      this.prenotazioni = (Prenotazione[]) raddoppia(this.prenotazioni);
+      // ora c'è spazio e inserisco
+      this.prenotazioni[this.numPrenotazioni] = new Prenotazione(this, ts,
+        docente, motivo);
+      this.numPrenotazioni++;
+    }
 
 
   }
 
-  private void expandArray(){
-    Facility[] newFacility = new Facility[facilities.length * 2];
-    System.arraycopy(this.facilities, 0, newFacility, 0, this.facilities.length);
-    this.facilities = newFacility;
+  private Object[] raddoppia(Object[] array){
+
+    if(array.equals(null))
+      throw new NullPointerException("Error: l'array passato è nullo");
+
+    if(array instanceof Facility[]){
+      Facility[] arrayF = new Facility[array.length * 2];
+      for (int i = 0; i < arrayF.length; i++){
+        arrayF[i] = (Facility) array[i];
+      }
+      return arrayF;
+    } else if (array instanceof Prenotazione[]) {
+      Prenotazione[] arrayP = new Prenotazione[array.length * 2];
+      for(int i = 0; i < array.length; i++){
+        arrayP[i] = (Prenotazione) array[i];
+      }
+      return arrayP;
+    }
+
+    return null;
   }
 
-  // TODO inserire eventuali metodi privati per questioni di organizzazione
 }
