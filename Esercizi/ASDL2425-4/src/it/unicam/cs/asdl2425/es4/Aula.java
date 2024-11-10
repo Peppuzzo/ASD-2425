@@ -191,9 +191,9 @@ public class Aula implements Comparable<Aula> {
       // se non c'è spazio, raddoppio l'array
       this.facilities = (Facility[]) raddoppia(this.facilities);
       // ora c'è spazio e inserisco
+      assert this.facilities != null;
       this.facilities[this.numFacilities] = f;
       this.numFacilities++;
-
     }
     return true;
   }
@@ -211,16 +211,15 @@ public class Aula implements Comparable<Aula> {
    *                                  se il time slot passato è nullo
    */
   public boolean isFree(TimeSlot ts) {
-    //TODO Implementare
-    if(ts.equals(null))
-      throw new NullPointerException("Error; il TimeSlot passato non può essere nullo!");
-
-    //verifico se è presente sovrapposizione
-    for( int i = 0; i < this.numPrenotazioni; i ++){
-      if(this.prenotazioni[i].getTimeSlot().overlapsWith(ts))
+    if (ts == null)
+      throw new NullPointerException("Il timeslot passato è nullo");
+    // cerco se c'è sovrapposizione con almeno una prenotazione
+    for (int i = 0; i < numPrenotazioni; i++) {
+      if (prenotazioni[i].getTimeSlot().overlapsWith(ts))
         return false;
     }
-    return false;
+    // non c'è nessuna sovrapposizione
+    return true;
   }
 
   /**
@@ -237,8 +236,30 @@ public class Aula implements Comparable<Aula> {
    *                                  se il set di facility richieste è nullo
    */
   public boolean satisfiesFacilities(Facility[] requestedFacilities) {
-    // TODO implementare
-    return false;
+
+    if (requestedFacilities == null)
+      throw new NullPointerException(
+        "Il set di facility richieste è nullo");
+    // provo a soddisfare tutte le facilities richieste
+    for (int i = 0; i < requestedFacilities.length; i++) {
+      // ignoro eventuali posizioni null
+      if (requestedFacilities[i] == null)
+        continue;
+      // scorro le facilities di questa aula e vedo se almeno una soddisfa
+      // la facility richiesta i
+      boolean trovata = false;
+      int j = 0;
+      while (j < this.numFacilities && !trovata)
+        if (this.facilities[j].satisfies(requestedFacilities[i]))
+          trovata = true;
+        else
+          j++;
+      // vedo se non è stata trovata nessuna facility che soddisfa la
+      // facility i
+      if (!trovata)
+        return false;
+    }
+    return true;
   }
 
   /**
@@ -258,7 +279,7 @@ public class Aula implements Comparable<Aula> {
   public void addPrenotazione(TimeSlot ts, String docente, String motivo) {
 
     //TODO Implementare
-    if(ts.equals(null) || docente.equals(null) || motivo.equals(null))
+    if(ts == null || docente == null || motivo == null)
       throw new NullPointerException("Error: non è consentito avere valori null. ");
 
     // Cerco se la prenotazione può essere effettuata
@@ -276,6 +297,7 @@ public class Aula implements Comparable<Aula> {
       // non c'è spazio, raddoppio l'array
       this.prenotazioni = (Prenotazione[]) raddoppia(this.prenotazioni);
       // ora c'è spazio e inserisco
+      assert this.prenotazioni != null;
       this.prenotazioni[this.numPrenotazioni] = new Prenotazione(this, ts,
         docente, motivo);
       this.numPrenotazioni++;
@@ -284,14 +306,15 @@ public class Aula implements Comparable<Aula> {
 
   }
 
+  // metodo per raddoppiare un array di tipo Object[]
   private Object[] raddoppia(Object[] array){
 
-    if(array.equals(null))
+    if(array == null)
       throw new NullPointerException("Error: l'array passato è nullo");
 
     if(array instanceof Facility[]){
       Facility[] arrayF = new Facility[array.length * 2];
-      for (int i = 0; i < arrayF.length; i++){
+      for (int i = 0; i < array.length; i++){
         arrayF[i] = (Facility) array[i];
       }
       return arrayF;
@@ -302,8 +325,6 @@ public class Aula implements Comparable<Aula> {
       }
       return arrayP;
     }
-
     return null;
   }
-
 }
