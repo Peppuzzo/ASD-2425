@@ -11,7 +11,7 @@ import java.util.TreeSet;
 /**
  * Un oggetto della classe aula rappresenta una certa aula con le sue facilities
  * e le sue prenotazioni.
- * 
+ *
  * @author Template: Luca Tesei, Implementazione: Collettiva
  *
  */
@@ -32,18 +32,19 @@ public class Aula implements Comparable<Aula> {
     /**
      * Costruisce una certa aula con nome e location. Il set delle facilities è
      * vuoto. L'aula non ha inizialmente nessuna prenotazione.
-     * 
+     *
      * @param nome
      *                     il nome dell'aula
      * @param location
      *                     la location dell'aula
-     * 
+     *
      * @throws NullPointerException
      *                                  se una qualsiasi delle informazioni
      *                                  richieste è nulla
      */
     public Aula(String nome, String location) {
-        // TODO implementare
+        if(nome == null || location == null)
+          throw new NullPointerException("Error: parametri passati al costruttore nulli!");
         this.nome = nome;
         this.location = location;
         this.facilities = new HashSet<Facility>();
@@ -53,7 +54,7 @@ public class Aula implements Comparable<Aula> {
     /**
      * Costruisce una certa aula con nome, location e insieme delle facilities.
      * L'aula non ha inizialmente nessuna prenotazione.
-     * 
+     *
      * @param nome
      *                       il nome dell'aula
      * @param location
@@ -65,7 +66,8 @@ public class Aula implements Comparable<Aula> {
      *                                  richieste è nulla
      */
     public Aula(String nome, String location, Set<Facility> facilities) {
-        // TODO implementare
+        if(nome == null || location == null || facilities == null)
+          throw new NullPointerException("Error: Il costruttore non ammette parametri nulli!");
         this.nome = nome;
         this.location = location;
         this.facilities = facilities;
@@ -125,7 +127,7 @@ public class Aula implements Comparable<Aula> {
 
     /**
      * Aggiunge una faciltity a questa aula.
-     * 
+     *
      * @param f
      *              la facility da aggiungere
      * @return true se la facility non era già presente e quindi è stata
@@ -140,10 +142,10 @@ public class Aula implements Comparable<Aula> {
 
     /**
      * Determina se l'aula è libera in un certo time slot.
-     * 
+     *
      * @param ts
      *               il time slot da controllare
-     * 
+     *
      * @return true se l'aula risulta libera per tutto il periodo del time slot
      *         specificato
      * @throws NullPointerException
@@ -164,7 +166,7 @@ public class Aula implements Comparable<Aula> {
     /**
      * Determina se questa aula soddisfa tutte le facilities richieste
      * rappresentate da un certo insieme dato.
-     * 
+     *
      * @param requestedFacilities
      *                                l'insieme di facilities richieste da
      *                                soddisfare
@@ -180,7 +182,7 @@ public class Aula implements Comparable<Aula> {
 
     /**
      * Prenota l'aula controllando eventuali sovrapposizioni.
-     * 
+     *
      * @param ts
      * @param docente
      * @param motivo
@@ -198,7 +200,7 @@ public class Aula implements Comparable<Aula> {
 
     /**
      * Cancella una prenotazione di questa aula.
-     * 
+     *
      * @param p
      *              la prenotazione da cancellare
      * @return true se la prenotazione è stata cancellata, false se non era
@@ -214,7 +216,7 @@ public class Aula implements Comparable<Aula> {
     /**
      * Rimuove tutte le prenotazioni di questa aula che iniziano prima (o
      * esattamente in) di un punto nel tempo specificato.
-     * 
+     *
      * @param timePoint
      *                      un certo punto nel tempo
      * @return true se almeno una prenotazione è stata cancellata, false
