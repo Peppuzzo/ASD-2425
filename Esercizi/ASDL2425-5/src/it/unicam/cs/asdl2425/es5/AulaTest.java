@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es5;
 
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Classe di test per la classe Aula che utilizza le Collections.
- * 
+ *
  * @author Luca Tesei
  *
  */

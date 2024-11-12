@@ -143,7 +143,12 @@ public class Aula implements Comparable<Aula> {
     public boolean addFacility(Facility f) {
         if(f == null)
           throw new NullPointerException("Error: la facility passa è null!");
-        return false;
+
+        if(this.facilities.contains(f)){
+          return false;
+        }
+        this.facilities.add(f);
+        return true;
     }
 
     /**
@@ -182,8 +187,25 @@ public class Aula implements Comparable<Aula> {
      *                                  se il set di facility richieste è nullo
      */
     public boolean satisfiesFacilities(Set<Facility> requestedFacilities) {
-        // TODO implementare
-        return false;
+        if(requestedFacilities == null)
+          throw new NullPointerException("Error: non sono soddisfatte tutte le facilities!");
+
+      // Scorre tutte le facilities richieste
+        for(Facility presence : requestedFacilities){
+          boolean soddisfatta = false;
+
+          // Controlla se almeno una delle facilities dell'aula soddisfa quella richiesta
+          for(Facility available: this.facilities){
+            if(available.satisfies(presence)){
+              soddisfatta = true;
+              break; // Esce dal ciclo interno appena trova una corrispondenza
+            }
+          }
+
+          if(!soddisfatta)
+            return false; // Una facility non è soddisfatta
+        }
+        return true;
     }
 
     /**
@@ -201,7 +223,10 @@ public class Aula implements Comparable<Aula> {
      *                                      richieste è nulla.
      */
     public void addPrenotazione(TimeSlot ts, String docente, String motivo) {
-        // TODO implementare
+      if(ts == null || docente == null || motivo == null)
+        throw new NullPointerException("Error: non è possibile aggiugnere prenotazioni con informazioni" +
+          "di natura null!");
+
     }
 
     /**
