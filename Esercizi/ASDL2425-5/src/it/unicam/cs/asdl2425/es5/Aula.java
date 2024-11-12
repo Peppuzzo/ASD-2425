@@ -79,22 +79,27 @@ public class Aula implements Comparable<Aula> {
      */
     @Override
     public int hashCode() {
-        // TODO implementare
-        return -1;
+      return this.nome.hashCode();
     }
 
     /* Due aule sono uguali se e solo se hanno lo stesso nome */
     @Override
     public boolean equals(Object obj) {
-        // TODO implementare
+
+      if(this == obj)
+        return true;
+      else if (!(obj instanceof Aula)) {
         return false;
+      } else{
+        Aula other = (Aula) obj;
+        return this.getNome().equals(other.getNome());
+      }
     }
 
     /* L'ordinamento naturale si basa sul nome dell'aula */
     @Override
     public int compareTo(Aula o) {
-        // TODO implementare
-        return -1;
+        return this.getNome().compareTo(o.getNome());
     }
 
     /**
@@ -136,7 +141,8 @@ public class Aula implements Comparable<Aula> {
      *                                  se la facility passata è nulla
      */
     public boolean addFacility(Facility f) {
-        // TODO implementare
+        if(f == null)
+          throw new NullPointerException("Error: la facility passa è null!");
         return false;
     }
 
