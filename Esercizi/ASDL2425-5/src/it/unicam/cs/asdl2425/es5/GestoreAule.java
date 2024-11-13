@@ -76,7 +76,7 @@ public class GestoreAule {
         // Insieme di aule soddisfatte e libere in un certo time slot.
         Set<Aula> freeAula = new HashSet<Aula>();
 
-        
+
 
         return null;
     }

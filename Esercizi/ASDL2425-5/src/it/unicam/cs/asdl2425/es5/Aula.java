@@ -225,8 +225,8 @@ public class Aula implements Comparable<Aula> {
           "di natura null!");
 
       //verifico se sono presenti sovrapposizioni tra timeslot
-      for(Prenotazione object : this.prenotazioni){
-        if(object.getTimeSlot().overlapsWith(ts))
+      for(Prenotazione item : this.prenotazioni){
+        if(item.getTimeSlot().overlapsWith(ts))
           throw new IllegalArgumentException("Error: l'aula non può essere aggiunta per sovrapposizioni.");
       }
 
