@@ -227,6 +227,15 @@ public class Aula implements Comparable<Aula> {
         throw new NullPointerException("Error: non è possibile aggiugnere prenotazioni con informazioni" +
           "di natura null!");
 
+      //verifico se sono presenti sovrapposizioni tra timeslot
+      for(Prenotazione object : this.prenotazioni){
+        if(object.getTimeSlot().overlapsWith(ts))
+          throw new IllegalArgumentException("Error: l'aula non può essere aggiunta per sovrapposizioni.");
+      }
+
+      //inserisco la nuova prenotazione
+      this.prenotazioni.add(new Prenotazione(this, ts, docente, motivo));
+
     }
 
     /**
@@ -240,7 +249,13 @@ public class Aula implements Comparable<Aula> {
      *                                  se la prenotazione passata è null
      */
     public boolean removePrenotazione(Prenotazione p) {
-        // TODO implementare
+      if(p == null)
+        throw new NullPointerException("Error: Tentativo di rimozione di una prenotazione NULL!");
+
+      if(this.prenotazioni.contains(p)){
+          this.prenotazioni.remove(p);
+          return true;
+        }
         return false;
     }
 
