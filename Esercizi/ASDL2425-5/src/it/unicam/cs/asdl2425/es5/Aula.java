@@ -278,7 +278,7 @@ public class Aula implements Comparable<Aula> {
          */
 
       if(timePoint == null)
-        throw new NullPointerException("Error: Tnetativo di rimozioni di un 'punto nel tempo' passato NULL! ");
+        throw new NullPointerException("Error: Tentativo di rimozioni di un 'punto nel tempo' passato NULL! ");
 
       // creo un Iterator per sfruttare l'efficienza e sicurezza sul rimuovere
       // un elemento dalla lista
