@@ -1,12 +1,9 @@
 package it.unicam.cs.asdl2425.es5;
 
-import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 // TODO importare eventuali classi o interfacce che servono
+import java.util.Iterator;
 
 /**
  * Un oggetto della classe aula rappresenta una certa aula con le sue facilities
@@ -252,11 +249,12 @@ public class Aula implements Comparable<Aula> {
       if(p == null)
         throw new NullPointerException("Error: Tentativo di rimozione di una prenotazione NULL!");
 
+      //controllo se la prenotazione è già presente nell'insieme
       if(this.prenotazioni.contains(p)){
           this.prenotazioni.remove(p);
           return true;
         }
-        return false;
+        return false; //se non era presente
     }
 
     /**
@@ -278,6 +276,22 @@ public class Aula implements Comparable<Aula> {
          * di time slot se ho raggiunto una prenotazione con tempo di inizio
          * maggiore del tempo indicato posso smettere la procedura
          */
+
+      if(timePoint == null)
+        throw new NullPointerException("Error: Tnetativo di rimozioni di un 'punto nel tempo' passato NULL! ");
+
+      // creo un Iterator per sfruttare l'efficienza e sicurezza sul rimuovere
+      // un elemento dalla lista
+      Iterator<Prenotazione> iterator = this.prenotazioni.iterator();
+
+      Prenotazione var;
+
+      /*while(iterator.hasNext()){
+        // ultimo oggetto corrente
+        var = iterator.next();
+        if(var.compareTo())
+      }*/
+
         return false;
     }
 }
