@@ -69,7 +69,15 @@ public class GestoreAule {
      */
     public Set<Aula> cercaAuleLibere(Set<Facility> requestedFacilities,
             TimeSlot ts) {
-        // TODO implementare
+        if(requestedFacilities == null || ts == null)
+          throw new NullPointerException("tentativo di ricerca di una possibile aula libera" +
+            "con parametri nulli!");
+
+        // Insieme di aule soddisfatte e libere in un certo time slot.
+        Set<Aula> freeAula = new HashSet<Aula>();
+
+        
+
         return null;
     }
 
