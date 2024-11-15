@@ -289,7 +289,7 @@ public class Aula implements Comparable<Aula> {
       /*while(iterator.hasNext()){
         // ultimo oggetto corrente
         var = iterator.next();
-        if(var.compareTo())
+        if(var.getTimeSlot().getStart().after(this.prenotazioni.iterator().next()))
       }*/
 
         return false;
