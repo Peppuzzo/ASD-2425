@@ -281,16 +281,15 @@ public class Aula implements Comparable<Aula> {
         throw new NullPointerException("Error: Tentativo di rimozioni di un 'punto nel tempo' passato NULL! ");
 
       // creo un Iterator per sfruttare l'efficienza e sicurezza sul rimuovere
-      // un elemento dalla lista
+      // un elemento dalla lista dinamica
       Iterator<Prenotazione> iterator = this.prenotazioni.iterator();
 
       Prenotazione var;
+      TimeSlot time;
 
-      /*while(iterator.hasNext()){
-        // ultimo oggetto corrente
-        var = iterator.next();
-        if(var.getTimeSlot().getStart().after(this.prenotazioni.iterator().next()))
-      }*/
+      if(this.prenotazioni.headSet(this.getPrenotazioni().)){
+
+      }
 
         return false;
     }
