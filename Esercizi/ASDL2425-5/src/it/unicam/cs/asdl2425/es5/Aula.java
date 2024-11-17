@@ -168,7 +168,26 @@ public class Aula implements Comparable<Aula> {
          * specificato posso concludere che l'aula è libera nel time slot
          * desiderato e posso interrompere la ricerca
          */
-        return false;
+
+      if(ts == null)
+        throw new NullPointerException("Error: Il parametro passato ha valore NULL!");
+
+      for(Prenotazione p : this.prenotazioni){
+        if(p.getTimeSlot().overlapsWith(ts)){
+          // l'aula già contiene una prenotazione nel time slot
+          // specificato o in una sua parte per un periodo sopra la soglia
+          // di tolleranza
+          return false;
+        } else if (p.getTimeSlot().compareTo(ts) > 0){
+          // poiché le prenotazioni sono in ordine crescente di time slot
+          // se arrivo a una prenotazione che segue il time slot
+          // specificato posso concludere che l'aula è libera nel time
+          // slot desiderato e posso interrompere il ciclo
+          return true;
+        }
+      }
+      // ho terminato le prenotazioni e nessuna si è sovrapposta
+      return true;
     }
 
     /**
@@ -284,13 +303,20 @@ public class Aula implements Comparable<Aula> {
       // un elemento dalla lista dinamica
       Iterator<Prenotazione> iterator = this.prenotazioni.iterator();
 
-      Prenotazione var;
-      TimeSlot time;
+      // uso di una variabile per determinare se almeno una cancellazione
+      // è stata effettuata
+      boolean ret = false;
 
-      if(this.prenotazioni.headSet(this.getPrenotazioni().)){
-
+      while(iterator.hasNext()){
+        Prenotazione prenotazione = iterator.next();
+        int cmp = timePoint.compareTo(prenotazione.getTimeSlot().getStart());
+        if(cmp >= 0) {
+          // la prenotazione è da cancellare
+          iterator.remove();
+          ret = true;
+        } else // se ho raggiunto un tempo maggiore di quello indicato
+          return ret;
       }
-
         return false;
     }
 }

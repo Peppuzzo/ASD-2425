@@ -76,7 +76,15 @@ public class GestoreAule {
         // Insieme di aule soddisfatte e libere in un certo time slot.
         Set<Aula> freeAula = new HashSet<Aula>();
 
-          return null;
+        // Scorro tutte le aule
+      for(Aula a : this.aule){
+        // Controllo se soddisfa i requisiti
+        if(a.satisfiesFacilities(requestedFacilities) && a.isFree(ts)){
+          // Se soddisfa tutte le richieste, l aggiungo nel nuovo insieme
+          freeAula.add(a);
+        }
+      }
+      return freeAula;
     }
 
 }
