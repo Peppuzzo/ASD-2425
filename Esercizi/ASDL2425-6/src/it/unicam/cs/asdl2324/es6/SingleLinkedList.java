@@ -1,16 +1,11 @@
 package it.unicam.cs.asdl2324.es6;
 
-import java.util.Collection;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Lista concatenata singola che non accetta valori null, ma permette elementi
  * duplicati. Le seguenti operazioni non sono supportate:
- * 
+ *
  * <ul>
  * <li>ListIterator<E> listIterator()</li>
  * <li>ListIterator<E> listIterator(int index)</li>
@@ -22,12 +17,12 @@ import java.util.NoSuchElementException;
  * <li>boolean removeAll(Collection<?> c)</li>
  * <li>boolean retainAll(Collection<?> c)</li>
  * </ul>
- * 
+ *
  * L'iteratore restituito dal metodo {@code Iterator<E> iterator()} è fail-fast,
  * cioè se c'è una modifica strutturale alla lista durante l'uso dell'iteratore
  * allora lancia una {@code ConcurrentMopdificationException} appena possibile,
  * cioè alla prima chiamata del metodo {@code next()}.
- * 
+ *
  * @author Luca Tesei
  *
  * @param <E>
@@ -79,7 +74,7 @@ public class SingleLinkedList<E> implements List<E> {
      * ConcurrentModificationException se a una chiamata di next() si "accorge"
      * che la lista è stata cambiata rispetto a quando l'iteratore è stato
      * creato.
-     * 
+     *
      * La classe è non-static perché l'oggetto iteratore, per funzionare
      * correttamente, ha bisogno di accedere ai campi dell'oggetto della classe
      * principale presso cui è stato creato.
@@ -100,7 +95,7 @@ public class SingleLinkedList<E> implements List<E> {
         public boolean hasNext() {
             if (this.lastReturned == null)
                 // sono all'inizio dell'iterazione
-                return SingleLinkedList.this.head != null;
+                return SingleLinkedList.this.head != null; // la lista non è vuota, c'è qualcun'altro (true)
             else
                 // almeno un next è stato fatto
                 return lastReturned.next != null;
@@ -137,24 +132,24 @@ public class SingleLinkedList<E> implements List<E> {
     /*
      * Una lista concatenata è uguale a un'altra lista se questa è una lista
      * concatenata e contiene gli stessi elementi nello stesso ordine.
-     * 
+     *
      * Si noti che si poteva anche ridefinire il metodo equals in modo da
      * accettare qualsiasi oggetto che implementi List<E> senza richiedere che
      * sia un oggetto di questa classe:
-     * 
+     *
      * obj instanceof List
-     * 
+     *
      * In quel caso si può fare il cast a List<?>:
-     * 
+     *
      * List<?> other = (List<?>) obj;
-     * 
+     *
      * e usando l'iteratore si possono tranquillamente controllare tutti gli
      * elementi (come è stato fatto anche qui):
-     * 
+     *
      * Iterator<E> thisIterator = this.iterator();
-     * 
+     *
      * Iterator<?> otherIterator = other.iterator();
-     * 
+     *
      * ...
      */
     @Override
@@ -213,14 +208,37 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public boolean contains(Object o) {
-        // TODO implementare
-        return false;
+      if(o == null)
+        throw new NullPointerException("La lista non può controllare valori nulli!");
+
+      Iterator<E> iterator = this.iterator(); // Creo un oggetto Iterator sulla LinkedList corrente
+
+      while(iterator.hasNext()){
+        // Verifico se l'item passato è uguale al prossimo elemento dell'iteratore
+        if(o.equals(iterator.next()))
+          return true;
+      }
+      return false;
     }
 
     @Override
     public boolean add(E e) {
-        // TODO implementare
-        return false;
+        if(e == null)
+          throw new NullPointerException("Tentativo di inserimento di un valore NULL!");
+
+        Node<E> node = new Node<>(e, null);
+
+        if(this.head == null){
+          this.head = node;
+          this.tail = node;
+          this.numeroModifiche++;
+        } else {
+          this.tail.next = node;
+          this.tail = node;
+          this.numeroModifiche++;
+        }
+        this.size++;
+        return true;
     }
 
     @Override

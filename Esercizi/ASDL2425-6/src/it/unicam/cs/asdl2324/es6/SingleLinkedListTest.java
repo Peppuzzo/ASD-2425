@@ -224,7 +224,7 @@ class SingleLinkedListTest {
         assertTrue(list.lastIndexOf("3") == 3);
         assertTrue(list.lastIndexOf("0") == -1);
     }
-    
+
     @Test
     final void testIterator() {
         SingleLinkedList<Integer> sLL = new SingleLinkedList<>();
