@@ -271,6 +271,7 @@ class SingleLinkedListTest {
         sLL.add(1);
         for (int i = 0; i < 7; i++) {
             sLL.add(2);
+            System.out.println(i);
         }
         assertFalse(sLL.remove((Object) 3));
         assertTrue(sLL.remove((Object) 2));

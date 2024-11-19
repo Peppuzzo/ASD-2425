@@ -243,36 +243,43 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(Object o) {
-        // TODO implementare
-
       // L'iteratore per la lista
       Iterator<E> iterator = this.iterator();
 
-      // Caso in cui la lista è vuota
-      if(this.head == null)
-        return false;
+      Node<E> current = this.head;
+      Node<E> previous = null;
 
-      // Caso in cui il nodo da eliminare è proprio la testa
-      if(this.head.item.equals(o)){
-        this.head = this.head.next;
+      while(iterator.hasNext() && current != null){
+        if(current.item.equals(o)){
+          assert previous != null; // verifico a tempo di esecuzione se la condizione è valida
+          // Collegamento del nodo precedente al nodo successivo
+          previous.next = current.next;
+          this.numeroModifiche++;
+          this.size--;
+          return true;
+        } else { // Avanza i nodi
+          previous = current;
+          current = current.next;
+        }
       }
-
-
-
-
         return false;
     }
 
     @Override
     public void clear() {
         // TODO implementare
+
+      Iterator<E> iterator = this.iterator();
+
+
+
     }
 
     @Override
 
     public E get(int index) {
 
-      if(index < 0 || this.size == 0) //TODO: FINIRE DI GESTIRE I CASI DI ECCEZIONE
+      if(index < 0 || this.size() < 1 || this.size() <= index)
         throw new IndexOutOfBoundsException("Indice per la ricerca non valida");
 
       Iterator<E> iterator = this.iterator();
@@ -286,7 +293,7 @@ public class SingleLinkedList<E> implements List<E> {
         }
         currentInt++;
       }
-        return null;
+      return null;
     }
 
     @Override
