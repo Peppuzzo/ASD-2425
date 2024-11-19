@@ -302,8 +302,20 @@ public class SingleLinkedList<E> implements List<E> {
           throw new IndexOutOfBoundsException("Limite della lista superato oppure " +
             "Indice non valido.");
 
+        Node<E> nodoCorrente = this.head;
+        int indexCorrente = 0;
 
-
+        while(nodoCorrente != null){
+          if(indexCorrente == index){
+            //Sostituisco il valore del nodo
+            E vecchioValore = nodoCorrente.item;
+            nodoCorrente.item = element;
+            this.numeroModifiche++;
+            return vecchioValore;
+          }
+          nodoCorrente = nodoCorrente.next;
+          indexCorrente++;
+        }
 
       return null;
     }
