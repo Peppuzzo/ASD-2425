@@ -296,8 +296,16 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
-        // TODO implementare
-        return null;
+        if(element == null)
+          throw new NullPointerException("L'elemento non può essere sostituisco con valori nulli.");
+        if(index >= this.size() || index < 0)
+          throw new IndexOutOfBoundsException("Limite della lista superato oppure " +
+            "Indice non valido.");
+
+
+
+
+      return null;
     }
 
     @Override

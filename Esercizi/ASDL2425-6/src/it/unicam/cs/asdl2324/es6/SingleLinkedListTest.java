@@ -104,7 +104,7 @@ class SingleLinkedListTest {
 
     @Test
     void testSet() {
-        SingleLinkedList<String> list = new SingleLinkedList<String>();
+        SingleLinkedList<String> list = new SingleLinkedList<>();
         list.add("0");
         assertThrows(NullPointerException.class, () -> list.set(0, null));
         assertThrows(IndexOutOfBoundsException.class,
