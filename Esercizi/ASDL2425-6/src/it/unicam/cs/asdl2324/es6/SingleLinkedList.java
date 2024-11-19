@@ -226,7 +226,7 @@ public class SingleLinkedList<E> implements List<E> {
         if(e == null)
           throw new NullPointerException("Tentativo di inserimento di un valore NULL!");
 
-        Node<E> node = new Node<>(e, null);
+        Node<E> node = new Node<>(e, null); // Il nuovo nodo da aggiungere
 
         if(this.head == null){
           this.head = node;
@@ -244,6 +244,22 @@ public class SingleLinkedList<E> implements List<E> {
     @Override
     public boolean remove(Object o) {
         // TODO implementare
+
+      // L'iteratore per la lista
+      Iterator<E> iterator = this.iterator();
+
+      // Caso in cui la lista è vuota
+      if(this.head == null)
+        return false;
+
+      // Caso in cui il nodo da eliminare è proprio la testa
+      if(this.head.item.equals(o)){
+        this.head = this.head.next;
+      }
+
+
+
+
         return false;
     }
 
@@ -253,8 +269,23 @@ public class SingleLinkedList<E> implements List<E> {
     }
 
     @Override
+
     public E get(int index) {
-        // TODO implementare
+
+      if(index < 0 || this.size == 0) //TODO: FINIRE DI GESTIRE I CASI DI ECCEZIONE
+        throw new IndexOutOfBoundsException("Indice per la ricerca non valida");
+
+      Iterator<E> iterator = this.iterator();
+      // l'indice di confronto per l'elemento iterato
+      int currentInt = 0;
+
+      while(iterator().hasNext()){
+        E current = iterator.next();
+        if(currentInt == index){
+          return current;
+        }
+        currentInt++;
+      }
         return null;
     }
 
