@@ -267,12 +267,10 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public void clear() {
-        // TODO implementare
-
-      Iterator<E> iterator = this.iterator();
-
-
-
+      // Scollegando la testa, non ho più nodi in cui accedere
+      this.head = null;
+      this.size = 0;
+      this.numeroModifiche++;
     }
 
     @Override
