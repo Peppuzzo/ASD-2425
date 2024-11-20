@@ -322,7 +322,13 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        // TODO implementare
+      //TODO: IMPLEMENTARE
+        if(element == null)
+          throw new NullPointerException("Parametri di riferimento non validi per null.");
+        if(index < 0 || index >= size())
+          throw new IndexOutOfBoundsException("Parametri di riferimento non preferibili all'inserimento");
+
+
 
     }
 
@@ -335,6 +341,22 @@ public class SingleLinkedList<E> implements List<E> {
     @Override
     public int indexOf(Object o) {
         // TODO implementare
+      if(o == null)
+        throw new NullPointerException("Parametro passato non preferibile per i tipi null.");
+
+      Iterator<E> iterator = this.iterator();
+      int index = -1;
+
+      while(iterator.hasNext()){
+        E current = iterator().next();
+        index++;
+        if(o.equals(current)){
+          return index;
+        }
+        index++;
+      }
+
+      // Se non è presente l'elemento
         return -1;
     }
 
