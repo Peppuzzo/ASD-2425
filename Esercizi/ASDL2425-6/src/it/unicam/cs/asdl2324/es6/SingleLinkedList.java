@@ -353,7 +353,6 @@ public class SingleLinkedList<E> implements List<E> {
         current = current.next;
         index++;
       }
-
       // Se non è presente l'elemento
         return -1;
     }
@@ -365,8 +364,20 @@ public class SingleLinkedList<E> implements List<E> {
       if(o == null)
         throw new NullPointerException("Il parametro passato non può essere null!");
 
+      Node<E> node = this.head;
+      int index = 0;
+      int lastIndex = 0;
+
+      while(node != null){
+        if(node.item.equals(o)){
+          
+        }
+        node = node.next;
+        index++;
+      }
+
       // Se non è presente l'elemento
-        return -1;
+      return -1;
     }
 
     @Override
