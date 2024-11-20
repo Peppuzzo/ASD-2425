@@ -340,19 +340,17 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        // TODO implementare
       if(o == null)
         throw new NullPointerException("Parametro passato non preferibile per i tipi null.");
 
-      Iterator<E> iterator = this.iterator();
-      int index = -1;
+      Node<E> current = this.head;
+      int index = 0;
 
-      while(iterator.hasNext()){
-        E current = iterator().next();
-        index++;
-        if(o.equals(current)){
+      while(current != null){
+        if(current.item.equals(o)){
           return index;
         }
+        current = current.next;
         index++;
       }
 
@@ -363,6 +361,11 @@ public class SingleLinkedList<E> implements List<E> {
     @Override
     public int lastIndexOf(Object o) {
         // TODO implementare
+
+      if(o == null)
+        throw new NullPointerException("Il parametro passato non può essere null!");
+
+      // Se non è presente l'elemento
         return -1;
     }
 
