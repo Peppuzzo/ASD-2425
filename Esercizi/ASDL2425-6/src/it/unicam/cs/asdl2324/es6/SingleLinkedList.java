@@ -370,7 +370,7 @@ public class SingleLinkedList<E> implements List<E> {
 
       while(node != null){
         if(node.item.equals(o)){
-          
+
         }
         node = node.next;
         index++;
