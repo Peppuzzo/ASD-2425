@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es7;
 
@@ -11,16 +11,16 @@ import java.util.Set;
  * Realizza un insieme tramite una tabella hash con indirizzamento primario (la
  * funzione di hash primario deve essere passata come parametro nel costruttore
  * e deve implementare l'interface PrimaryHashFunction) e liste di collisione.
- * 
+ *
  * La tabella, poiché implementa l'interfaccia Set<E> non accetta elementi
  * duplicati (individuati tramite il metodo equals() che si assume sia
  * opportunamente ridefinito nella classe E) e non accetta elementi null.
- * 
+ *
  * La tabella ha una dimensione iniziale di default (16) e un fattore di
- * caricamento di defaut (0.75). Quando il fattore di bilanciamento effettivo
+ * caricamento di default (0.75). Quando il fattore di bilanciamento effettivo
  * eccede quello di default la tabella viene raddoppiata e viene fatto un
  * riposizionamento di tutti gli elementi.
- * 
+ *
  * @author Template: Luca Tesei, Implementazione: collettiva
  *
  */
@@ -50,7 +50,7 @@ public class CollisionListResizableHashTable<E> implements Set<E> {
      * di elementi. Si può riprendere e adattare il proprio codice della
      * Esercitazione 6 che realizzava una lista concatenata di elementi
      * generici. La classe interna Node<E> è ripresa proprio da lì.
-     * 
+     *
      * ATTENZIONE: la tabella hash vera e propria può essere solo un generico
      * array di Object e non di Node<E> per una impossibilità del compilatore di
      * accettare di creare array a runtime con un tipo generics. Ciò infatti
@@ -58,24 +58,24 @@ public class CollisionListResizableHashTable<E> implements Set<E> {
      * run-time, potrebbe eseguire degli assegnamenti in violazione del tipo
      * effettivo della variabile. Quindi usiamo un array di Object che
      * riempiremo sempre con null o con puntatori a oggetti di tipo Node<E>.
-     * 
+     *
      * Per inserire un elemento nella tabella possiamo usare il polimorfismo di
      * Object:
-     * 
+     *
      * this.table[i] = new Node<E>(item, next);
-     * 
+     *
      * ma quando dobbiamo prendere un elemento dalla tabella saremo costretti a
      * fare un cast esplicito:
-     * 
+     *
      * Node<E> myNode = (Node<E>) this.table[i];
-     * 
+     *
      * Ci sarà dato un warning di cast non controllato, ma possiamo eliminarlo
      * con un tag @SuppressWarning,
      */
     private Object[] table;
 
     /*
-     * Funzion di hash primaria usata da questa hash table. Va inizializzata nel
+     * Funzione di hash primaria usata da questa hash table. Va inizializzata nel
      * costruttore all'atto di creazione dell'oggetto.
      */
     private final PrimaryHashFunction phf;
@@ -131,11 +131,11 @@ public class CollisionListResizableHashTable<E> implements Set<E> {
          * primaria passata all'atto della creazione: il bucket in cui cercare
          * l'oggetto o è la posizione
          * this.phf.hash(o.hashCode(),this.getCurrentCapacity)
-         * 
+         *
          * In questa posizione, se non vuota, si deve cercare l'elemento o
          * utilizzando il metodo equals() su tutti gli elementi della lista
          * concatenata lì presente
-         * 
+         *
          */
         return false;
     }
@@ -163,11 +163,11 @@ public class CollisionListResizableHashTable<E> implements Set<E> {
          * primaria passata all'atto della creazione: il bucket in cui inserire
          * l'oggetto o è la posizione
          * this.phf.hash(o.hashCode(),this.getCurrentCapacity)
-         * 
+         *
          * In questa posizione, se non vuota, si deve inserire l'elemento o
          * nella lista concatenata lì presente. Se vuota, si crea la lista
          * concatenata e si inserisce l'elemento, che sarà l'unico.
-         * 
+         *
          */
         // ATTENZIONE, si inserisca prima il nuovo elemento e poi si controlli
         // se bisogna fare resize(), cioè se this.size >
@@ -191,12 +191,12 @@ public class CollisionListResizableHashTable<E> implements Set<E> {
          * primaria passata all'atto della creazione: il bucket in cui cercare
          * l'oggetto o è la posizione
          * this.phf.hash(o.hashCode(),this.getCurrentCapacity)
-         * 
+         *
          * In questa posizione, se non vuota, si deve cercare l'elemento o
          * utilizzando il metodo equals() su tutti gli elementi della lista
          * concatenata lì presente. Se presente, l'elemento deve essere
          * eliminato dalla lista concatenata
-         * 
+         *
          */
         // ATTENZIONE: la rimozione, in questa implementazione, **non** comporta
         // mai una resize "al ribasso", cioè un dimezzamento della tabella se si
@@ -269,18 +269,26 @@ public class CollisionListResizableHashTable<E> implements Set<E> {
     private class Itr implements Iterator<E> {
 
         // TODO inserire le variabili che servono
+        // L'ultimo nodo corrente
+        private Node<E> lastReturned;
 
         private int numeroModificheAtteso;
 
         private Itr() {
             // TODO implementare il resto
+            this.lastReturned = null;
             this.numeroModificheAtteso = modCount;
         }
 
         @Override
         public boolean hasNext() {
             // TODO implementare
-            return false;
+          if(this.lastReturned == null)
+            // Sono all'inizio dell'iteratore
+            return CollisionListResizableHashTable.this.size != 0;
+          else
+            // almeno un next è stato fatto
+            return lastReturned.next != null;
         }
 
         @Override
