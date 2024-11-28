@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="52b133e5-54b2-4432-b36e-4af32e11bc51" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/CollisionListResizableHashTable$Itr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/CollisionListResizableHashTable$Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/CollisionListResizableHashTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/CollisionListResizableHashTableTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/DivisionPrimaryHashFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/MultiplicationPrimaryHashFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ASDL2425-7/it/unicam/cs/asdl2425/es7/PrimaryHashFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/unicam/cs/asdl2425/es7/CollisionListResizableHashTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/unicam/cs/asdl2425/es7/CollisionListResizableHashTableTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/unicam/cs/asdl2425/es7/DivisionPrimaryHashFunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/unicam/cs/asdl2425/es7/MultiplicationPrimaryHashFunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/unicam/cs/asdl2425/es7/PrimaryHashFunction.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Peppuzzo"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Peppuzzo/ASD-2425.git",
+    "accountId": "11bfde10-2b49-4bb2-af58-9d8e16a86b22"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2pUlMpQJI2IvlnfEllLjctLjjb7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.CollisionListResizableHashTableTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/UTENTE/Documents/GitHub/ASD-2425/Esercizi/ASDL2425-7",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52b133e5-54b2-4432-b36e-4af32e11bc51" name="Changes" comment="" />
+      <created>1732828490294</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732828490294</updated>
+      <workItem from="1732828491679" duration="100000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

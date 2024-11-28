@@ -1,4 +1,4 @@
-package it.unicam.cs.asdl2425.es7;
+package it.unicam.cs.asdl2324.es10sol;
 
 import static org.junit.jupiter.api.Assertions.*;
 

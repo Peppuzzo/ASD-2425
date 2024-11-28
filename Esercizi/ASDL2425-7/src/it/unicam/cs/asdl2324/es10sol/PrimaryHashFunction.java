@@ -1,4 +1,4 @@
-package it.unicam.cs.asdl2425.es7;
+package it.unicam.cs.asdl2324.es10sol;
 
 /**
  * Una classe che implementa questa interfaccia deve fornire una particolare

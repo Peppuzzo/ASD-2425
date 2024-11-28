@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.unicam.cs.asdl2425.es7;
+package it.unicam.cs.asdl2324.es10sol;
 
 /**
  * Implementa una funzione di hash primaria con il metodo della moltiplicazione.
