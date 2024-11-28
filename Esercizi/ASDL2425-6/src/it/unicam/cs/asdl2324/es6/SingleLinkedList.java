@@ -243,26 +243,16 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(Object o) {
-      // L'iteratore per la lista
-      Iterator<E> iterator = this.iterator();
-
-      Node<E> current = this.head;
-      Node<E> previous = null;
-
-      while(iterator.hasNext() && current != null){
-        if(current.item.equals(o)){
-          assert previous != null; // verifico a tempo di esecuzione se la condizione è valida
-          // Collegamento del nodo precedente al nodo successivo
-          previous.next = current.next;
-          this.numeroModifiche++;
-          this.size--;
-          return true;
-        } else { // Avanza i nodi
-          previous = current;
-          current = current.next;
-        }
-      }
+      if (o == null)
+        throw new NullPointerException(
+          "Tentativo di rimuovere un oggetto null");
+      int index = this.indexOf(o);
+      if (index == -1)
+        // oggetto non presente
         return false;
+      // rimuovo la prima occorrenza dell'oggetto in posizione index
+      this.remove(index);
+      return true;
     }
 
     @Override
@@ -322,20 +312,84 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-      //TODO: IMPLEMENTARE
-        if(element == null)
-          throw new NullPointerException("Parametri di riferimento non validi per null.");
-        if(index < 0 || index >= size())
-          throw new IndexOutOfBoundsException("Parametri di riferimento non preferibili all'inserimento");
-
-
-
+      if (index < 0 || index > this.size)
+        // è ammesso index == this.size, vedi API
+        throw new IndexOutOfBoundsException(
+          "Tentativo di accesso a un indice non valido della lista");
+      if (element == null)
+        throw new NullPointerException(
+          "Tentativo di aggiungere un elemento");
+      // so che l'indice è valido, quindi sotto non controllo il next == null
+      Node<E> previous = null;
+      Node<E> n = this.head;
+      int count = 0;
+      while (count < index) {
+        count++;
+        previous = n;
+        n = n.next;
+      }
+      // n punta al nodo di indice index e previous punta al nodo precedente
+      // nella lista
+      // nel caso in cui index == this.size n è null e previous è il nodo tail
+      // creo un nuovo nodo facendolo puntare all'elemento corrente in
+      // posizione index
+      Node<E> newNode = new Node<E>(element, n);
+      if (previous == null)
+        // sto inserendo in testa
+        this.head = newNode;
+      else {
+        // sto inserendo in una posizione che non è head,
+        previous.next = newNode;
+        // Cambio la tail nel caso index == this.size
+        if (index == this.size)
+          this.tail = newNode;
+      }
+      // aggiorno size e modifiche
+      this.size++;
+      this.numeroModifiche++;
     }
 
     @Override
     public E remove(int index) {
-        // TODO implementare
-        return null;
+      if (index < 0 || index >= this.size)
+        throw new IndexOutOfBoundsException(
+          "Tentativo di accesso a un indice non valido della lista");
+      // so che l'indice è valido, quindi sotto non controllo il next == null
+      Node<E> previous = null;
+      Node<E> n = this.head;
+      int count = 0;
+      while (count < index) {
+        count++;
+        previous = n;
+        n = n.next;
+      }
+      // n punta al nodo di indice index e previous punta al nodo precedente
+      // nella lista
+      if (previous == null) {
+        // sto eleminando l'elemento in testa alla lista
+        if (n.next == null) {
+          // l'elemento in testa è anche in coda, la lista si svuota
+          this.head = null;
+          this.tail = null;
+        } else {
+          // l'elemento in testa ha almeno un elemento successivo
+          this.head = n.next;
+        }
+      } else {
+        // sto eliminando un elemento non in testa
+        if (n.next == null) {
+          // sto eliminando l'elemento in coda
+          previous.next = null;
+          this.tail = previous;
+        } else {
+          // sto eliminando un elemento centrale
+          previous.next = n.next;
+        }
+      }
+      // aggiorno la size e il numero modifiche
+      this.size--;
+      this.numeroModifiche++;
+      return n.item;
     }
 
     @Override
@@ -359,31 +413,36 @@ public class SingleLinkedList<E> implements List<E> {
 
     @Override
     public int lastIndexOf(Object o) {
-        // TODO implementare
-
-      if(o == null)
-        throw new NullPointerException("Il parametro passato non può essere null!");
-
-      Node<E> node = this.head;
-      int index = 0;
-      int lastIndex = 0;
-
-      while(node != null){
-        if(node.item.equals(o)){
-
-        }
-        node = node.next;
+      if (o == null)
+        throw new NullPointerException("Richiesto index di elemento null");
+      // parto dal nodo testa
+      Node<E> n = this.head;
+      int index = -1;
+      int lastIndex = -1;
+      // cerco un elemento uguale a o fino a quando non ho guardato tutti gli
+      // elementi
+      while (n != null) {
         index++;
+        // l'indice del nodo n è index
+        if (o.equals(n.item))
+          // trovata una occorrenza dell'elemento
+          lastIndex = index;
+        // vado avanti
+        n = n.next;
       }
-
-      // Se non è presente l'elemento
-      return -1;
+      return lastIndex;
     }
 
     @Override
     public Object[] toArray() {
-        // TODO implementare
-        return null;
+      Object[] result = new Object[this.size];
+      int i = 0;
+      // uso il foreach
+      for (E el : this) {
+        result[i] = el;
+        i++;
+      }
+      return result;
     }
 
     @Override
