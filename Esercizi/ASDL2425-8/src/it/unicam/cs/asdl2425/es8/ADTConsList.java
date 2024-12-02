@@ -126,9 +126,13 @@ public interface ADTConsList<E> {
      * @return una lista uguale a questa in cui tutte le occorrenze di
      *         {@code element} sono state cancellate.
      */
-    default ADTConsList<E> removeAll(E element) {
-        // TODO implementare ricorsivamente
-        return null;
+      default ADTConsList<E> removeAll(E element) {
+          if(this.isEmpty())
+            return this;
+          if(this.first().equals(element))
+            return this.rest().removeAll(element);
+          else
+            return this.rest().removeAll(element).cons(this.first());
     }
 
     /**

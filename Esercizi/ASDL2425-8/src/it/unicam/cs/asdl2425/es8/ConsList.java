@@ -2,22 +2,22 @@ package it.unicam.cs.asdl2425.es8;
 
 /**
  * Classe che implementa {@code ADTConsList<E>} con due campi immutabili.
- * 
+ *
  * @author Luca Tesei
  *
  * @param <E>
  *            il tipo degli elementi della lista.
  */
 public final class ConsList<E> implements ADTConsList<E> {
-    
-    private final E first;
 
-    private final ADTConsList<E> rest;
+    private final E first; // equivalente a car in LISP
+
+    private final ADTConsList<E> rest; // equivalente a cdr di LISP
 
     /**
      * Costruisce una lista a partire dalla lista vuota inserendo in testa un
      * elemento.
-     * 
+     *
      * @param first
      *                 l'elemento da inserire nella lista.
      */
@@ -30,7 +30,7 @@ public final class ConsList<E> implements ADTConsList<E> {
     /**
      * Costruisce una lista a partire da una {@code ADTConsList<E>} e inserendo in testa un
      * nuovo elemento.
-     * 
+     *
      * @param first l'elemento in testa
      * @param rest la lista di partenza
      */
