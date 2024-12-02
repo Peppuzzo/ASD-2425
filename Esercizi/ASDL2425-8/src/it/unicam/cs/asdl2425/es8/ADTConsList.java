@@ -129,9 +129,12 @@ public interface ADTConsList<E> {
       default ADTConsList<E> removeAll(E element) {
           if(this.isEmpty())
             return this;
+          // Caso ricorsivo
           if(this.first().equals(element))
+            // Rimuovi l'elemento presente in testa alla lista
             return this.rest().removeAll(element);
           else
+            // Ricorsivamente continua a cercare per tutti gli elementi della lista 
             return this.rest().removeAll(element).cons(this.first());
     }
 
