@@ -159,7 +159,7 @@ public interface ADTConsList<E> {
           //Caso base: tolgo solo il primo elemento e aggiungo quello nuovo
           return this.rest().cons(newElement);
           // Mantieni il primo elemento e aggiorna il resto della lista
-      return this.rest().updateFirst(element, newElement).cons(this.first());
+        else return this.rest().updateFirst(element, newElement).cons(this.first());
     }
 
     /**
