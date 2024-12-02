@@ -134,7 +134,7 @@ public interface ADTConsList<E> {
             // Rimuovi l'elemento presente in testa alla lista
             return this.rest().removeAll(element);
           else
-            // Ricorsivamente continua a cercare per tutti gli elementi della lista 
+            // Ricorsivamente continua a cercare per tutti gli elementi della lista
             return this.rest().removeAll(element).cons(this.first());
     }
 
@@ -152,8 +152,14 @@ public interface ADTConsList<E> {
      *         {@code newElement}
      */
     default ADTConsList<E> updateFirst(E element, E newElement) {
-        // TODO implementare ricorsivamente
-        return null;
+        if(this.isEmpty())
+          return this;
+        //Caso ricorsivo
+        if(this.first().equals(element))
+          //Caso base: tolgo solo il primo elemento e aggiungo quello nuovo
+          return this.rest().cons(newElement);
+          // Mantieni il primo elemento e aggiorna il resto della lista
+      return this.rest().updateFirst(element, newElement).cons(this.first());
     }
 
     /**
