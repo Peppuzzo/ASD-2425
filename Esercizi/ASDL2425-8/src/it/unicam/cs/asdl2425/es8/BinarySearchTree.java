@@ -11,23 +11,23 @@ import java.util.Set;
  * oggetti della classe interna RecBST). Le API pubbliche chiamano i
  * corrispondenti metodi ricorsivi sul nodo RecBST che attualmente è la radice.
  * Questa classe non accetta elementi null e non accetta elementi duplicati.
- * 
+ *
  * Il binary search tree rappresentato da un oggetto di questa classe può essere
  * anche vuoto, mentre un oggetto della classe RecBST non può rappresentare un
  * albero vuoto: in quel caso l'albero vuoto è rappresentato dal fatto che il
  * puntatore all'oggetto RecBST è null, cioè dal fatto che l'oggetto non esiste.
- * 
+ *
  * La complessità delle operazioni di ricerca, inserimento e cancellazione nel
  * caso pessimo sono O(h) dove h è l'altezza dell'albero. Questa classe non
- * esegue un autobilanciamento dell'altezza, quindi nei casi degeneri la
+ * esegue un auto bilanciamento dell'altezza, quindi nei casi degeneri la
  * complessità delle operazioni può diventare O(n) dove n è il numero degli
  * elementi presenti.
- * 
+ *
  * @param E
  *              il tipo delle etichette dei nodi in questo Binary Search Tree.
  *              La classe {@code E} deve avere un ordinamento naturale definito
  *              tra gli elementi.
- * 
+ *
  * @author Template: Luca Tesei, Implementazione: collettiva
  *
  */
@@ -54,7 +54,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Costruisce un albero contenente solo un nodo radice/foglia.
-     * 
+     *
      * @param label
      *                  etichetta del nodo radice/foglia
      * @throws NullPointerException
@@ -69,7 +69,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Determina se questo albero è vuoto.
-     * 
+     *
      * @return true se questo albero è vuoto, false altrimenti
      */
     public boolean isEmpty() {
@@ -78,7 +78,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Determina il numero di nodi in questo albero.
-     * 
+     *
      * @return il numero di nodi in questo albero
      */
     public int size() {
@@ -98,7 +98,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * massima lunghezza di un percorso dal nodo radice a un nodo foglia in
      * questo albero. L'altezza dell'albero vuoto è -1, l'altezza dell'albero
      * con una radice/foglia è 0, e così via.
-     * 
+     *
      * @return l'altezza di questo albero oppure -1 se questo albero è vuoto.
      */
     public int getHeight() {
@@ -110,7 +110,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Aggiunge ad una lista data la lista delle etichette dei nodi dell'albero
      * nell'ordine naturale.
-     * 
+     *
      * @param l
      *              una lista (può essere anche vuota) su cui inserire le
      *              etichette in ordine.
@@ -129,7 +129,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Restituisce la lista ordinata delle etichette dei nodi di questo albero
      * secondo l'ordinamento naturale della classe {@code E}.
-     * 
+     *
      * @return la lista ordinata delle etichette dei nodi di questo albero
      *         secondo l'ordinamento naturale della classe {@code E}
      */
@@ -141,11 +141,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Cerca un certo nodo in questo albero che ha una etichetta data.
-     * 
+     *
      * @param label
      *                  l'etichetta da cercare
      * @return true se l'etichetta è presente, false altrimenti
-     * 
+     *
      * @throws NullPointerException
      *                                  se l'etichetta passata è null
      */
@@ -164,7 +164,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Restituisce l'etichetta più piccola, in base all'ordinamento naturale
      * della classe {@code E}, presente nell'albero.
-     * 
+     *
      * @return l'etichetta minima presente nell'albero oppure null se l'albero è
      *         vuoto
      */
@@ -177,7 +177,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Restituisce l'etichetta più grande, in base all'ordinamento naturale
      * della classe {@code E}, presente nell'albero.
-     * 
+     *
      * @return l'etichetta massima presente nell'albero oppure null se l'albero
      *         è vuoto
      */
@@ -190,10 +190,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Restituisce l'etichetta successiva a una etichetta data secondo l'ordine
      * canonico della classe E.
-     * 
+     *
      * @param label
      *                  l'etichetta di cui trovare il successore
-     * 
+     *
      * @return l'etichetta successore di {@code label} in questo albero, oppure
      *         null se {@code label} non ha un successore
      * @throws IllegalArgumentException
@@ -223,10 +223,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Restituisce l'etichetta precedente a una etichetta data secondo l'ordine
      * canonico della classe E.
-     * 
+     *
      * @param label
      *                  l'etichetta di cui trovare il predecessore
-     * 
+     *
      * @return l'etichetta predecessore di {@code label} in questo albero,
      *         oppure null se {@code label} non ha un predecessore
      * @throws IllegalArgumentException
@@ -255,10 +255,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Aggiunge un nodo a questo albero con una etichetta specificata.
-     * 
+     *
      * @param label
      *                  etichetta da inserire
-     * 
+     *
      * @return true se il nodo è stato effettivamente inserito, false se
      *         l'etichetta era già presente
      * @throws NullPointerException
@@ -283,7 +283,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Rimuove da questo albero il nodo contenente una certa etichetta.
-     * 
+     *
      * @param label
      *                  l'etichetta del nodo da rimuovere
      * @return true se il nodo è stato rimosso, false se l'etichetta non era
@@ -309,7 +309,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * Just for JUnit testing purposes.
-     * 
+     *
      * @return the RecBST node corresponding to the root of this binary search
      *         tree.
      */
@@ -347,7 +347,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
         /*
          * Costruisce un (sotto-)albero che contiene solo la radice/foglia.
-         * 
+         *
          * @param label etichetta da associare al nodo
          */
         protected RecBST(E label) {
@@ -360,13 +360,13 @@ public class BinarySearchTree<E extends Comparable<E>> {
         /*
          * Costruisce un (sotto-albero) a partire da un nodo, due sotto-alberi e
          * un nodo genitore.
-         * 
+         *
          * @param label etichetta da associare al nodo
-         * 
+         *
          * @param aLeft sotto-albero sinistro, può essere null
-         * 
+         *
          * @param aRight sotto-albero destro, può essere null
-         * 
+         *
          * @param aParent nodo genitore, può essere null
          */
         protected RecBST(E label, RecBST aLeft, RecBST aRight, RecBST aParent) {
@@ -438,7 +438,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
         /*
          * Restituisce l'altezza di questo nodo.
-         * 
+         *
          * @return la lunghezza del massimo cammino da questo nodo a una foglia.
          */
         protected int computeHeight() {
@@ -449,9 +449,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
         /*
          * Aggiunge un nodo a questo (sotto-)albero con una etichetta
          * specificata.
-         * 
+         *
          * @param label etichetta da inserire
-         * 
+         *
          * @return true se il nodo è stato effettivamente inserito, false se
          * l'etichetta era già presente.
          */
@@ -462,9 +462,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
         /*
          * Cerca un nodo con una certa etichetta in questo albero.
-         * 
+         *
          * @param label l'etichetta da cercare
-         * 
+         *
          * @return il puntatore al nodo che contiene l'etichetta cercata, oppure
          * null se l'etichetta non è presente
          */
@@ -477,7 +477,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
          * Aggiunge ad una lista data le etichette dei nodi di questo
          * (sotto-)albero nell'ordine naturale. Per far questo esegue una visita
          * in-order di questo (sotto-)albero.
-         * 
+         *
          * @param l una lista (può essere anche vuota) su cui inserire le
          * etichette in ordine
          */
@@ -489,7 +489,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
          * Restituisce la lista ordinata delle etichette dei nodi di questo
          * (sotto-)albero secondo l'ordinamento naturale della classe {@code E}.
          * Per ottenere il risultato fa una visita in-order.
-         * 
+         *
          * @return la lista ordinata delle etichette dei nodi di questo
          * (sotto-)albero secondo l'ordinamento naturale della classe {@code E}
          */
@@ -501,7 +501,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         /*
          * Restituisce il puntatore al nodo che contiene l'etichetta più piccola
          * presente in questo (sotto-)albero.
-         * 
+         *
          * @return il nodo più a sinistra che non ha un sotto-albero sinistro in
          * questo (sotto-)albero
          */
@@ -513,7 +513,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         /*
          * Restituisce il puntatore al nodo che contiene l'etichetta più grande
          * presente in questo (sotto-)albero.
-         * 
+         *
          * @return il nodo più a destra che non ha un sottoalbero destro in
          * questo (sotto-)albero
          */
@@ -526,7 +526,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
          * Restituisce il puntatore al nodo che contiene l'etichetta successiva
          * all'etichetta di questo nodo secondo l'ordine canonico della classe
          * E.
-         * 
+         *
          * @return il puntatore al nodo successore oppure null se questo nodo
          * non ha successore
          */
@@ -539,7 +539,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
          * Restituisce il puntatore al nodo che contiene l'etichetta precedente
          * all'etichetta di questo nodo secondo l'ordine canonico della classe
          * E.
-         * 
+         *
          * @return il puntatore al nodo predecessore oppure null se questo nodo
          * non ha predecessore
          */

@@ -1,22 +1,22 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es8;
 
 /**
- * Abstract Data Type Cons List, ovvero liste immutabili a contenuto generico
+ * Abstract Data Type Cons List, ovvero liste immutabili ha contenuto generico
  * costruite a partire dalla lista vuota con inserimento in testa (operazione
  * cons). L'implementazione di default è data da due classi: EmptyList che
- * implemente la lista vuota e ConsList che implementa l'operazione cons con
+ * implementa la lista vuota e ConsList che implementa l'operazione cons con
  * campi immutabili. In questa interface sono definiti vari metodi ricorsivi
  * generici sulle ADTConsList.
- * 
+ *
  * Il nome "cons" deriva dal linguaggio LISP in cui questa è l'operazione per
  * creare una lista a partire da due campi: car (corrisponde al nostro first) e
  * cdr (corrisponde al nostro rest). A differenza dell'approccio funzionale
- * classico, questa classe realizza il tipo di dato astratto nel paradigma ad
+ * classico, questa classe realizza il tipo di dato astratto nel paradigma a
  * oggetti.
- * 
+ *
  * @author Template: Luca Tesei, Implementazione: collettiva
  *
  */
@@ -30,16 +30,16 @@ public interface ADTConsList<E> {
 
     /**
      * Determina se questa lista è vuota.
-     * 
+     *
      * @return true se questa lista è vuota.
      */
     public boolean isEmpty();
 
     /**
      * Restituisce l'elemento in testa alla lista.
-     * 
+     *
      * @return l'elemento in testa
-     * 
+     *
      * @throws IllegalStateException
      *                                   se il metodo viene chiamato su una
      *                                   lista vuota.
@@ -49,7 +49,7 @@ public interface ADTConsList<E> {
     /**
      * Restituisce la "coda" di questa lista, cioè questa lista in cui è stato
      * tolto l'elemento di testa.
-     * 
+     *
      * @return la "coda" di questa lista, potrebbe essere la lista vuota
      * @throws IllegalStateException
      *                                   se il metodo viene chiamato su una
@@ -59,7 +59,7 @@ public interface ADTConsList<E> {
 
     /**
      * Aggiunge un elemento in testa a questa lista.
-     * 
+     *
      * @param first
      *                  l'elemento da aggiungere in testa
      * @return una lista con l'elemento {@code head} in testa e questa lista
@@ -70,7 +70,7 @@ public interface ADTConsList<E> {
     /**
      * Restituisce una stringa contenente il toString di tutti gli elementi di
      * questa lista separati da uno spazio.
-     * 
+     *
      * @return una stringa con tutti gli elementi di questa lista
      */
     default String print() {
@@ -83,7 +83,7 @@ public interface ADTConsList<E> {
 
     /**
      * Cerca se un elemento è in questa lista.
-     * 
+     *
      * @param e
      *              l'elemento da cercare
      * @return true se questa lista contiene {@code element}
@@ -101,7 +101,7 @@ public interface ADTConsList<E> {
 
     /**
      * Cancella la prima occorrenza di un elemento in questa lista, se presente.
-     * 
+     *
      * @param element
      *                    l'elemento da cancellare
      * @return una lista uguale a questa in cui la prima occorrenza di
@@ -120,7 +120,7 @@ public interface ADTConsList<E> {
 
     /**
      * Cancella tutti gli elementi uguali a un elemento dato in questa lista.
-     * 
+     *
      * @param element
      *                    l'elemento da cancellare
      * @return una lista uguale a questa in cui tutte le occorrenze di
@@ -134,7 +134,7 @@ public interface ADTConsList<E> {
     /**
      * Aggiorna il primo elemento uguale a un elemento dato con un nuovo
      * elemento in questa lista.
-     * 
+     *
      * @param element
      *                       l'elemento da aggiornare
      * @param newElement
@@ -152,7 +152,7 @@ public interface ADTConsList<E> {
     /**
      * Aggiorna tutti gli elementi uguali a un elemento dato con un nuovo
      * elemento in questa lista.
-     * 
+     *
      * @param element
      *                       l'elemento da aggiornare
      * @param newElement
@@ -169,7 +169,7 @@ public interface ADTConsList<E> {
 
     /**
      * Attacca una lista data in fondo a questa lista.
-     * 
+     *
      * @param list
      *                 la lista da attaccare in fondo
      * @return una lista che contiene gli elementi di questa lista seguita dagli
@@ -183,7 +183,7 @@ public interface ADTConsList<E> {
     /**
      * Genera una lista che ha gli stessi elementi di questa lista, ma
      * nell'ordine inverso.
-     * 
+     *
      * @return una lista uguale a questa, ma con tutti gli elementi in ordine
      *         inverso.
      */
