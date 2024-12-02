@@ -180,9 +180,10 @@ public interface ADTConsList<E> {
     default ADTConsList<E> updateAll(E element, E newElement) {
         if(this.isEmpty())
           return this;
-        //if(this.first().equals(element))
-         // return
-        return null;
+        if(this.first().equals(element))
+          return this.rest().updateAll(element, newElement).cons(newElement);
+        else
+          return this.rest().updateAll(element, newElement).cons(this.first());
     }
 
     /**
