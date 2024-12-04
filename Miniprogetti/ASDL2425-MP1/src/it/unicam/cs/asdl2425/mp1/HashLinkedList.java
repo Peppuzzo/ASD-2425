@@ -1,6 +1,7 @@
 package it.unicam.cs.asdl2425.mp1;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 //TODO inserire gli import della Java SE che si ritengono necessari
@@ -31,10 +32,10 @@ import java.util.Iterator;
  *
  * @param <T>
  *                il tipo generico dei dati contenuti nei nodi della lista.
- * 
+ *
  * @author Luca Tesei, Marco Caputo (template) **INSERIRE NOME, COGNOME ED EMAIL
  *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
- * 
+ *
  */
 public class HashLinkedList<T> implements Iterable<T> {
     private Node head; // Primo nodo della lista
@@ -88,6 +89,14 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     public void addAtHead(T data) {
         // TODO implementare
+      if(data != null){
+        // Creo un nuovo nodo da aggiungere alla testa dell'albero
+        Node nodeHead = new Node(data);
+        nodeHead.next = this.head;
+        this.head = nodeHead;
+        this.size++;
+        this.numeroModifiche++;
+      }
     }
 
     /**
@@ -98,6 +107,20 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     public void addAtTail(T data) {
         // TODO implementare
+      if(data == null){
+        return;
+      }
+
+        Node nodeTail = new Node(data);
+        if(this.head == null){
+          this.head = nodeTail;
+        }
+        else {
+          this.tail.next = nodeTail;
+        }
+        this.tail = nodeTail;
+        this.size++;
+        this.numeroModifiche++;
     }
 
     /**
@@ -107,6 +130,7 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     public ArrayList<String> getAllHashes() {
         // TODO implementare
+
         return null;
     }
 
@@ -114,7 +138,7 @@ public class HashLinkedList<T> implements Iterable<T> {
      * Costruisce una stringa contenente tutti i nodi della lista, includendo
      * dati e hash. La stringa dovrebbe essere formattata come nel seguente
      * esempio:
-     * 
+     *
      * <pre>
      *     Dato: StringaDato1, Hash: 5d41402abc4b2a76b9719d911017c592
      *     Dato: SteringaDato2, Hash: 7b8b965ad4bca0e41ab51de7b31363a1
@@ -151,22 +175,36 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     private class Itr implements Iterator<T> {
 
-        // TODO inserire le variabili istanza che si ritengono necessarie
+      private Node lastNode;
+      private final int expectedChanges;
 
         private Itr() {
             // TODO implementare
+          this.lastNode = null;
+          this.expectedChanges = numeroModifiche;
         }
 
         @Override
         public boolean hasNext() {
             // TODO implementare
-            return false;
+          if(this.expectedChanges != numeroModifiche)
+            throw new ConcurrentModificationException("L'iteratore è stato modificato durante l'esecuzione!");
+
+          return this.lastNode == null ? head != null : this.lastNode.next != null;
         }
 
         @Override
         public T next() {
             // TODO implementare
-            return null;
+          if(this.expectedChanges != numeroModifiche)
+            throw new ConcurrentModificationException("L'iteratore non è riuscito a iteratore sul prossimo nodo!");
+
+          if(this.lastNode == null)
+            this.lastNode = HashLinkedList.this.head;
+          else {
+            this.lastNode = this.lastNode.next;
+          }
+          return this.lastNode.data;
         }
     }
 
