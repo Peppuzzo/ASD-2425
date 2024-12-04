@@ -457,6 +457,24 @@ public class BinarySearchTree<E extends Comparable<E>> {
          */
         protected boolean insert(E label) {
             // TODO implementare ricorsivamente
+
+          // Assicurarsi che il valore non sia già presente
+          if(this.search(label) != null)
+            return false;
+
+          //Controllare se lA label è maggiore del nodo corrente
+          if(label.compareTo(this.label) < 0){
+            // Se non ho figli sinistri, aggiungo
+            if(this.left == null){
+              this.left = new RecBST(label);
+            }
+            // Altrimenti ricorsivamente cerco
+            else{
+              this.left.insert(label);
+            }
+          }
+
+
             return false;
         }
 
@@ -483,6 +501,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
          */
         protected void addLabelsInOrder(List<E> l) {
             // TODO implementare ricorsivamente
+
+          // Partire dalla radice dell'albero e costruire l'ordine
+          l.addAll(this.inOrderVisit());
         }
 
         /*
@@ -494,7 +515,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
          * (sotto-)albero secondo l'ordinamento naturale della classe {@code E}
          */
         protected List<E> inOrderVisit() {
-            // TODO implementare ricorsivamente
+            List<E> list = new ArrayList<E>();
+            this.left.inOrderVisit();
+            list.add(this.label);
+            if(this.right != null)
+              this.right.inOrderVisit();
+
             return null;
         }
 
@@ -556,6 +582,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
          */
         protected void deleteSelfLabel() {
             // TODO implementare
+
+
+
         }
     }
 }
