@@ -179,15 +179,15 @@ public class HashLinkedList<T> implements Iterable<T> {
       private final int expectedChanges;
 
         private Itr() {
-            // TODO implementare
           this.lastNode = null;
+          // Numero di modifiche attese per l'iteratore
           this.expectedChanges = numeroModifiche;
         }
 
         @Override
         public boolean hasNext() {
-            // TODO implementare
           if(this.expectedChanges != numeroModifiche)
+            // Non è fail-fast
             throw new ConcurrentModificationException("L'iteratore è stato modificato durante l'esecuzione!");
 
           return this.lastNode == null ? head != null : this.lastNode.next != null;
@@ -195,15 +195,17 @@ public class HashLinkedList<T> implements Iterable<T> {
 
         @Override
         public T next() {
-            // TODO implementare
           if(this.expectedChanges != numeroModifiche)
             throw new ConcurrentModificationException("L'iteratore non è riuscito a iteratore sul prossimo nodo!");
 
-          if(this.lastNode == null)
+          if(this.lastNode == null){
+            // Inizio dalla testa della lista
             this.lastNode = HashLinkedList.this.head;
+          }
           else {
             this.lastNode = this.lastNode.next;
           }
+          // Il dato contenuto 
           return this.lastNode.data;
         }
     }
