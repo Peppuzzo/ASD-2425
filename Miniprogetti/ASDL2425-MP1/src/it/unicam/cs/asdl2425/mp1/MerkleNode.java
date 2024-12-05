@@ -106,7 +106,7 @@ public class MerkleNode {
     public int hashCode() {
         // TODO implementare
 
-        /* implementare in accordo a equals */
+      /* implementare in accordo a equals */
         return -1;
     }
 }
