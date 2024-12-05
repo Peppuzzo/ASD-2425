@@ -1,8 +1,10 @@
 package it.unicam.cs.asdl2425.mp1;
 
+import java.util.Iterator;
+
 /**
  * Rappresenta un nodo di un albero di Merkle.
- * 
+ *
  * @author Luca Tesei, Marco Caputo (template) **INSERIRE NOME, COGNOME ED EMAIL
  *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
  */
@@ -74,8 +76,8 @@ public class MerkleNode {
      * @return true se il nodo è una foglia, false altrimenti.
      */
     public boolean isLeaf() {
-        // TODO implementare
-        return false;
+      // Verifico se è presente almebo un figlio
+      return this.getLeft() == null || this.getRight() == null;
     }
 
     @Override
@@ -85,11 +87,19 @@ public class MerkleNode {
 
     @Override
     public boolean equals(Object obj) {
-        // TODO implementare
 
         /* due nodi sono uguali se hanno lostesso hash */
 
+      if(obj == null)
         return false;
+      if(this == obj)
+        return true;
+      if(!(obj instanceof MerkleNode))
+        return false;
+      // Casto l'oggetto per il confronto
+      MerkleNode nodeMerkle = (MerkleNode) obj;
+      // return in corrispondenza degli hash
+      return this.getHash().equals(nodeMerkle.getHash());
     }
 
     @Override

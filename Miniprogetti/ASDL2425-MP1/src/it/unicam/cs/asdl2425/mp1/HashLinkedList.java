@@ -196,7 +196,7 @@ public class HashLinkedList<T> implements Iterable<T> {
         @Override
         public T next() {
           if(this.expectedChanges != numeroModifiche)
-            throw new ConcurrentModificationException("L'iteratore non è riuscito a iteratore sul prossimo nodo!");
+            throw new ConcurrentModificationException("L'iteratore non è riuscito a scorrere sul prossimo nodo!");
 
           if(this.lastNode == null){
             // Inizio dal primo elemento della lista
