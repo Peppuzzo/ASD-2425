@@ -199,13 +199,13 @@ public class HashLinkedList<T> implements Iterable<T> {
             throw new ConcurrentModificationException("L'iteratore non è riuscito a iteratore sul prossimo nodo!");
 
           if(this.lastNode == null){
-            // Inizio dalla testa della lista
+            // Inizio dal primo elemento della lista
             this.lastNode = HashLinkedList.this.head;
           }
           else {
             this.lastNode = this.lastNode.next;
           }
-          // Il dato contenuto 
+          // Il dato contenuto
           return this.lastNode.data;
         }
     }
