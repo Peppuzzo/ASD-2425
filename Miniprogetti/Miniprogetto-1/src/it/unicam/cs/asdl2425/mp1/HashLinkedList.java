@@ -88,7 +88,6 @@ public class HashLinkedList<T> implements Iterable<T> {
      *                 il dato da aggiungere.
      */
     public void addAtHead(T data) {
-        // TODO implementare
       if(data != null){
         // Creo un nuovo nodo da aggiungere alla testa dell'albero
         Node nodeHead = new Node(data);
@@ -106,7 +105,6 @@ public class HashLinkedList<T> implements Iterable<T> {
      *                 il dato da aggiungere.
      */
     public void addAtTail(T data) {
-        // TODO implementare
       if(data == null){
         return;
       }
@@ -174,12 +172,10 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     private class Itr implements Iterator<T> {
 
-        // TODO inserire le variabili istanza che si ritengono necessarie
         private Node lastNode;
         private final int expectedChanges;
 
         private Itr() {
-            // TODO implementare
           this.lastNode = null;
           // Numero di modifiche attese per l'iteratore
           this.expectedChanges = numeroModifiche;
@@ -187,7 +183,6 @@ public class HashLinkedList<T> implements Iterable<T> {
 
         @Override
         public boolean hasNext() {
-            // TODO implementare
           if(this.expectedChanges != numeroModifiche)
             // Non è fail-fast
             throw new ConcurrentModificationException("L'iteratore è stato modificato durante l'esecuzione!");
@@ -197,7 +192,6 @@ public class HashLinkedList<T> implements Iterable<T> {
 
         @Override
         public T next() {
-            // TODO implementare
           if(this.expectedChanges != numeroModifiche)
             throw new ConcurrentModificationException("L'iteratore non è riuscito a scorrere sul prossimo nodo!");
 

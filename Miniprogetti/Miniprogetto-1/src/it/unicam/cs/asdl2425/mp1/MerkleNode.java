@@ -97,7 +97,7 @@ public class MerkleNode {
       MerkleNode nodeMerkle = (MerkleNode) obj;
       // return in corrispondenza degli hash
       return this.getHash().equals(nodeMerkle.getHash());
-
+  
     }
 
     @Override
