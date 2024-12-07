@@ -197,29 +197,6 @@ public class MerkleTree<T> {
     }
 
     /**
-     * Trova ricorsivamente gli indici degli elementi di dati non validi in un
-     * dato Merkle Tree, secondo questo Merkle Tree.
-     *
-     * @param node
-     *                           il nodo corrente da validare.
-     * @param otherNode
-     *                           il nodo corrispondente nell'altro albero da
-     *                           validare.
-     * @param nodesOnLeft
-     *                           il numero di nodi a sinistra del nodo corrente
-     *                           nel suo livello.
-     * @param invalidIndices
-     *                           l'insieme di indici degli elementi di dati non
-     *                           validi.
-     */
-    private void findInvalidDataIndicesRecursive(MerkleNode node,
-            MerkleNode otherNode, int nodesOnLeft,
-            Set<Integer> invalidIndices) {
-        // TODO implementare
-
-    }
-
-    /**
      * Restituisce la prova di Merkle per un dato elemento, ovvero la lista di
      * hash dei nodi fratelli di ciascun nodo nel cammino dalla radice a una
      * foglia contenente il dato. La prova di Merkle dovrebbe fornire una lista
@@ -262,24 +239,6 @@ public class MerkleTree<T> {
      *                                      dell'albero.
      */
     public MerkleProof getMerkleProof(MerkleNode branch) {
-        // TODO implementare
-        return null;
-    }
-
-    /**
-     * Metodo ricorsivo che restituisce il cammino da un dato nodo a un suo
-     * discendente contenente un dato hash. Se l'hash fornito non è presente
-     * nell'albero come hash di un discendente, viene restituito null.
-     *
-     * @param currentNode
-     *                        il nodo corrente da cui iniziare la ricerca.
-     * @param dataHash
-     *                        l'hash del dato da cercare.
-     * @return il cammino da un nodo a un discendente contenente il dato hash;
-     *         null se l'hash non è presente.
-     */
-    public List<MerkleNode> getPathToDescendant(MerkleNode currentNode,
-            String dataHash) {
         // TODO implementare
         return null;
     }

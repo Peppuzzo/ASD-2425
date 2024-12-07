@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6740f769-fe1f-4ba8-9359-9c14b29bcaa6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/ASDL2425-MP1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashLinkedList$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashLinkedList$Itr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashLinkedList$Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashLinkedList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashLinkedListTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/HashUtilTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleNodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleProof$MerkleProofHash.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleProof.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleProofTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/out/production/ASDL2425-MP1/it/unicam/cs/asdl2425/mp1/MerkleTreeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/HashLinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/HashLinkedListTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/HashUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/HashUtilTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/MerkleNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/MerkleNodeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/MerkleProof.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/MerkleProofTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/MerkleTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ASDL2425-MP1/src/it/unicam/cs/asdl2425/mp1/MerkleTreeTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Peppuzzo&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Peppuzzo/ASD-2425.git&quot;,
+    &quot;accountId&quot;: &quot;11bfde10-2b49-4bb2-af58-9d8e16a86b22&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2ptJYudhgonB269cSWhx5PS6TEt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.HashLinkedListTest.executor": "Run",
+    "JUnit.HashUtilTest.executor": "Run",
+    "JUnit.MerkleNodeTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/UTENTE/Documents/GitHub/ASD-2425/Miniprogetti/ASDL2425",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6740f769-fe1f-4ba8-9359-9c14b29bcaa6" name="Changes" comment="" />
+      <created>1733579488991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733579488991</updated>
+      <workItem from="1733579490241" duration="44000" />
+      <workItem from="1733579540334" duration="491000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

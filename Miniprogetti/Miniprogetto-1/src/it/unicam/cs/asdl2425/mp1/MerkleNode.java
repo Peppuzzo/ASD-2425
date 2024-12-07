@@ -1,7 +1,5 @@
 package it.unicam.cs.asdl2425.mp1;
 
-import java.util.Iterator;
-
 /**
  * Rappresenta un nodo di un albero di Merkle.
  *
@@ -87,7 +85,6 @@ public class MerkleNode {
 
     @Override
     public boolean equals(Object obj) {
-
         /* due nodi sono uguali se hanno lostesso hash */
 
       if(obj == null)
@@ -100,13 +97,14 @@ public class MerkleNode {
       MerkleNode nodeMerkle = (MerkleNode) obj;
       // return in corrispondenza degli hash
       return this.getHash().equals(nodeMerkle.getHash());
+
     }
 
     @Override
     public int hashCode() {
         // TODO implementare
 
-      /* implementare in accordo a equals */
+        /* implementare in accordo a equals */
         return -1;
     }
 }

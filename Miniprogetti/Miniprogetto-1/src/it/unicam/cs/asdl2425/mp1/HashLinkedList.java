@@ -1,10 +1,10 @@
 package it.unicam.cs.asdl2425.mp1;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 //TODO inserire gli import della Java SE che si ritengono necessari
+import java.util.ConcurrentModificationException;
 
 /**
  * Una classe che rappresenta una lista concatenata con il calcolo degli hash
@@ -111,16 +111,16 @@ public class HashLinkedList<T> implements Iterable<T> {
         return;
       }
 
-        Node nodeTail = new Node(data);
-        if(this.head == null){
-          this.head = nodeTail;
-        }
-        else {
-          this.tail.next = nodeTail;
-        }
-        this.tail = nodeTail;
-        this.size++;
-        this.numeroModifiche++;
+      Node nodeTail = new Node(data);
+      if(this.head == null){
+        this.head = nodeTail;
+      }
+      else {
+        this.tail.next = nodeTail;
+      }
+      this.tail = nodeTail;
+      this.size++;
+      this.numeroModifiche++;
     }
 
     /**
@@ -130,7 +130,6 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     public ArrayList<String> getAllHashes() {
         // TODO implementare
-
         return null;
     }
 
@@ -175,10 +174,12 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     private class Itr implements Iterator<T> {
 
-      private Node lastNode;
-      private final int expectedChanges;
+        // TODO inserire le variabili istanza che si ritengono necessarie
+        private Node lastNode;
+        private final int expectedChanges;
 
         private Itr() {
+            // TODO implementare
           this.lastNode = null;
           // Numero di modifiche attese per l'iteratore
           this.expectedChanges = numeroModifiche;
@@ -186,6 +187,7 @@ public class HashLinkedList<T> implements Iterable<T> {
 
         @Override
         public boolean hasNext() {
+            // TODO implementare
           if(this.expectedChanges != numeroModifiche)
             // Non è fail-fast
             throw new ConcurrentModificationException("L'iteratore è stato modificato durante l'esecuzione!");
@@ -195,6 +197,7 @@ public class HashLinkedList<T> implements Iterable<T> {
 
         @Override
         public T next() {
+            // TODO implementare
           if(this.expectedChanges != numeroModifiche)
             throw new ConcurrentModificationException("L'iteratore non è riuscito a scorrere sul prossimo nodo!");
 
