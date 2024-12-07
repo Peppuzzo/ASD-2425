@@ -2,8 +2,6 @@ package it.unicam.cs.asdl2425.mp1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-//TODO inserire gli import della Java SE che si ritengono necessari
 import java.util.ConcurrentModificationException;
 
 /**
@@ -88,14 +86,15 @@ public class HashLinkedList<T> implements Iterable<T> {
      *                 il dato da aggiungere.
      */
     public void addAtHead(T data) {
-      if(data != null){
-        // Creo un nuovo nodo da aggiungere alla testa dell'albero
-        Node nodeHead = new Node(data);
-        nodeHead.next = this.head;
-        this.head = nodeHead;
-        this.size++;
-        this.numeroModifiche++;
-      }
+      if(data == null){ return; }
+      // Creo un nuovo nodo da aggiungere alla testa dell'albero
+      Node nodeHead = new Node(data);
+      nodeHead.next = this.head;
+      this.head = nodeHead;
+      if(this.tail == null)
+        this.tail = nodeHead;
+      this.size++;
+      this.numeroModifiche++;
     }
 
     /**
@@ -110,7 +109,7 @@ public class HashLinkedList<T> implements Iterable<T> {
       }
 
       Node nodeTail = new Node(data);
-      if(this.head == null){
+      if(this.tail == null){
         this.head = nodeTail;
       }
       else {
@@ -127,8 +126,15 @@ public class HashLinkedList<T> implements Iterable<T> {
      * @return una lista con tutti gli hash della lista.
      */
     public ArrayList<String> getAllHashes() {
-        // TODO implementare
-        return null;
+      // L'ArrayList contentente tutti gli hash
+      ArrayList<String> hashList = new ArrayList<>();
+      Node node = this.head;
+
+      while(node != null){
+        hashList.add(node.hash);
+        node = node.next;
+      }
+        return hashList;
     }
 
     /**
@@ -146,8 +152,14 @@ public class HashLinkedList<T> implements Iterable<T> {
      * @return una rappresentazione testuale di tutti i nodi nella lista.
      */
     public String buildNodesString() {
-        // TODO implementare
-        return null;
+      String nodesString = "";
+      Node eNode = this.head;
+
+      while(eNode != null){
+        nodesString += "Dato: " + eNode.data + ", Hash: " + eNode.hash + "\n";
+        eNode = eNode.next;
+      }
+        return nodesString;
     }
 
     /**
@@ -158,8 +170,42 @@ public class HashLinkedList<T> implements Iterable<T> {
      * @return true se l'elemento è stato trovato e rimosso, false altrimenti.
      */
     public boolean remove(T data) {
-        // TODO implementare
+      // se la lista è vuota
+      if(this.size == 0)
         return false;
+
+      Node current = this.head;
+
+      // Nel caso che in cui devo rimuovere la testa
+      if(current.data.equals(data)){
+        this.head = current.next;
+        current.next = null;
+        this.size--;
+        this.numeroModifiche++;
+        return true;
+      }
+
+      //Nel caso in sia in fondo alla lista
+      while(current.next != null){
+        //Itera fino tanto che non trovo il data identico
+        if(!current.next.data.equals(data)){
+          current = current.next;
+          continue;
+        }
+        // Il nodo da rimuovere
+        Node nodeRemove = current.next;
+        current.next = nodeRemove.next;
+        nodeRemove.next = null;
+        // Collego il penultimo nodo letto come coda
+        if(nodeRemove == this.tail){
+          this.tail = current;
+        }
+        // Aggiorno la lista
+        this.size--;
+        this.numeroModifiche++;
+        return true;
+      }
+      return false;
     }
 
     @Override
