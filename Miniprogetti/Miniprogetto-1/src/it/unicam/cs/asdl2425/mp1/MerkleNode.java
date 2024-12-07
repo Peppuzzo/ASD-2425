@@ -101,11 +101,8 @@ public class MerkleNode {
 
     @Override
     public int hashCode() {
-        // TODO implementare
-
         /* implementare in accordo a equals */
 
-
-        return -1;
+        return this.getHash().hashCode();
     }
 }
