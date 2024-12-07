@@ -108,7 +108,9 @@ public class HashLinkedList<T> implements Iterable<T> {
         return;
       }
 
+      // Il nuovo nodo da aggiungere
       Node nodeTail = new Node(data);
+
       if(this.tail == null){
         this.head = nodeTail;
       }
@@ -126,12 +128,13 @@ public class HashLinkedList<T> implements Iterable<T> {
      * @return una lista con tutti gli hash della lista.
      */
     public ArrayList<String> getAllHashes() {
-      // L'ArrayList contentente tutti gli hash
+      // L'ArrayList contenente tutti gli hash
       ArrayList<String> hashList = new ArrayList<>();
       Node node = this.head;
 
       while(node != null){
         hashList.add(node.hash);
+        // Il prossimo nodo da visitare
         node = node.next;
       }
         return hashList;
@@ -174,6 +177,7 @@ public class HashLinkedList<T> implements Iterable<T> {
       if(this.size == 0)
         return false;
 
+      // Nodo corrente per l'iterazione
       Node current = this.head;
 
       // Nel caso che in cui devo rimuovere la testa
@@ -252,6 +256,4 @@ public class HashLinkedList<T> implements Iterable<T> {
           return this.lastNode.data;
         }
     }
-
-    // TODO inserire eventuali metodi privati per fini di implementazione
 }
