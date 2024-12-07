@@ -33,8 +33,8 @@ import java.util.ConcurrentModificationException;
  * @param <T>
  *                il tipo generico dei dati contenuti nei nodi della lista.
  *
- * @author Luca Tesei, Marco Caputo (template) **INSERIRE NOME, COGNOME ED EMAIL
- *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
+ * @author Luca Tesei, Marco Caputo (template) GIUSEPPE, CALABRESE
+ *         giusepp.calabrese@studenti.unicam.it (implementazione)
  *
  */
 public class HashLinkedList<T> implements Iterable<T> {

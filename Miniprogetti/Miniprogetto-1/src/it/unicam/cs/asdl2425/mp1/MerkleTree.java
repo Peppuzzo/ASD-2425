@@ -11,9 +11,9 @@ import java.util.*;
  * ricorsivo di coppie di dati (valori hash crittografici) fino a ottenere un
  * singolo hash root. In questa implementazione la verifica di dati avviene
  * utilizzando hash MD5.
- * 
- * @author Luca Tesei, Marco Caputo (template) **INSERIRE NOME, COGNOME ED EMAIL
- *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
+ *
+ * @author Luca Tesei, Marco Caputo (template) GIUSEPPE, CALABRESE
+ *         giusepp.calabrese@studenti.unicam.it (implementazione)
  *
  * @param <T>
  *                il tipo di dati su cui l'albero è costruito.
@@ -242,6 +242,6 @@ public class MerkleTree<T> {
         // TODO implementare
         return null;
     }
-    
-    // TODO inserire eventuali metodi privati per fini di implementazione 
+
+    // TODO inserire eventuali metodi privati per fini di implementazione
 }

@@ -3,8 +3,8 @@ package it.unicam.cs.asdl2425.mp1;
 /**
  * Rappresenta un nodo di un albero di Merkle.
  *
- * @author Luca Tesei, Marco Caputo (template) **INSERIRE NOME, COGNOME ED EMAIL
- *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
+ * @author Luca Tesei, Marco Caputo (template) GIUSEPPE, CALABRESE
+ *         giusepp.calabrese@studenti.unicam.it (implementazione)
  */
 public class MerkleNode {
     private final String hash; // Hash associato al nodo.
@@ -74,7 +74,7 @@ public class MerkleNode {
      * @return true se il nodo è una foglia, false altrimenti.
      */
     public boolean isLeaf() {
-      // Verifico se è presente almebo un figlio
+      // Verifico se è presente almeno un figlio
       return this.getLeft() == null || this.getRight() == null;
     }
 
@@ -97,7 +97,6 @@ public class MerkleNode {
       MerkleNode nodeMerkle = (MerkleNode) obj;
       // return in corrispondenza degli hash
       return this.getHash().equals(nodeMerkle.getHash());
-  
     }
 
     @Override
@@ -105,6 +104,8 @@ public class MerkleNode {
         // TODO implementare
 
         /* implementare in accordo a equals */
+
+
         return -1;
     }
 }
