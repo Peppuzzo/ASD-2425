@@ -77,7 +77,18 @@ public class MerkleProof {
      */
     public boolean addHash(String hash, boolean isLeft) {
         // TODO implementare
+      // Nel caso in cui sia completa o superiore
+      if (this.proof.getSize() >= this.length)
         return false;
+      // Costruzione dell'oggetto da aggiungere
+      MerkleProofHash proofHash = new MerkleProofHash(hash, isLeft);
+      if(proofHash.isLeft()){
+        this.proof.addAtHead(proofHash);
+      }
+      else {
+        this.proof.addAtTail(proofHash);
+      }
+      return true;
     }
 
     /**
