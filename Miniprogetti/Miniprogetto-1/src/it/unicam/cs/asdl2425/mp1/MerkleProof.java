@@ -127,14 +127,19 @@ public class MerkleProof {
 
         @Override
         public boolean equals(Object obj) {
-            // TODO implementare
-
+            // TODO verificare
             /*
              * Due MerkleProofHash sono uguali se hanno lo stesso hash e lo
              * stesso flag isLeft
              */
+          if(obj == null)
             return false;
+          if(this == obj)
+            return true;
 
+          // Casto l'oggetto
+          MerkleProofHash proofHash = (MerkleProofHash) obj;
+          return this.getHash().equals(proofHash.getHash()) && this.isLeft() == proofHash.isLeft();
         }
 
         @Override
@@ -144,12 +149,11 @@ public class MerkleProof {
 
         @Override
         public int hashCode() {
-            // TODO implementare
-
+          // TODO verificare
             /*
              * Implementare in accordo a equals
              */
-            return -1;
+          return this.hash.hashCode();
         }
     }
 
@@ -168,6 +172,9 @@ public class MerkleProof {
      */
     public boolean proveValidityOfData(Object data) {
         // TODO implementare
+      if(data.equals(null))
+        throw new IllegalArgumentException("L'oggetto non può essere null!");
+
         return false;
     }
 
@@ -186,6 +193,8 @@ public class MerkleProof {
      */
     public boolean proveValidityOfBranch(MerkleNode branch) {
         // TODO implementare
+      if(branch.equals(null))
+        throw new IllegalArgumentException("Il parametro passato non può essere null!");
         return false;
     }
 
