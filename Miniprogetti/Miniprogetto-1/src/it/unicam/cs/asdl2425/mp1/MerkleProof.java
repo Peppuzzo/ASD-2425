@@ -76,7 +76,6 @@ public class MerkleProof {
      * @return true se l'hash è stato aggiunto con successo, false altrimenti.
      */
     public boolean addHash(String hash, boolean isLeft) {
-        // TODO implementare
       // Nel caso in cui sia completa o superiore
       if (this.proof.getSize() >= this.length)
         return false;
@@ -183,10 +182,12 @@ public class MerkleProof {
      */
     public boolean proveValidityOfData(Object data) {
         // TODO implementare
-      if(data.equals(null))
+      if(data == null)
         throw new IllegalArgumentException("L'oggetto non può essere null!");
 
-        return false;
+
+
+      return false;
     }
 
     /**
@@ -204,9 +205,10 @@ public class MerkleProof {
      */
     public boolean proveValidityOfBranch(MerkleNode branch) {
         // TODO implementare
-      if(branch.equals(null))
+      if(branch == null)
         throw new IllegalArgumentException("Il parametro passato non può essere null!");
-        return false;
+
+      return false;
     }
 
     // TODO inserire eventuali metodi privati per fini di implementazione

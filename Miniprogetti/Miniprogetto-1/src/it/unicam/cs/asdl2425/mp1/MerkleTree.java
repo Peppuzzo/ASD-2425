@@ -44,9 +44,11 @@ public class MerkleTree<T> {
      *                                      se la lista è null o vuota.
      */
     public MerkleTree(HashLinkedList<T> hashList) {
-        // TODO implementare
-        this.root = null;
-        this.width = -1;
+      if(hashList == null || hashList.getSize() == 0)
+        throw new IllegalArgumentException("Parametri passati non validi per la generazione" +
+          "dell'albero di Merkle");
+      this.root = null;
+      this.width = -1;
     }
 
     /**
@@ -74,6 +76,7 @@ public class MerkleTree<T> {
      */
     public int getHeight() {
         // TODO implementare
+
         return -1;
     }
 
@@ -135,7 +138,13 @@ public class MerkleTree<T> {
      */
     public boolean validateData(T data) {
         // TODO implementare
-        return false;
+      if(data == null)
+        throw new NullPointerException("Il parametro passato è null!");
+
+      MerkleProof proof = new MerkleProof(root.getHash(), this.width);
+
+
+      return false;
     }
 
     /**
