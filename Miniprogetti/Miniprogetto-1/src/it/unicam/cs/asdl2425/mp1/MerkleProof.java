@@ -209,13 +209,16 @@ public class MerkleProof {
      *                                      se il branch è null.
      */
     public boolean proveValidityOfBranch(MerkleNode branch) {
-        // TODO implementare
       if(branch == null)
         throw new IllegalArgumentException("Il parametro passato non può essere null!");
 
-      return true;
+      // L'hash del branch da verificare
+      String validateBranch = branch.getHash();
+
+      for (MerkleProofHash proofHash : this.proof){
+        validateBranch = HashUtil.computeMD5((proofHash.getHash() + validateBranch).getBytes());
+      }
+      // Se coincide con la radice root
+      return this.rootHash.equals(validateBranch);
     }
-
-    // TODO inserire eventuali metodi privati per fini di implementazione
-
 }
