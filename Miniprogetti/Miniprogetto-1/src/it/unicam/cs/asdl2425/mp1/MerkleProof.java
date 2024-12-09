@@ -137,7 +137,6 @@ public class MerkleProof {
 
         @Override
         public boolean equals(Object obj) {
-            // TODO verificare
             /*
              * Due MerkleProofHash sono uguali se hanno lo stesso hash e lo
              * stesso flag isLeft
@@ -159,7 +158,6 @@ public class MerkleProof {
 
         @Override
         public int hashCode() {
-          // TODO verificare
             /*
              * Implementare in accordo a equals
              */
@@ -181,13 +179,18 @@ public class MerkleProof {
      *                                      se il dato è null.
      */
     public boolean proveValidityOfData(Object data) {
-        // TODO implementare
       if(data == null)
         throw new IllegalArgumentException("L'oggetto non può essere null!");
+      // L'hash dell'oggetto da controllare
+      String validate = HashUtil.dataToHash(data);
 
-
-
-      return false;
+      for(MerkleProofHash proofHash : this.proof){
+        if(proofHash.isLeft){
+          validate = HashUtil.computeMD5((proofHash.getHash() + validate).getBytes());
+        }
+        else validate = HashUtil.computeMD5((validate + proofHash.getHash()).getBytes());
+      }
+      return this.rootHash.equals(validate);
     }
 
     /**
@@ -208,7 +211,7 @@ public class MerkleProof {
       if(branch == null)
         throw new IllegalArgumentException("Il parametro passato non può essere null!");
 
-      return false;
+      return true;
     }
 
     // TODO inserire eventuali metodi privati per fini di implementazione
