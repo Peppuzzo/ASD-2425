@@ -186,8 +186,10 @@ public class MerkleProof {
 
       for(MerkleProofHash proofHash : this.proof){
         if(proofHash.isLeft){
+          // Concateno a sinistra
           validate = HashUtil.computeMD5((proofHash.getHash() + validate).getBytes());
         }
+        // Concateno a destra
         else validate = HashUtil.computeMD5((validate + proofHash.getHash()).getBytes());
       }
       return this.rootHash.equals(validate);
