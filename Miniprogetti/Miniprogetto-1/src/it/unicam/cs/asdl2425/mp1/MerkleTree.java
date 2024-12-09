@@ -1,5 +1,7 @@
 package it.unicam.cs.asdl2425.mp1;
 
+import com.sun.javafx.sg.prism.NodeEffectInput;
+
 import java.util.*;
 
 // TODO inserire solo gli import della Java SE che si ritengono necessari
@@ -76,8 +78,8 @@ public class MerkleTree<T> {
      */
     public int getHeight() {
         // TODO implementare
-
-        return -1;
+      
+      return (int) Math.ceil(Math.log(this.width) / Math.log(2));
     }
 
     /**
