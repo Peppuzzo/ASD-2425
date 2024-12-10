@@ -49,8 +49,10 @@ public class MerkleTree<T> {
       if(hashList == null || hashList.getSize() == 0)
         throw new IllegalArgumentException("Parametri passati non validi per la generazione" +
           "dell'albero di Merkle");
-      this.root = null;
-      this.width = -1;
+      // La radice dell'albero
+      this.root = rootTree(hashList);
+      // La larghezza dell'albero nel momento della sua creazione
+      this.width = hashList.getSize();
     }
 
     /**
@@ -77,8 +79,8 @@ public class MerkleTree<T> {
      * @return l'altezza dell'albero.
      */
     public int getHeight() {
-        // TODO implementare
-      
+      // Altezza dell'albero ovvero la sua più profondità fino
+      // all'ultima foglia
       return (int) Math.ceil(Math.log(this.width) / Math.log(2));
     }
 
@@ -255,4 +257,23 @@ public class MerkleTree<T> {
     }
 
     // TODO inserire eventuali metodi privati per fini di implementazione
+
+
+
+
+  private MerkleNode rootTree (ArrayList<T> tArrayList){
+
+      ArrayList<T> linkedList = new ArrayList<>();
+
+      for (T list : tArrayList){
+        linkedList = tArrayList.
+      }
+
+      // Creo il livello del parente
+    MerkleNode parent = new MerkleNode("", null, null);
+
+
+
+      return null;
+  }
 }
