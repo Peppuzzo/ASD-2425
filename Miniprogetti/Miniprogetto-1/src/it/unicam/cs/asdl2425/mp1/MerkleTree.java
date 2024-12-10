@@ -108,7 +108,10 @@ public class MerkleTree<T> {
      */
     public int getIndexOfData(MerkleNode branch, T data) {
         // TODO implementare
-        return -1;
+      if(branch == null || data == null || validateBranch(branch))
+        throw new IllegalArgumentException("Parametri passati per l'indice non validi");
+
+      return -1;
     }
 
     /**
@@ -127,7 +130,10 @@ public class MerkleTree<T> {
      */
     public int getIndexOfData(T data) {
         // TODO implementare
-        return -1;
+      if(data == null)
+        throw new IllegalArgumentException("Non è consentito passare valori null!");
+
+      return -1;
     }
 
     /**
@@ -261,12 +267,12 @@ public class MerkleTree<T> {
 
 
 
-  private MerkleNode rootTree (ArrayList<T> tArrayList){
+  private MerkleNode rootTree (HashLinkedList<T> treeList){
 
       ArrayList<T> linkedList = new ArrayList<>();
 
-      for (T list : tArrayList){
-        linkedList = tArrayList.
+      for (T list : treeList){
+        //linkedList = tArrayList.
       }
 
       // Creo il livello del parente
