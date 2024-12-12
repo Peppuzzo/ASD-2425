@@ -155,14 +155,14 @@ public class HashLinkedList<T> implements Iterable<T> {
      * @return una rappresentazione testuale di tutti i nodi nella lista.
      */
     public String buildNodesString() {
-      String nodesString = "";
+      StringBuilder nodesString = new StringBuilder();
       Node eNode = this.head;
 
       while(eNode != null){
-        nodesString += "Dato: " + eNode.data + ", Hash: " + eNode.hash + "\n";
+        nodesString.append("Dato: ").append(eNode.data).append(", Hash: ").append(eNode.hash).append("\n");
         eNode = eNode.next;
       }
-        return nodesString;
+        return nodesString.toString();
     }
 
     /**

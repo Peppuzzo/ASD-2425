@@ -278,8 +278,6 @@ public class MerkleTree<T> {
       // Creo il livello del parente
     MerkleNode parent = new MerkleNode("", null, null);
 
-
-
       return null;
   }
 }
