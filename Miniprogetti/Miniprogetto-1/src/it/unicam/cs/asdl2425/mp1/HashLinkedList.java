@@ -134,8 +134,7 @@ public class HashLinkedList<T> implements Iterable<T> {
 
       while(node != null){
         hashList.add(node.hash);
-        // Il prossimo nodo da visitare
-        node = node.next;
+        node = node.next; // Il prossimo nodo da visitare
       }
         return hashList;
     }

@@ -265,11 +265,28 @@ public class MerkleTree<T> {
     // TODO inserire eventuali metodi privati per fini di implementazione
 
 
-
-
+  /**
+   * @autor Giuseppe Calabrese
+   * 
+   * @param treeList La lista corrente costruita sull'albero MerkleTree
+   * @return la radice dell'albero
+   */
   private MerkleNode rootTree (HashLinkedList<T> treeList){
 
-      ArrayList<T> linkedList = new ArrayList<>();
+      // Inserisco in una lista tutti gli hash contenuti nelel foglie dell'albero MerkleTree
+      ArrayList<String> strings = treeList.getAllHashes();
+
+      // La lista contente tutte le mie foglie a partire dai suoi hash
+      ArrayList<MerkleNode> merkleNodes = new ArrayList<>();
+
+      // Inserimento di ogni singolo nodo contenente il proprio hash
+      for(String hashnode : strings){
+        // Creazione del nodo corrente da aggiungere alla lista
+        MerkleNode node = new MerkleNode(hashnode, null, null);
+        merkleNodes.add(node); // Si aggiunge ogni singola foglia alla lista
+      }
+
+      
 
       // Parent da dover costruire
       MerkleNode parent = new MerkleNode("", null, null);
