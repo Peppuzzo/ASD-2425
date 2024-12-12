@@ -271,13 +271,11 @@ public class MerkleTree<T> {
 
       ArrayList<T> linkedList = new ArrayList<>();
 
-      for (T list : treeList){
-        //linkedList = tArrayList.
-      }
+      // Parent da dover costruire
+      MerkleNode parent = new MerkleNode("", null, null);
 
-      // Creo il livello del parente
-    MerkleNode parent = new MerkleNode("", null, null);
 
-      return null;
+
+      return parent;
   }
 }
