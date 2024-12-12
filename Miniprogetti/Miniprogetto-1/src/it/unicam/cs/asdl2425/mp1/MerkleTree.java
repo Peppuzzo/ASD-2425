@@ -49,10 +49,8 @@ public class MerkleTree<T> {
       if(hashList == null || hashList.getSize() == 0)
         throw new IllegalArgumentException("Parametri passati non validi per la generazione" +
           "dell'albero di Merkle");
-      // La radice dell'albero
-      this.root = rootTree(hashList);
-      // La larghezza dell'albero nel momento della sua creazione
-      this.width = hashList.getSize();
+      this.root = rootTree(hashList); // Calcolo del nodo che rappresenta l'Hash originale
+      this.width = hashList.getSize(); // La larghezza dell'albero nel momento della sua creazione
     }
 
     /**
@@ -266,8 +264,15 @@ public class MerkleTree<T> {
 
 
   /**
+   * Implementazione del metodo rootHash per trovare in corrispondenza
+   * della sua più profondità, l'hash originale
+   * <p> 
+   * Il metodo ha lo scopo principale di ricavare la radice partendo
+   * dall'insieme di foglie che vengono passate nel metodo <code> MerkleTree </code>
+   * nel momento della sua creazione
+   *
    * @autor Giuseppe Calabrese
-   * 
+   *
    * @param treeList La lista corrente costruita sull'albero MerkleTree
    * @return la radice dell'albero
    */
@@ -279,6 +284,9 @@ public class MerkleTree<T> {
       // La lista contente tutte le mie foglie a partire dai suoi hash
       ArrayList<MerkleNode> merkleNodes = new ArrayList<>();
 
+      MerkleNode nodeL = null;
+      MerkleNode nodeR =  null;
+
       // Inserimento di ogni singolo nodo contenente il proprio hash
       for(String hashnode : strings){
         // Creazione del nodo corrente da aggiungere alla lista
@@ -286,13 +294,28 @@ public class MerkleTree<T> {
         merkleNodes.add(node); // Si aggiunge ogni singola foglia alla lista
       }
 
-      
+    // Costruzione dell'albero
+    while (merkleNodes.size() > 1) {
+      // Lista contenente i nodi da concatenare
+      ArrayList<MerkleNode> nextNode = new ArrayList<>();
 
-      // Parent da dover costruire
-      MerkleNode parent = new MerkleNode("", null, null);
-
-
-
-      return parent;
+      for (int i = 0; i < merkleNodes.size(); i += 2) {
+        if (i + 1 < merkleNodes.size()) {
+          // Se sono presenti due figli quindi pari)
+          nodeL = merkleNodes.get(i);
+          nodeR = merkleNodes.get(i + 1);
+          String combinedHash = HashUtil.computeMD5((nodeL.getHash() + nodeR.getHash()).getBytes());
+          nextNode.add(new MerkleNode(combinedHash, nodeL, nodeR));
+        } else {
+          // Se è presente un solo figlio, lo duplico
+          nodeL = merkleNodes.get(i);
+          String combinedHash = HashUtil.computeMD5((nodeL.getHash() + nodeL.getHash()).getBytes());
+          nextNode.add(new MerkleNode(combinedHash, nodeL, null));
+        }
+      }
+      // Passo al nodo successivo
+      merkleNodes = nextNode;
+    }
+    return merkleNodes.get(0); // La radice ovvero il primo elemento nella lista
   }
 }
