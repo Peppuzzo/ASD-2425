@@ -30,6 +30,8 @@ public class MerkleTree<T> {
     private final int width;
 
   /**
+   * @autor Giuseppe Calabrese
+   * <p>
    * Una lista contenente tutte le sue foglie a
    * partire dagli hash, in un certo ordine
    */
@@ -134,17 +136,18 @@ public class MerkleTree<T> {
      *                                      se il dato è null.
      */
     public int getIndexOfData(T data) {
-        // TODO implementare
       if(data == null)
         throw new IllegalArgumentException("Non è consentito passare valori null!");
 
-      // Calcolo dell'hash del nodo branch
-      String calculateBranch = HashUtil.computeMD5(data.toString().getBytes());
+      // L'hash del singolo nodo calcolato tramite L'algoritmo MD5
+      String validateHash = HashUtil.dataToHash(data);
 
-      for(String leave : this.hashLeaves){
-        if()
+      //Controllo se il dato è presente coincide con una delle mie foglie
+      for(int i = 0; i < this.hashLeaves.size(); i++){
+        if(this.hashLeaves.get(i).equals(validateHash)){
+          return i;
+        }
       }
-
       return -1;
     }
 
