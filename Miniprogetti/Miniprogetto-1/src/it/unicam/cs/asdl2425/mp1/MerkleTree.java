@@ -65,7 +65,6 @@ public class MerkleTree<T> {
      * @return il nodo radice.
      */
     public MerkleNode getRoot() {
-      System.out.println(root);
         return root;
     }
 
@@ -162,12 +161,17 @@ public class MerkleTree<T> {
      *         altrimenti.
      */
     public boolean validateData(T data) {
-        // TODO implementare
       if(data == null)
         throw new NullPointerException("Il parametro passato è null!");
 
-      MerkleProof proof = new MerkleProof(root.getHash(), this.width);
+      String dataHash = HashUtil.dataToHash(data);
 
+      // Confronto per la validazione dell'hash del dato
+      for (String hash : this.hashLeaves) {
+        if (hash.equals(dataHash)) {
+          return true;
+        }
+      }
       return false;
     }
 
