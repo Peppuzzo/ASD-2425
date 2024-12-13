@@ -112,8 +112,8 @@ public class MerkleTree<T> {
      */
     public int getIndexOfData(MerkleNode branch, T data) {
         // TODO implementare
-      if(branch == null || data == null || validateBranch(branch))
-        throw new IllegalArgumentException("Parametri passati per l'indice non validi");
+      //if(branch == null || data == null || validateBranch(branch))
+        //throw new IllegalArgumentException("Parametri passati per l'indice non validi");
 
 
 
@@ -282,6 +282,26 @@ public class MerkleTree<T> {
 
     // TODO inserire eventuali metodi privati per fini di implementazione
 
+  /**
+   * @autor Giuseppe Calabrese
+   *
+   * @return La lista di hash di ogni nodo ordinato
+   */
+  private ArrayList<String> getHashLeaves(){
+      return this.hashLeaves;
+    }
+
+  /**
+   * Metodo per conservare gli hash dei nodi disposti in un certo ordine
+   *
+   * @autor Giuseppe Calabrese
+   *
+   * @param linkedList la struttura dati contenente l'albero di MerkleTree
+   */
+  private void setHashLeaves(HashLinkedList<T> linkedList){
+      this.hashLeaves = linkedList.getAllHashes();
+    }
+
 
   /**
    * Implementazione del metodo rootHash per trovare in corrispondenza
@@ -323,13 +343,13 @@ public class MerkleTree<T> {
       ArrayList<MerkleNode> nextNode = new ArrayList<>();
 
       for (int i = 0; i < merkleNodes.size(); i += 2) {
-        // Se sono presenti due figli quindi pari)
+        // Se sono presenti due figli (quindi pari)
         if (i + 1 < merkleNodes.size()) {
           nodeL = merkleNodes.get(i);
           nodeR = merkleNodes.get(i + 1);
           String combinedHash = HashUtil.computeMD5((nodeL.getHash() + nodeR.getHash()).getBytes());
           nextNode.add(new MerkleNode(combinedHash, nodeL, nodeR));
-        } else { // Se è presente un solo figlio, lo duplico
+        } else { // Se è presente un solo figlio (quindi dispari), lo duplico
           nodeL = merkleNodes.get(i);
           String combinedHash = HashUtil.computeMD5((nodeL.getHash() + nodeL.getHash()).getBytes());
           nextNode.add(new MerkleNode(combinedHash, nodeL, null));
@@ -340,14 +360,4 @@ public class MerkleTree<T> {
     }
     return merkleNodes.get(0); // La radice, ovvero il primo elemento nella lista
   }
-
-  private ArrayList<String> getHashLeaves(){
-    return this.hashLeaves;
-  }
-
-  private void setHashLeaves(HashLinkedList<T> linkedList){
-    this.hashLeaves = linkedList.getAllHashes();
-  }
-
-
 }
