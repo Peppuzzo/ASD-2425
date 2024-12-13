@@ -1,7 +1,5 @@
 package it.unicam.cs.asdl2425.mp1;
 
-import com.sun.javafx.sg.prism.NodeEffectInput;
-
 import java.util.*;
 
 // TODO inserire solo gli import della Java SE che si ritengono necessari
@@ -31,6 +29,12 @@ public class MerkleTree<T> {
      */
     private final int width;
 
+  /**
+   * Una lista contenente tutte le sue foglie a
+   * partire dagli hash, in un certo ordine
+   */
+    private ArrayList<String> hashLeaves;
+
     /**
      * Costruisce un albero di Merkle a partire da un oggetto HashLinkedList,
      * utilizzando direttamente gli hash presenti nella lista per costruire le
@@ -59,6 +63,7 @@ public class MerkleTree<T> {
      * @return il nodo radice.
      */
     public MerkleNode getRoot() {
+      System.out.println(root);
         return root;
     }
 
@@ -109,6 +114,8 @@ public class MerkleTree<T> {
       if(branch == null || data == null || validateBranch(branch))
         throw new IllegalArgumentException("Parametri passati per l'indice non validi");
 
+
+
       return -1;
     }
 
@@ -131,6 +138,13 @@ public class MerkleTree<T> {
       if(data == null)
         throw new IllegalArgumentException("Non è consentito passare valori null!");
 
+      // Calcolo dell'hash del nodo branch
+      String calculateBranch = HashUtil.computeMD5(data.toString().getBytes());
+
+      for(String leave : this.hashLeaves){
+        if()
+      }
+
       return -1;
     }
 
@@ -150,7 +164,6 @@ public class MerkleTree<T> {
         throw new NullPointerException("Il parametro passato è null!");
 
       MerkleProof proof = new MerkleProof(root.getHash(), this.width);
-
 
       return false;
     }
@@ -266,7 +279,7 @@ public class MerkleTree<T> {
   /**
    * Implementazione del metodo rootHash per trovare in corrispondenza
    * della sua più profondità, l'hash originale
-   * <p> 
+   * <p>
    * Il metodo ha lo scopo principale di ricavare la radice partendo
    * dall'insieme di foglie che vengono passate nel metodo <code> MerkleTree </code>
    * nel momento della sua creazione
@@ -278,8 +291,11 @@ public class MerkleTree<T> {
    */
   private MerkleNode rootTree (HashLinkedList<T> treeList){
 
-      // Inserisco in una lista tutti gli hash contenuti nelel foglie dell'albero MerkleTree
-      ArrayList<String> strings = treeList.getAllHashes();
+     /**
+      * Metodo per il calcolo delle foglie a partire dai
+      * propri hash in un certo ordine
+      */
+      setHashLeaves(treeList);
 
       // La lista contente tutte le mie foglie a partire dai suoi hash
       ArrayList<MerkleNode> merkleNodes = new ArrayList<>();
@@ -288,7 +304,7 @@ public class MerkleTree<T> {
       MerkleNode nodeR =  null;
 
       // Inserimento di ogni singolo nodo contenente il proprio hash
-      for(String hashnode : strings){
+      for(String hashnode : this.getHashLeaves()){
         // Creazione del nodo corrente da aggiungere alla lista
         MerkleNode node = new MerkleNode(hashnode, null, null);
         merkleNodes.add(node); // Si aggiunge ogni singola foglia alla lista
@@ -300,14 +316,13 @@ public class MerkleTree<T> {
       ArrayList<MerkleNode> nextNode = new ArrayList<>();
 
       for (int i = 0; i < merkleNodes.size(); i += 2) {
+        // Se sono presenti due figli quindi pari)
         if (i + 1 < merkleNodes.size()) {
-          // Se sono presenti due figli quindi pari)
           nodeL = merkleNodes.get(i);
           nodeR = merkleNodes.get(i + 1);
           String combinedHash = HashUtil.computeMD5((nodeL.getHash() + nodeR.getHash()).getBytes());
           nextNode.add(new MerkleNode(combinedHash, nodeL, nodeR));
-        } else {
-          // Se è presente un solo figlio, lo duplico
+        } else { // Se è presente un solo figlio, lo duplico
           nodeL = merkleNodes.get(i);
           String combinedHash = HashUtil.computeMD5((nodeL.getHash() + nodeL.getHash()).getBytes());
           nextNode.add(new MerkleNode(combinedHash, nodeL, null));
@@ -318,4 +333,14 @@ public class MerkleTree<T> {
     }
     return merkleNodes.get(0); // La radice ovvero il primo elemento nella lista
   }
+
+  private ArrayList<String> getHashLeaves(){
+    return this.hashLeaves;
+  }
+
+  private void setHashLeaves(HashLinkedList<T> linkedList){
+    this.hashLeaves = linkedList.getAllHashes();
+  }
+
+
 }
