@@ -291,7 +291,7 @@ public class MerkleTree<T> {
    */
   private MerkleNode rootTree (HashLinkedList<T> treeList){
 
-     /**
+     /*
       * Metodo per il calcolo delle foglie a partire dai
       * propri hash in un certo ordine
       */
@@ -331,7 +331,7 @@ public class MerkleTree<T> {
       // Passo al nodo successivo
       merkleNodes = nextNode;
     }
-    return merkleNodes.get(0); // La radice ovvero il primo elemento nella lista
+    return merkleNodes.get(0); // La radice, ovvero il primo elemento nella lista
   }
 
   private ArrayList<String> getHashLeaves(){
