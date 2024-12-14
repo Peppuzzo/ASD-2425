@@ -112,8 +112,15 @@ public class MerkleTree<T> {
      */
     public int getIndexOfData(MerkleNode branch, T data) {
         // TODO implementare
-      //if(branch == null || data == null || validateBranch(branch))
-        //throw new IllegalArgumentException("Parametri passati per l'indice non validi");
+      if(branch == null || data == null || !(validateBranch(branch)))
+        throw new IllegalArgumentException("Parametri passati per l'indice non validi");
+
+      // L'ash dell'elemento da dover cercare
+      String checkData = HashUtil.dataToHash(data);
+
+      for(int i = 0; i < this.hashLeaves.size(); i++){
+
+      }
 
 
 
@@ -377,7 +384,6 @@ public class MerkleTree<T> {
 
     if(nodeBranch == null)
       return false;
-
     if (nodeBranch.getHash().equals(hash)) {
       return true;
     }
