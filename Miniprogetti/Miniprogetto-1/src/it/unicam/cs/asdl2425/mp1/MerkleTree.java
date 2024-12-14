@@ -187,8 +187,12 @@ public class MerkleTree<T> {
      * @return true se il sottoalbero di Merkle è valido; false altrimenti.
      */
     public boolean validateBranch(MerkleNode branch) {
-        // TODO implementare
-        return false;
+
+      // In questo caso non serve prendere MD5 perché essendo un branch
+      // è già calcolato di suo
+      String branchValidate = branch.getHash();
+
+      return checkHashInTree(this.root, branchValidate);
     }
 
     /**
@@ -359,5 +363,27 @@ public class MerkleTree<T> {
       merkleNodes = nextNode;
     }
     return merkleNodes.get(0); // La radice, ovvero il primo elemento nella lista
+  }
+
+  /**
+   * Il metodo controlla ricorsivamente per ogni nodo figlio sinistro/ destro,
+   * se può essere presente o meno nel sott albero di MerkleTree
+   *
+   * @autor Giuseppe Calabrese
+   * @param currentNode il nodo corrente su cui validate il branch
+   * @param targetHash l'ash del branch
+   * @return true se è presente in un sotto albero del MerkleTree,
+   *         false altrimenti
+   */
+  private boolean checkHashInTree(MerkleNode currentNode, String targetHash) {
+
+    if(currentNode == null)
+      return false;
+
+    if (currentNode.getHash().equals(targetHash)) {
+      return true;
+    }
+    return checkHashInTree(currentNode.getLeft(), targetHash) ||
+      checkHashInTree(currentNode.getRight(), targetHash);
   }
 }
