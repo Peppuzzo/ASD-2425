@@ -303,7 +303,6 @@ public class MerkleTree<T> {
         return null;
     }
 
-    // TODO inserire eventuali metodi privati per fini di implementazione
 
   /**
    * @autor Giuseppe Calabrese
