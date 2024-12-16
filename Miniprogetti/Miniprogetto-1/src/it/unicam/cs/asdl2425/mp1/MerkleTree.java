@@ -208,7 +208,11 @@ public class MerkleTree<T> {
      */
     public boolean validateTree(MerkleTree<T> otherTree) {
         // TODO implementare
-        return false;
+      if(otherTree == null)
+        throw new IllegalArgumentException("Impossibile validare un albero di Merkle.");
+
+      // La verifica effettiva dell'albero di Merkle tramite i due root degli alberi
+      return this.getRoot().getHash().equals(otherTree.getRoot().getHash());
     }
 
     /**
