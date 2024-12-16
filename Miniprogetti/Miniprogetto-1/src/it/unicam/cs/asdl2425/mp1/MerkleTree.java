@@ -207,7 +207,6 @@ public class MerkleTree<T> {
      *                                      se l'albero fornito è null.
      */
     public boolean validateTree(MerkleTree<T> otherTree) {
-        // TODO implementare
       if(otherTree == null)
         throw new IllegalArgumentException("Impossibile validare un albero di Merkle.");
 
@@ -236,8 +235,25 @@ public class MerkleTree<T> {
      * @return l'insieme di indici degli elementi di dati non validi.
      */
     public Set<Integer> findInvalidDataIndices(MerkleTree<T> otherTree) {
-        // TODO implementare
-        return null;
+      if(otherTree == null || this.hashLeaves.size() != otherTree.hashLeaves.size()){
+        throw new IllegalArgumentException("Albero o struttura non coincidono per il confronto");
+      }
+
+      // Il set di indici non validi per l'albero passato
+      Set<Integer> indiciInvalid = new HashSet<>();
+
+      for(int i = 0; i < this.hashLeaves.size(); i++){
+        // La stringa della foglia dell'istanza dell'albero Merkle
+        String hashThisMerkle = this.hashLeaves.get(i);
+        // La stringa della foglia dell'albero di merkle passato
+        String hashOtherMerkle = otherTree.hashLeaves.get(i);
+
+        // Se gli indici delle foglie non coincidono, aggiungi alla lista
+        if(!(hashThisMerkle.equals(hashOtherMerkle))){
+          indiciInvalid.add(i);
+        }
+      }
+      return indiciInvalid;
     }
 
     /**
