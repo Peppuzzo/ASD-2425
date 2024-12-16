@@ -121,9 +121,6 @@ public class MerkleTree<T> {
       for(int i = 0; i < this.hashLeaves.size(); i++){
 
       }
-
-
-
       return -1;
     }
 

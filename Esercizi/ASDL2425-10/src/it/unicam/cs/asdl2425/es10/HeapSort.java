@@ -1,15 +1,15 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es10;
 
 import java.util.List;
 
-// TODO completare import 
+// TODO completare import
 
 /**
  * Classe che implementa un algoritmo di ordinamento basato su heap.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: collettiva
  *
  */
@@ -22,6 +22,10 @@ public class HeapSort<E extends Comparable<E>> implements SortingAlgorithm<E> {
         // (arraylist) e alcune variabili locali di appoggio (implementazione
         // cosiddetta "in loco" o "in place", si veda
         // https://it.wikipedia.org/wiki/Algoritmo_in_loco)
+      if(l == null){
+        throw new NullPointerException("Impossibile ordinare la lista se è null!");
+      }
+
         return null;
     }
 
