@@ -111,17 +111,14 @@ public class MerkleTree<T> {
      *                                      dell'albero.
      */
     public int getIndexOfData(MerkleNode branch, T data) {
-        // TODO implementare
       if(branch == null || data == null || !(validateBranch(branch)))
         throw new IllegalArgumentException("Parametri passati per l'indice non validi");
 
-      // L'ash dell'elemento da dover cercare
+      // L'hash dell'elemento da dover cercare
       String checkData = HashUtil.dataToHash(data);
 
-      for(int i = 0; i < this.hashLeaves.size(); i++){
-
-      }
-      return -1;
+      // Controllo ricorsivamente se è presente in un sotto-albero (sinistro o destro)
+      return checkIndexBranch(branch, checkData, 0);
     }
 
     /**
@@ -369,7 +366,7 @@ public class MerkleTree<T> {
 
   /**
    * Il metodo controlla ricorsivamente per ogni nodo figlio sinistro/ destro,
-   * se può essere presente o meno nel sott albero di MerkleTree
+   * se può essere presente o meno nel sotto-albero di MerkleTree
    *
    * @autor Giuseppe Calabrese
    * @param nodeBranch il nodo corrente su cui validate il branch
@@ -387,5 +384,58 @@ public class MerkleTree<T> {
     // Controllo ricorsivamente anche per i nodi figli
     return checkHashTree(nodeBranch.getLeft(), hash) ||
       checkHashTree(nodeBranch.getRight(), hash);
+  }
+
+
+  /**
+   * Effettua la ricerca pr l'indice di un elemento specifico in un
+   * soto-albero di Merkle, in modo ricorsivo.
+   *
+   * @autor Giuseppe Calabrese
+   * @param branch la radice da cercare
+   * @param hash l'hash MD5 dell'elemento da cercare
+   * @param startIndex L'indice di partenza per ogni branch (ovvero 0)
+   * @return l'indice del branch (se presente)
+   */
+  private int checkIndexBranch(MerkleNode branch, String hash, int startIndex){
+    // Caso base: nodo nullo
+    if (branch == null) {
+      return -1;
+    }
+
+    // Controlliamos e l'hash dei una foglia è uguale all'hash della nostra ricerca
+    if (branch.getLeft() == null && branch.getRight() == null) {
+      return branch.getHash().equals(hash) ? startIndex : -1;
+    }
+
+    // Si applica la ricorsione del sotto-albero sinistro
+    int leftResult = checkIndexBranch(branch.getLeft(), hash, startIndex);
+    if (leftResult != -1) {
+      return leftResult;
+    }
+
+    // Nel caso in cui non sia presente nel sotto albero sinistro, si
+    // cerca ricorsivamente su quello destro
+    int leftLeaves = nodeLeave(branch.getLeft());
+    return checkIndexBranch(branch.getRight(), hash, startIndex + leftLeaves);
+  }
+
+
+  /**
+   * Calcolo il numero di foglie presenti nel sotto-albero specificato
+   *
+   * @autor Giuseppe Calabrese
+   * @param node l'indice di cui contare le foglie
+   * @return il numero di foglie presenti
+   */
+  private int nodeLeave(MerkleNode node){
+    if (node == null) {
+      return 0;
+    }
+    // Se l'hash è uguale alla foglia, ritorno il suo indice
+    if (node.getLeft() == null && node.getRight() == null) {
+      return 1;
+    }
+    return nodeLeave(node.getLeft()) + nodeLeave(node.getRight());
   }
 }
