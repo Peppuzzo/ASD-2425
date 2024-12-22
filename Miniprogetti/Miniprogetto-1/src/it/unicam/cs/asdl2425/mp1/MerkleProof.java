@@ -148,7 +148,10 @@ public class MerkleProof {
 
           // Casto l'oggetto
           MerkleProofHash proofHash = (MerkleProofHash) obj;
-          return this.getHash().equals(proofHash.getHash()) && this.isLeft() == proofHash.isLeft();
+          if(this.getHash().equals(proofHash.getHash()) && this.isLeft() == proofHash.isLeft()){
+            return true;
+          }
+          return false;
         }
 
         @Override

@@ -90,6 +90,7 @@ public class HashLinkedList<T> implements Iterable<T> {
       // Creo un nuovo nodo da aggiungere alla testa dell'albero
       Node nodeHead = new Node(data);
       nodeHead.next = this.head;
+      // Aggiungo la testa alla lista
       this.head = nodeHead;
       if(this.tail == null)
         this.tail = nodeHead;
@@ -105,7 +106,7 @@ public class HashLinkedList<T> implements Iterable<T> {
      */
     public void addAtTail(T data) {
       if(data == null){
-        return;
+        return; // In questo caso non effettuo alcuna iterazione
       }
 
       // Il nuovo nodo da aggiungere
@@ -136,7 +137,7 @@ public class HashLinkedList<T> implements Iterable<T> {
         hashList.add(node.hash);
         node = node.next; // Il prossimo nodo da visitare
       }
-        return hashList;
+        return hashList; // La lista con tutti gli hash in ordine
     }
 
     /**
@@ -158,6 +159,7 @@ public class HashLinkedList<T> implements Iterable<T> {
       Node eNode = this.head;
 
       while(eNode != null){
+        // Concatenazione di tutte le stringhe
         nodesString.append("Dato: ").append(eNode.data).append(", Hash: ").append(eNode.hash).append("\n");
         eNode = eNode.next;
       }
@@ -236,7 +238,12 @@ public class HashLinkedList<T> implements Iterable<T> {
             // Non è fail-fast
             throw new ConcurrentModificationException("L'iteratore è stato modificato durante l'esecuzione!");
 
-          return this.lastNode == null ? head != null : this.lastNode.next != null;
+          if(this.lastNode == null){
+            return head != null;
+          }
+          else {
+            return this.lastNode.next != null;
+          }
         }
 
         @Override

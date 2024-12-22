@@ -2,8 +2,6 @@ package it.unicam.cs.asdl2425.mp1;
 
 import java.util.*;
 
-// TODO inserire solo gli import della Java SE che si ritengono necessari
-
 /**
  * Un Merkle Tree, noto anche come hash tree binario, è una struttura dati per
  * verificare in modo efficiente l'integrità e l'autenticità dei dati

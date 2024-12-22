@@ -74,7 +74,7 @@ public class MerkleNode {
      * @return true se il nodo è una foglia, false altrimenti.
      */
     public boolean isLeaf() {
-      // Verifico se è presente almeno un figlio
+      // Verifico se è presente almeno un figlio sinistro o destro
       return this.getLeft() == null || this.getRight() == null;
     }
 
@@ -102,6 +102,8 @@ public class MerkleNode {
     @Override
     public int hashCode() {
         /* implementare in accordo a equals */
+
+        // L'hash del dato nodo
         return this.getHash().hashCode();
     }
 }
