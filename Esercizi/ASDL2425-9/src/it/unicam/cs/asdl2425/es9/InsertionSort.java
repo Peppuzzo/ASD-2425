@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Implementazione dell'algoritmo di Insertion Sort integrata nel framework di
  * valutazione numerica. L'implementazione è in loco.
- * 
+ *
  * @author Template: Luca Tesei, Implementazione: Collettiva
  *
  * @param <E>
@@ -18,6 +18,21 @@ public class InsertionSort<E extends Comparable<E>>
 
     public SortingAlgorithmResult<E> sort(List<E> l) {
         // TODO implementare
+
+      if (l == null) {
+        throw new NullPointerException("Error: non sono ammesse liste null");
+      }
+
+      // Verifica se sono presenti valori null
+      for(E element : l) {
+        if(element == null){
+          throw new NullPointerException("Error: non possono persistere elementi null nella lista");
+        }
+      }
+
+
+
+
         return null;
     }
 

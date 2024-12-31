@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.es9;
 
@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * Implementazione del QuickSort con scelta della posizione del pivot scelta
  * randomicamente tra le disponibili. L'implementazione è in loco.
- * 
+ *
  * @author Template: Luca Tesei, Implementazione: collettiva
  * @param <E>
  *                il tipo degli elementi della sequenza da ordinare.
@@ -25,6 +25,15 @@ public class QuickSortRandom<E extends Comparable<E>>
     @Override
     public SortingAlgorithmResult<E> sort(List<E> l) {
         // TODO implementare
+
+      if(l == null)
+        throw new NullPointerException("Error: la lista non può essere null!");
+
+      for(E elements : l) {
+        if ((elements == null))
+          throw new NullPointerException("Error: la lista non può contenere valori null!");
+      }
+
         return null;
     }
 
