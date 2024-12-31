@@ -22,21 +22,18 @@ public class InsertionSort<E extends Comparable<E>>
         throw new NullPointerException("Error: non sono ammesse liste null");
       }
 
-      // Verifica se sono presenti valori null
-      for(E element : l) {
-        if(element == null){
-          throw new NullPointerException("Error: non possono persistere elementi null nella lista");
-        }
-      }
+      for (int i = 1; i < l.size(); i++) {
+        E value = l.get(i); // L'elemento che deve essere inserito nella parte ordinata della lista
+        int j = i - 1; // L'indice dell'ultimo elemento ordinato
 
-      for(int i = 1; i < l.size(); i++){
-        E value = l.get(i); // L'elemento ordinato da dover inserire
-        int j = i - 1; //Indice dell'elemento precedente
-        while(j >= 0 && l.get(j).compareTo(value) > 0) {
-          l.set(j - 1, l.get(j)); // Sposto l'elemento a destra
+        // Trovo la posizione corretta per il valore e sposto gli altri elementi
+        while (j >= 0 && l.get(j).compareTo(value) > 0) {
+          l.set(j + 1, l.get(j)); // Sposto l'elemento a destra
           j--; // Passa all'elemento precedente
         }
-        l.set(j + 1, value); // Inserisce 'value' nella posizione corretta
+
+        // Posiziono il valore nella posizione corretta
+        l.set(j + 1, value);
       }
       return null;
     }
