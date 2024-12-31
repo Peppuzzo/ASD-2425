@@ -17,7 +17,6 @@ public class InsertionSort<E extends Comparable<E>>
         implements SortingAlgorithm<E> {
 
     public SortingAlgorithmResult<E> sort(List<E> l) {
-        // TODO implementare
 
       if (l == null) {
         throw new NullPointerException("Error: non sono ammesse liste null");
@@ -30,10 +29,16 @@ public class InsertionSort<E extends Comparable<E>>
         }
       }
 
-
-
-
-        return null;
+      for(int i = 1; i < l.size(); i++){
+        E value = l.get(i); // L'elemento ordinato da dover inserire
+        int j = i - 1; //Indice dell'elemento precedente
+        while(j >= 0 && l.get(j).compareTo(value) > 0) {
+          l.set(j - 1, l.get(j)); // Sposto l'elemento a destra
+          j--; // Passa all'elemento precedente
+        }
+        l.set(j + 1, value); // Inserisce 'value' nella posizione corretta
+      }
+      return null;
     }
 
     public String getName() {
