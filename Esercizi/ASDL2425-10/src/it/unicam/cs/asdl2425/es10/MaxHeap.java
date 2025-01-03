@@ -66,7 +66,6 @@ public class MaxHeap<E extends Comparable<E>> {
       for(int i = (this.heap.size() / 2) - 1; i >= 0; i--){
         heapify(i);
       }
-
     }
 
     /**
@@ -146,7 +145,7 @@ public class MaxHeap<E extends Comparable<E>> {
       // il nodo corrente (si presumo che all'inizio sia il MAX)
       int indexCurrent = i;
 
-      // confronto del figlio di destro
+      // confronto del figlio sinistro
       if(leftIndex(indexCurrent) < this.heap.size() && this.heap.
         get(leftIndex(indexCurrent)).compareTo(this.heap.
           get(indexCurrent)) > 0){
@@ -157,11 +156,17 @@ public class MaxHeap<E extends Comparable<E>> {
       if(rightIndex(indexCurrent) < this.heap.size() && this.heap.
         get(indexCurrent).compareTo(this.heap.
           get(indexCurrent))  > 0){
-            indexCurrent = rightIndex(indexCurrent); // aggiornamento del massimo
+            indexCurrent = rightIndex(i); // aggiornamento del massimo
       }
 
-
-
+      if(indexCurrent != i){
+        //scambio del nodo corrente con il più grande
+        E temp = this.heap.get(i);
+        this.heap.set(i, this.heap.get(indexCurrent));
+        this.heap.set(indexCurrent, temp);
+        // chiamata ricorsiva sui sottoalberi
+        heapify(indexCurrent);
+      }
     }
 
     /**
