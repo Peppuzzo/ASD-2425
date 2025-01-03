@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Classe che implementa uno heap binario che può contenere elementi non nulli
  * possibilmente ripetuti.
- * 
+ *
  * @author Template: Luca Tesei, Implementation: collettiva
  *
  * @param <E>
@@ -30,7 +30,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * Restituisce il numero di elementi nello heap.
-     * 
+     *
      * @return il numero di elementi nello heap
      */
     public int size() {
@@ -39,7 +39,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * Determina se lo heap è vuoto.
-     * 
+     *
      * @return true se lo heap è vuoto.
      */
     public boolean isEmpty() {
@@ -48,7 +48,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * Costruisce uno heap a partire da una lista di elementi.
-     * 
+     *
      * @param list
      *                 lista di elementi
      * @throws NullPointerException
@@ -60,15 +60,19 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * Inserisce un elemento nello heap
-     * 
+     *
      * @param el
      *               l'elemento da inserire
      * @throws NullPointerException
      *                                  se l'elemento è null
-     * 
+     *
      */
     public void insert(E el) {
         // TODO implementare
+      if(el == null){
+        throw new NullPointerException("Non è possibile inserire valori null");
+      }
+      this.heap.add(el); // inserimento del valore corrente.
     }
 
     /*
@@ -103,7 +107,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * Ritorna l'elemento massimo senza toglierlo.
-     * 
+     *
      * @return l'elemento massimo dello heap oppure null se lo heap è vuoto
      */
     public E getMax() {
@@ -114,7 +118,7 @@ public class MaxHeap<E extends Comparable<E>> {
     /**
      * Estrae l'elemento massimo dallo heap. Dopo la chiamata tale elemento non
      * è più presente nello heap.
-     * 
+     *
      * @return l'elemento massimo di questo heap oppure null se lo heap è vuoto
      */
     public E extractMax() {
@@ -129,10 +133,10 @@ public class MaxHeap<E extends Comparable<E>> {
     private void heapify(int i) {
         // TODO implementare
     }
-    
+
     /**
      * Only for JUnit testing purposes.
-     * 
+     *
      * @return the arraylist representing this max heap
      */
     protected ArrayList<E> getHeap() {
