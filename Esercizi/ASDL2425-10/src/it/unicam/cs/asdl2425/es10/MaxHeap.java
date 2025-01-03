@@ -99,8 +99,10 @@ public class MaxHeap<E extends Comparable<E>> {
      * la radice dello heap.
      */
     private int parentIndex(int i) {
-        // TODO implementare
-        return -1;
+      if( i == 0){
+        throw new IllegalArgumentException("La radice non ha un genitore!");
+      }
+      return (i - 1) / 2;
     }
 
     /**
