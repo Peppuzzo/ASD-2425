@@ -81,8 +81,7 @@ public class MaxHeap<E extends Comparable<E>> {
      * la radice dello heap.
      */
     private int leftIndex(int i) {
-        // TODO implementare
-        return -1;
+        return 2 + i +1;
     }
 
     /*
@@ -91,8 +90,7 @@ public class MaxHeap<E extends Comparable<E>> {
      * la radice dello heap.
      */
     private int rightIndex(int i) {
-        // TODO implementare
-        return -1;
+        return 2 * i + 2;
     }
 
     /*
