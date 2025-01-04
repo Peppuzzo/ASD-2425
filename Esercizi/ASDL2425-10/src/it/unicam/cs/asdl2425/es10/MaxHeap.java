@@ -58,10 +58,11 @@ public class MaxHeap<E extends Comparable<E>> {
       if(list == null) {
         throw new NullPointerException("la lista passata è nulla!");
       }
+
       // copia di tutti gli elementi presenti in list
       this.heap = new ArrayList<>(list);
 
-      // ricordina l'heap partendo da un nodo non foglia
+      // riordina l'heap partendo da un nodo non foglia in MaxHeap
       for (int i = (this.heap.size() / 2) - 1; i >= 0; i--) {
         heapify(i);
       }
@@ -86,13 +87,13 @@ public class MaxHeap<E extends Comparable<E>> {
       // indice dell'ultimo elemento inserito
       int currentIndex  = this.heap.size() - 1;
 
-      while(currentIndex  > 0 && this.heap.get(currentIndex ).
+      while(currentIndex > 0 && this.heap.get(currentIndex).
         compareTo(this.heap.
-          get(parentIndex(currentIndex ))) > 0 ) {
+          get(parentIndex(currentIndex))) > 0) {
              //scambio dell'elemento corrente con il genitore
-             E positionTemp = this.heap.get(currentIndex );
-             this.heap.set(currentIndex , this.heap.get(parentIndex(currentIndex )));
-             this.heap.set(parentIndex(currentIndex ), positionTemp);
+             E positionTemp = this.heap.get(currentIndex);
+             this.heap.set(currentIndex , this.heap.get(parentIndex(currentIndex)));
+             this.heap.set(parentIndex(currentIndex), positionTemp);
 
         //aggiorno l'indice del nuovo parent
         currentIndex = parentIndex(currentIndex);
@@ -135,7 +136,7 @@ public class MaxHeap<E extends Comparable<E>> {
      if(this.heap.isEmpty()) {
        return null;
      }
-     return this.heap.get(0);
+     return this.heap.getFirst();
     }
 
     /**
@@ -145,9 +146,21 @@ public class MaxHeap<E extends Comparable<E>> {
      * @return l'elemento massimo di questo heap oppure null se lo heap è vuoto
      */
     public E extractMax() {
-        // TODO implementare
-      E element = getMax();
+      if(this.heap.isEmpty()){
         return null;
+      }
+
+      E maxElement = this.getMax();
+
+      // rimuove l'ultimo elemento presente nella lista
+      E lastElement = this.heap.remove(this.heap.size() - 1);
+
+      if(!this.heap.isEmpty()){
+        this.heap.set(0, lastElement);
+        heapify(0);
+      }
+
+      return maxElement;
     }
 
     /*
@@ -155,21 +168,18 @@ public class MaxHeap<E extends Comparable<E>> {
      * suoi sottoalberi sinistro e destro (se esistono) siano heap.
      */
     private void heapify(int i) {
-      // il nodo corrente (si presumo che all'inizio sia il MAX)
-      int indexCurrent = i;
+      int indexCurrent = i; // il nodo corrente (si presumo che all'inizio sia il MAX)
+      int left = leftIndex(i);
+      int right = rightIndex(i);
 
-      // confronto del figlio sinistro
-      if(leftIndex(indexCurrent) < this.heap.size() && this.heap.
-        get(leftIndex(indexCurrent)).compareTo(this.heap.
-          get(indexCurrent)) > 0){
-            indexCurrent = leftIndex(i); // aggiornamento del nuovo massimo
+      // Confronto con il figlio sinistro
+      if (left < this.heap.size() && this.heap.get(left).compareTo(this.heap.get(indexCurrent)) > 0) {
+        indexCurrent = left;
       }
 
-      //confronto del figlio destro
-      if(rightIndex(indexCurrent) < this.heap.size() && this.heap.
-        get(rightIndex(indexCurrent)).compareTo(this.heap.
-          get(indexCurrent))  > 0){
-            indexCurrent = rightIndex(i); // aggiornamento del massimo
+      // Confronto con il figlio destro
+      if (right < this.heap.size() && this.heap.get(right).compareTo(this.heap.get(indexCurrent)) > 0) {
+        indexCurrent = right;
       }
 
       if(indexCurrent != i){
