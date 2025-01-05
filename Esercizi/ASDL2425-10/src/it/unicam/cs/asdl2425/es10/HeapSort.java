@@ -36,7 +36,7 @@ public class HeapSort<E extends Comparable<E>> implements SortingAlgorithm<E> {
 
       // estrazione del massimo e aggiunto alla fine della lista
       for(int i = lengthOriginal - 1; i > 0; i--){
-        E temp = l.get(0);
+        E temp = l.getFirst();
         l.set(0, l.get(i));
         l.set(i, temp);
 
