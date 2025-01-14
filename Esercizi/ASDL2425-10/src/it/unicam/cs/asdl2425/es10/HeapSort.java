@@ -24,7 +24,6 @@ public class HeapSort<E extends Comparable<E>> implements SortingAlgorithm<E> {
         throw new NullPointerException("Impossibile ordinare la lista se è null!");
       }
 
-
       int countCompare = 0;
 
       int lengthOriginal = l.size(); // per pura efficienza e sicurezza
