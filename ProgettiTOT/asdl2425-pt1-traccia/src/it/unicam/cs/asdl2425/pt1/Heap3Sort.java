@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.pt1;
 
@@ -11,17 +11,17 @@ import java.util.List;
  * implementare l'algoritmo utilizzando solo un array (arraylist) e alcune
  * variabili locali di appoggio (implementazione cosiddetta "in loco" o "in
  * place", si veda https://it.wikipedia.org/wiki/Algoritmo_in_loco)
- * 
+ *
  * Uno heap ternario è uno heap in cui ogni nodo ha tre figli e non due, come in
  * uno heap binario. La strategia di rappresentazione e i metodi di inserimento
  * / estrazione del minimo / heapify devono essere adattati al caso di tre
  * figli, ma algoritmicamente sono analoghi.
- * 
+ *
  * Lo heap ternario deve essere pensato in modo che accetti elementi ripetuti e
  * non accetti elementi null.
- * 
- * @author Luca Tesei (template) **INSERIRE NOME, COGNOME ED EMAIL
- *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
+ *
+ * @author Luca Tesei (template) GIUSEPPE, CALABRESE
+ *         giusepp.calabrese@studenti.unicam.it (implementazione)
  *
  */
 public class Heap3Sort<E extends Comparable<E>> implements SortingAlgorithm<E> {

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.pt1;
 
@@ -10,9 +10,9 @@ import java.util.List;
  * una lista di elementi. La strategia di realizzazione è semplice: si
  * inseriscono i valori da ordinare in un AVLTree e poi si fa una visita inOrder
  * per ottenere la lista ordinata di elementi.
- * 
- * @author Luca Tesei (template) **INSERIRE NOME, COGNOME ED EMAIL
- *         xxxx@studenti.unicam.it DELLO STUDENTE** (implementazione)
+ *
+ * @author Luca Tesei (template) GIUSEPPE, CALABRESE
+ *         giusepp.calabrese@studenti.unicam.it (implementazione)
  *
  */
 public class AVLTreeSort<E extends Comparable<E>>
