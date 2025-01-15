@@ -50,7 +50,7 @@ public class AVLTree<E extends Comparable<E>> {
       if(rootElement == null)
         throw new NullPointerException("La radice dell'albero non può essere NULL!");
       // si crea il nodo radice con l'informazione passata
-      this.root = new AVLTreeNode(rootElement);
+      setRoot(new AVLTreeNode(rootElement));
       this.size++;
       this.numberOfNodes++;
     }
