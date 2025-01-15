@@ -32,7 +32,9 @@ public class AVLTree<E extends Comparable<E>> {
      * Costruisce un AVLTree vuoto.
      */
     public AVLTree() {
-        // TODO implementare
+      this.root = null;
+      this.size = 0;
+      this.numberOfNodes = 0;
     }
 
     /**
@@ -45,6 +47,12 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public AVLTree(E rootElement) {
         // TODO implementare
+      if(rootElement == null)
+        throw new NullPointerException("La radice dell'albero non può essere NULL!");
+      // si crea il nodo radice con l'informazione passata
+      this.root = new AVLTreeNode(rootElement);
+      this.size++;
+      this.numberOfNodes++;
     }
 
     /**
