@@ -49,7 +49,7 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO implementare
       if(rootElement == null)
         throw new NullPointerException("La radice dell'albero non può essere NULL!");
-      // si crea il nodo radice con l'informazione passata
+      // creazione della radice con l'informazione passata
       setRoot(new AVLTreeNode(rootElement));
       this.size++;
       this.numberOfNodes++;
@@ -92,7 +92,10 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public int getHeight() {
         // TODO implementare
-        return 0;
+      if(isEmpty())
+        return -1;
+      // l'altezza corrente dell'albero
+
     }
 
     /**
@@ -187,7 +190,10 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public int getCount(E el) {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-        return 0;
+      if(el == null)
+        throw new NullPointerException("Impossibile cercare il numero di occorrenze per valori NULL!");
+
+      return 0;
     }
 
     /*
@@ -375,6 +381,7 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public AVLTreeNode getMaximum() {
             // TODO implementare
+
             return null;
         }
 
@@ -397,7 +404,8 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public boolean isLeaf() {
             // TODO implementare
-            return false;
+          // se nessun suo sotto-albero ha dei figli
+          return this.left == null && this.right == null;
         }
 
         /**
