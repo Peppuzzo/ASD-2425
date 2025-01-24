@@ -145,7 +145,7 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
       if(el == null)
         throw new NullPointerException("Impossibile inserire elementi nulli!");
-      
+
       return 0;
     }
 
@@ -162,7 +162,11 @@ public class AVLTree<E extends Comparable<E>> {
     public boolean contains(E el) {
         // TODO implementare e usare il metodo corrispondente (search) in
         // AVLTreeNode
-        return false;
+      if(el == null)
+        throw new NullPointerException("WARNING: Impossibile effettuare la ricerca per elementi NULL!");
+
+
+      return false;
     }
 
     /**
@@ -582,6 +586,7 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public AVLTreeNode search(E el) {
             // TODO implementare
+
             return null;
         }
 
