@@ -94,8 +94,11 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO implementare
       if(isEmpty())
         return -1;
-      // l'altezza corrente dell'albero
+      // calcolo ricorsivo per l'altezza del sotto albero sinistro e destro
+      int MaxLeft = (this.getRoot().getLeft() != null) ? this.getRoot().getLeft().getHeight() : -1;
+      int MaxRight = (this.getRoot().getRight() != null) ? this.getRoot().getRight().getHeight() : -1;
 
+      return Math.max(MaxLeft, MaxRight);
     }
 
     /**
@@ -140,7 +143,10 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public int insert(E el) {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-        return 0;
+      if(el == null)
+        throw new NullPointerException("Impossibile inserire elementi nulli!");
+      
+      return 0;
     }
 
     /**
@@ -381,8 +387,13 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public AVLTreeNode getMaximum() {
             // TODO implementare
-
-            return null;
+          // memorizzo il nodo corrente
+            AVLTreeNode nodeCurrent = this;
+            while(nodeCurrent.getRight() != null){
+              nodeCurrent = nodeCurrent.getRight();
+            }
+            // il nodo più a destra dell'albero, ovvero il suo MAX
+            return nodeCurrent;
         }
 
         /**
@@ -404,7 +415,6 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public boolean isLeaf() {
             // TODO implementare
-          // se nessun suo sotto-albero ha dei figli
           return this.left == null && this.right == null;
         }
 
