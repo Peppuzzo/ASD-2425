@@ -123,10 +123,7 @@ public class AVLTree<E extends Comparable<E>> {
      *         è compreso tra -1 e +1.
      */
     public boolean isBalanced() {
-        // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-      int ofBalanced = getMaxChildHeight(getRoot());
-
-      return ofBalanced >= -1 && ofBalanced <= 1;
+      return isBalancedTree(getRoot()) != -1;
     }
 
     /**
@@ -456,17 +453,10 @@ public class AVLTree<E extends Comparable<E>> {
         public int getBalanceFactor() {
             // TODO implementare
 
-          // NOTE: questo metodo servirà solo per calcolare il fatto di bilanciamento e
-          // molto probabilmente dovrà essere ussare su <code> isBalanced <code>
+          int leftHeight = (this.left != null) ? this.left.getHeight() : -1;
+          int rightHeight = (this.right != null) ? this.right.getHeight() : -1;
 
-          if(this == null){
-            return -1;
-          }
-
-          int lHeight = getMaxChildHeight(this.getLeft());
-          int rHeinght = getMaxChildHeight(this.getRight());
-
-            return lHeight - rHeinght;
+          return leftHeight - rightHeight;
         }
 
         /**
@@ -636,10 +626,36 @@ public class AVLTree<E extends Comparable<E>> {
    * @return il max tra i due sotto alberi sinistro e destro
    */
   private int getMaxChildHeight(AVLTreeNode node){
-      int leftMax = (this.getRoot().getLeft() != null) ? this.getRoot().getLeft().getHeight() : -1;
-      int rightMax = (this.getRoot().getRight() != null) ? this.getRoot().getRight().getHeight() : -1;
+      int leftMax = (node.getLeft() != null) ? node.getLeft().getHeight() : -1;
+      int rightMax = (node.getRight() != null) ? node.getRight().getHeight() : -1;
 
       return Math.max(leftMax, rightMax);
+  }
+
+  /**
+   * Verifica se il sotto-albero sottostante nel nodo specificato è bilanciato.
+   *
+   * @author Giuseppe Calabrese
+   * @param node il nodo che rappresenta la radice del sotto-albero da verificare.
+   * @return un intero che rappresenta l'altezza del sotto-albero se bilanciato, oppure no
+   */
+  private int isBalancedTree(AVLTreeNode node) {
+    if (node == null) {
+      return 0;  // Un nodo null è bilanciato e ha altezza 0
+    }
+
+    int leftHeight = isBalancedTree(node.getLeft());
+    int rightHeight = isBalancedTree(node.getRight());
+
+    if (leftHeight == -1 || rightHeight == -1) {
+      return -1;  // Se un sotto-albero non è bilanciato, ritorna -1
+    }
+
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+      return -1;  // Se la differenza di altezza è maggiore di 1, non è bilanciato
+    }
+
+    return Math.max(leftHeight, rightHeight) + 1;  // Restituisce l'altezza del nodo
   }
 
 }
