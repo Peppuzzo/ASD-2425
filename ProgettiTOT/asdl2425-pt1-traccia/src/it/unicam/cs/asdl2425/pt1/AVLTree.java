@@ -91,17 +91,13 @@ public class AVLTree<E extends Comparable<E>> {
      * @return l'altezza di questo AVLTree, -1 se questo AVLTree è vuoto.
      */
     public int getHeight() {
-      if(this.isEmpty())
+      if(this.isEmpty()){
         return -1;
-      // calcolo ricorsivo per l'altezza del sotto albero sinistro e destro
-      int MaxLeft = (this.getRoot().getLeft() != null) ? this.getRoot().getLeft().getHeight() : -1;
-      int MaxRight = (this.getRoot().getRight() != null) ? this.getRoot().getRight().getHeight() : -1;
-
-      // Il max tra i due sotto alberi ricorsivamente
+      }
       // + 1 per la radice
-      return 1 + Math.max(MaxLeft, MaxRight);
+      return 1 + getMaxChildHeight();
     }
-
+Z
     /**
      * @return the root
      */
@@ -458,6 +454,12 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public int getBalanceFactor() {
             // TODO implementare
+
+          // NOTE: questo metodo servirà solo per calcolare il fatto di bilanciamento e
+          // molto probabilmente dovrà essere ussare su <code> isBalanced <code>
+
+
+
             return 0;
         }
 
@@ -618,4 +620,19 @@ public class AVLTree<E extends Comparable<E>> {
         // sinistra-sinistra, sinistra-destra, destra-destra e destra-sinistra
         // come metodi private con gli opportuni parametri.
     }
+
+  /**
+   * Metodo per il calcolo ricorsivo del MAX tra i figli, nonché del sotto albero
+   * sinistro e del sotto albero destro
+   *
+   * @author Giuseppe Calabrese
+   * @return il max tra i due sotto alberi sinistro e destro
+   */
+  private int getMaxChildHeight(){
+      int leftMax = (this.getRoot().getLeft() != null) ? this.getRoot().getLeft().getHeight() : -1;
+      int rightMax = (this.getRoot().getRight() != null) ? this.getRoot().getRight().getHeight() : -1;
+
+      return Math.max(leftMax, rightMax);
+  }
+
 }
