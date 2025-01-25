@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package it.unicam.cs.asdl2425.pt1;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Classe di test per AVLTree.
- * 
+ *
  * @author Luca Tesei
  *
  */
@@ -517,7 +517,7 @@ public class AVLTreeTest {
         t.insert(64);
         assertEquals(null, t.getPredecessor(10));
     }
-    
+
     @Test
     public final void testComplexInsertionAndBalancing() {
         // Test di inserimenti multipli e verifica del bilanciamento
@@ -563,7 +563,7 @@ public class AVLTreeTest {
         expectedOrder.add(85);
         assertEquals(expectedOrder, t.inOrderVisit(), "Ordine in-order errato.");
     }
-    
+
     @Test
     public final void testDuplicateElements() {
         // Test di inserimenti di elementi duplicati
@@ -584,7 +584,7 @@ public class AVLTreeTest {
         // Verifica altezza
         assertEquals(1, t.getHeight(), "Altezza dell'albero errata.");
     }
-    
+
     @Test
     public final void testSuccessorAndPredecessorComplex() {
         AVLTree<Integer> t = new AVLTree<>();
@@ -608,5 +608,5 @@ public class AVLTreeTest {
         assertEquals(30, t.getPredecessor(40), "Predecessore errato per 40.");
         assertNull(t.getPredecessor(20), "Il minimo non ha predecessore.");
     }
-    
+
 }

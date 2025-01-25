@@ -91,14 +91,15 @@ public class AVLTree<E extends Comparable<E>> {
      * @return l'altezza di questo AVLTree, -1 se questo AVLTree è vuoto.
      */
     public int getHeight() {
-        // TODO implementare
-      if(isEmpty())
+      if(this.isEmpty())
         return -1;
       // calcolo ricorsivo per l'altezza del sotto albero sinistro e destro
       int MaxLeft = (this.getRoot().getLeft() != null) ? this.getRoot().getLeft().getHeight() : -1;
       int MaxRight = (this.getRoot().getRight() != null) ? this.getRoot().getRight().getHeight() : -1;
 
-      return Math.max(MaxLeft, MaxRight);
+      // Il max tra i due sotto alberi ricorsivamente
+      // + 1 per la radice
+      return 1 + Math.max(MaxLeft, MaxRight);
     }
 
     /**
@@ -185,6 +186,10 @@ public class AVLTree<E extends Comparable<E>> {
     public AVLTreeNode getNodeOf(E el) {
         // TODO implementare e usare il metodo corrispondente (search) in
         // AVLTreeNode
+      if(el == null){
+        throw new NullPointerException("warning: impossibile effettuare la ricerca" +
+          "per valori di tipo NULL!");
+      }
         return null;
     }
 
