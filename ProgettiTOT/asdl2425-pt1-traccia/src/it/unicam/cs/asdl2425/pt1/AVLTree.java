@@ -95,9 +95,9 @@ public class AVLTree<E extends Comparable<E>> {
         return -1;
       }
       // + 1 per la radice
-      return 1 + getMaxChildHeight();
+      return 1 + getMaxChildHeight(this.root);
     }
-Z
+
     /**
      * @return the root
      */
@@ -124,7 +124,9 @@ Z
      */
     public boolean isBalanced() {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-        return false;
+      int ofBalanced = getMaxChildHeight(getRoot());
+
+      return ofBalanced >= -1 && ofBalanced <= 1;
     }
 
     /**
@@ -419,7 +421,6 @@ Z
          * @return true se questo nodo non ha figli, false altrimenti.
          */
         public boolean isLeaf() {
-            // TODO implementare
           return this.left == null && this.right == null;
         }
 
@@ -458,9 +459,14 @@ Z
           // NOTE: questo metodo servirà solo per calcolare il fatto di bilanciamento e
           // molto probabilmente dovrà essere ussare su <code> isBalanced <code>
 
+          if(this == null){
+            return -1;
+          }
 
+          int lHeight = getMaxChildHeight(this.getLeft());
+          int rHeinght = getMaxChildHeight(this.getRight());
 
-            return 0;
+            return lHeight - rHeinght;
         }
 
         /**
@@ -619,16 +625,17 @@ Z
         // TODO inserire i metodi per i quattro tipi di rotazioni
         // sinistra-sinistra, sinistra-destra, destra-destra e destra-sinistra
         // come metodi private con gli opportuni parametri.
+
     }
 
   /**
-   * Metodo per il calcolo ricorsivo del MAX tra i figli, nonché del sotto albero
-   * sinistro e del sotto albero destro
+   * Metodo per il calcolo ricorsivo dell'altezza per il MAX tra i figli sinistro e destro
    *
    * @author Giuseppe Calabrese
+   * @param node il nodo a cui riferirsi
    * @return il max tra i due sotto alberi sinistro e destro
    */
-  private int getMaxChildHeight(){
+  private int getMaxChildHeight(AVLTreeNode node){
       int leftMax = (this.getRoot().getLeft() != null) ? this.getRoot().getLeft().getHeight() : -1;
       int rightMax = (this.getRoot().getRight() != null) ? this.getRoot().getRight().getHeight() : -1;
 
