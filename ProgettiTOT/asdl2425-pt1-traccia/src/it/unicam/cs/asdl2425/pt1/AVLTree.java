@@ -408,7 +408,6 @@ public class AVLTree<E extends Comparable<E>> {
          *         questo nodo è radice.
          */
         public AVLTreeNode getMinimum() {
-            // TODO implementare
           AVLTreeNode current = this;
           while(current.getLeft() != null){
             current = current.getLeft();
@@ -422,7 +421,7 @@ public class AVLTree<E extends Comparable<E>> {
          * @return true se questo nodo non ha figli, false altrimenti.
          */
         public boolean isLeaf() {
-          return this.left == null && this.right == null;
+          return this.getLeft() == null && this.getRight() == null;
         }
 
         /**
@@ -439,8 +438,22 @@ public class AVLTree<E extends Comparable<E>> {
          * supponendo che l'altezza dei nodi figli sia già stata aggiornata.
          */
         public void updateHeight() {
-            // TODO implementare
-
+          // Caso base: non avendo sotto-alberi, l'altezza è 0.
+          if(this.isLeaf()){
+            this.setHeight(0);
+          }
+          // controllo se la radice gha entrambi i figli, in quel caso si prenda il max tra di loro + il nodo radice
+          else if(this.getLeft() != null && this.getRight() != null){
+            this.setHeight(Math.max(this.getLeft().getHeight(), this.getRight().getHeight()) + 1);
+          }
+          // caso in cui ho solo il sotto-albero sinistro
+          else if(this.getRight() == null){
+            this.setHeight(this.getLeft().getHeight() + 1);
+          }
+          // caso in cui ho solo il sotto-albero dentro
+          else {
+            this.setHeight(this.getRight().getHeight() + 1);
+          }
         }
 
         /**
@@ -634,7 +647,7 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO inserire i metodi per i quattro tipi di rotazioni
         // sinistra-sinistra, sinistra-destra, destra-destra e destra-sinistra
         // come metodi private con gli opportuni parametri.
-
+      
     }
 
   /**
