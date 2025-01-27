@@ -468,7 +468,21 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public boolean isBalanced() {
             // TODO implementare
+          int factor = getBalanceFactor();
+          if(factor < -1 || factor > 1){
             return false;
+          }
+
+          // verifica del bilanciamento del sotto-albero sinistro
+          if(this.getLeft() != null && !this.getLeft().isBalanced()){
+            return false;
+          }
+          // verifica del bilanciamento del sotto-albero destro
+          if(this.getRight() != null && !this.getRight().isBalanced()){
+            return false;
+          }
+          // tutti i sotto-alberi (e i suoi discendenti) sono bilanciati
+          return true;
         }
 
         /**
@@ -633,7 +647,7 @@ public class AVLTree<E extends Comparable<E>> {
   }
 
   /**
-   * Verifica se il sotto-albero sottostante nel nodo specificato è bilanciato.
+   * Verifica se il sotto-alberi sottostante nel nodo specificato è bilanciato.
    *
    * @author Giuseppe Calabrese
    * @param node il nodo che rappresenta la radice del sotto-albero da verificare.
@@ -644,7 +658,9 @@ public class AVLTree<E extends Comparable<E>> {
       return 0;  // Un nodo null è bilanciato e ha altezza 0
     }
 
+    // altezza del sotto-albero sinistro per quel nodo
     int leftHeight = isBalancedTree(node.getLeft());
+    //altezza del sotto-albero destro per il nodo passato
     int rightHeight = isBalancedTree(node.getRight());
 
     if (leftHeight == -1 || rightHeight == -1) {
