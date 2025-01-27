@@ -409,7 +409,11 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public AVLTreeNode getMinimum() {
             // TODO implementare
-            return null;
+          AVLTreeNode current = this;
+          while(current.getLeft() != null){
+            current = current.getLeft();
+          }
+            return current;
         }
 
         /**
@@ -436,6 +440,7 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public void updateHeight() {
             // TODO implementare
+
         }
 
         /**
