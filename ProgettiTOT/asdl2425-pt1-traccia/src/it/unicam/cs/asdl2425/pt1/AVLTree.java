@@ -50,7 +50,7 @@ public class AVLTree<E extends Comparable<E>> {
       if(rootElement == null)
         throw new NullPointerException("La radice dell'albero non può essere NULL!");
       // creazione della radice con l'informazione passata
-      setRoot(new AVLTreeNode(rootElement));
+      this.setRoot(new AVLTreeNode(rootElement));
       this.size++;
       this.numberOfNodes++;
     }
@@ -442,7 +442,8 @@ public class AVLTree<E extends Comparable<E>> {
           if(this.isLeaf()){
             this.setHeight(0);
           }
-          // controllo se la radice gha entrambi i figli, in quel caso si prenda il max tra di loro + il nodo radice
+          // controllo se la radice gha entrambi i figli,
+          // in quel caso si prenda il max tra di loro + il nodo radice
           else if(this.getLeft() != null && this.getRight() != null){
             this.setHeight(Math.max(this.getLeft().getHeight(), this.getRight().getHeight()) + 1);
           }
@@ -647,7 +648,12 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO inserire i metodi per i quattro tipi di rotazioni
         // sinistra-sinistra, sinistra-destra, destra-destra e destra-sinistra
         // come metodi private con gli opportuni parametri.
-      
+
+      private void left_Rotation(AVLTreeNode node, ){
+
+      }
+
+
     }
 
   /**
