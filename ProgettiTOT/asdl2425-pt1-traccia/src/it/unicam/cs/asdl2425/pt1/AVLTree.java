@@ -142,6 +142,7 @@ public class AVLTree<E extends Comparable<E>> {
       if(el == null)
         throw new NullPointerException("Impossibile inserire elementi nulli!");
 
+
       return 0;
     }
 
@@ -649,9 +650,56 @@ public class AVLTree<E extends Comparable<E>> {
         // sinistra-sinistra, sinistra-destra, destra-destra e destra-sinistra
         // come metodi private con gli opportuni parametri.
 
-      private void left_Rotation(AVLTreeNode node, ){
 
+      /**
+       * La rotazione left_left-Rotation consiste nella rotazione del sotto
+       * albero destro quando la radice (ovvero l'albero sinistro)
+       * è minore rispetto al figlio destro
+       *
+       * @author Giuseppe Calabrese
+       * @param node
+       *            il nodo da dover roteare
+       * @throws IllegalArgumentException
+       *            se il nodo passato e il suo figlio destro sono null
+       */
+      private void left_left_Rotation(AVLTreeNode node) {
+        if (node == null || node.getRight() == null) {
+          throw new IllegalArgumentException("Impossibile effettuare la rotazione: nodo o figlio destro null.");
+        }
+
+        // Si prende il figlio destro del nodo
+        AVLTreeNode rightChild = node.getRight();
+
+        // Si sposta il sotto-albero sinistro di rightChild come figlio destro di node
+        node.setRight(rightChild.getLeft());
+        if (rightChild.getLeft() != null) {
+          rightChild.getLeft().setParent(node);
+        }
+
+        // Si aggiorna il parent di rightChild
+        rightChild.setParent(node.getParent());
+        if (node.getParent() == null) {
+          // Se il nodo è la radice, aggiorniamo la radice
+          setRoot(rightChild);
+        } else if (node == node.getParent().getLeft()) {
+          // Se il nodo è il figlio sinistro del suo genitore
+          node.getParent().setLeft(rightChild);
+        } else {
+          // Se il nodo è il figlio destro del suo genitore
+          node.getParent().setRight(rightChild);
+        }
+
+        // Si collega il node come figlio sinistro di rightChild
+        rightChild.setLeft(node);
+        node.setParent(rightChild);
+        updateHeight();
+        rightChild.updateHeight();
       }
+
+
+
+
+
 
 
     }
