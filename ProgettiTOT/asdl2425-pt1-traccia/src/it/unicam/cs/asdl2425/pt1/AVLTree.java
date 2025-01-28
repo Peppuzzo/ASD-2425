@@ -710,7 +710,7 @@ public class AVLTree<E extends Comparable<E>> {
        */
       private void right_right_Rotation(AVLTreeNode node) {
         if (node == null || node.getLeft() == null) {
-          throw new IllegalArgumentException("Impossibile effettuare la rotazione: nodo o figlio sinistro null.");
+          throw new IllegalArgumentException("Impossibile effettuare la rotazione con parametri null.");
         }
 
         // Recupera il figlio sinistro del nodo
@@ -743,8 +743,22 @@ public class AVLTree<E extends Comparable<E>> {
         leftChild.updateHeight();
       }
 
+      /**
+       *
+       *
+       * @author Giuseppe Calabrese
+       * @param node il nodo da dover roteare
+       * @throws IllegalArgumentException
+       *              se il nodo passato di riferimento oppure i suoi figli
+       *              sono null
+       */
       private void left_right_Rotation(AVLTreeNode node){
-        
+        if(node == null || node.getLeft() == null || node.getLeft().getRight() == null){
+          throw new IllegalArgumentException("Impossibile roteare nodi per valori nulli.");
+        }
+
+
+
       }
 
 
