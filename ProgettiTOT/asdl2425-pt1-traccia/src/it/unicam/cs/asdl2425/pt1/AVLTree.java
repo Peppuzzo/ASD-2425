@@ -743,6 +743,10 @@ public class AVLTree<E extends Comparable<E>> {
         leftChild.updateHeight();
       }
 
+      private void left_right_Rotation(AVLTreeNode node){
+        
+      }
+
 
 
 
