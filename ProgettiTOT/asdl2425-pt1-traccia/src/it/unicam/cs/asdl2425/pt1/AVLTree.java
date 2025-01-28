@@ -696,6 +696,55 @@ public class AVLTree<E extends Comparable<E>> {
         rightChild.updateHeight();
       }
 
+      /**
+       * La rotazione right-right (rotazione a destra) consiste nello spostare il sotto-albero
+       * sinistro del nodo corrente per bilanciare un albero sbilanciato a sinistra.
+       * Questo accade quando il sotto-albero sinistro del nodo corrente è più alto
+       * rispetto al sotto-albero destro, con un fattore di bilanciamento fuori dai limiti.
+
+       * @author Giuseppe Calabrese
+       * @param node
+       *            il nodo da ruotare verso destra
+       * @throws IllegalArgumentException
+       *            se il nodo passato o il suo figlio sinistro sono null
+       */
+      private void right_right_Rotation(AVLTreeNode node) {
+        if (node == null || node.getLeft() == null) {
+          throw new IllegalArgumentException("Impossibile effettuare la rotazione: nodo o figlio sinistro null.");
+        }
+
+        // Recupera il figlio sinistro del nodo
+        AVLTreeNode leftChild = node.getLeft();
+
+        // Sposta il sotto-albero destro di leftChild come sotto-albero sinistro di node
+        node.setLeft(leftChild.getRight());
+        if (leftChild.getRight() != null) {
+          leftChild.getRight().setParent(node);
+        }
+        // Aggiorna il genitore di leftChild
+        leftChild.setParent(node.getParent());
+        if (node.getParent() == null) {
+          // Se il nodo è la radice, aggiorna la radice con leftChild
+          setRoot(leftChild);
+        } else if (node == node.getParent().getRight()) {
+          // Se il nodo era il figlio destro del suo genitore
+          node.getParent().setRight(leftChild);
+        } else {
+          // Se il nodo era il figlio sinistro del suo genitore
+          node.getParent().setLeft(leftChild);
+        }
+
+        // Collega node come figlio destro di leftChild
+        leftChild.setRight(node);
+        node.setParent(leftChild);
+
+        // Aggiorna le altezze dei nodi coinvolti
+        updateHeight();
+        leftChild.updateHeight();
+      }
+
+
+
 
 
 
