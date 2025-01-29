@@ -752,8 +752,8 @@ public class AVLTree<E extends Comparable<E>> {
         if(this.getLeft() == null || this.getLeft().getRight() == null){
           throw new IllegalArgumentException("Impossibile roteare nodi per valori nulli.");
         }
-        this.getRight().right_right_Rotation();
-        left_left_Rotation();
+        this.getLeft().left_left_Rotation();
+        right_right_Rotation();
       }
 
       /**
@@ -769,8 +769,8 @@ public class AVLTree<E extends Comparable<E>> {
         if(this.getRight() == null || this.getRight().getLeft() == null){
           throw new IllegalArgumentException("Impossibile roteare nodi per valori nulli.");
         }
-        this.getLeft().left_left_Rotation();
-        right_right_Rotation();
+        this.getRight().right_right_Rotation();
+        left_left_Rotation();
       }
     }
 
