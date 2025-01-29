@@ -47,7 +47,6 @@ public class AVLTree<E extends Comparable<E>> {
      *                                  se l'elemento passato è null
      */
     public AVLTree(E rootElement) {
-        // TODO implementare
       if(rootElement == null)
         throw new NullPointerException("La radice dell'albero non può essere NULL!");
       // creazione della radice con l'informazione passata
@@ -139,7 +138,6 @@ public class AVLTree<E extends Comparable<E>> {
      *                                  se l'elemento {@code el} è null
      */
     public int insert(E el) {
-        // TODO implementare e usare il metodo corrispondente in AVLTreeNode
       if(el == null)
         throw new NullPointerException("Impossibile inserire elementi nulli!");
       if(this.getRoot() == null){
@@ -183,13 +181,11 @@ public class AVLTree<E extends Comparable<E>> {
      *
      */
     public AVLTreeNode getNodeOf(E el) {
-        // TODO implementare e usare il metodo corrispondente (search) in
-        // AVLTreeNode
       if(el == null){
         throw new NullPointerException("warning: impossibile effettuare la ricerca" +
           "per valori di tipo NULL!");
       }
-        return null;
+      return this.getRoot().search(el);
     }
 
     /**
@@ -203,13 +199,12 @@ public class AVLTree<E extends Comparable<E>> {
      *                                  se l'elemento {@code el} è null
      */
     public int getCount(E el) {
-        // TODO implementare e usare il metodo corrispondente in AVLTreeNode
       if(el == null)
         throw new NullPointerException("Impossibile cercare il numero di occorrenze per valori NULL!");
-
-      
-
-      return 0;
+      AVLTreeNode nodeSearch = getRoot().search(el);
+      if(nodeSearch == null)
+        return 0;
+      else return nodeSearch.count;
     }
 
     /*
@@ -235,7 +230,6 @@ public class AVLTree<E extends Comparable<E>> {
      *         tenendo conto della loro molteplicità.
      */
     public List<E> inOrderVisit() {
-        // TODO implementare
       List<E> result = new ArrayList<>();
       root.inOrder(result);
       return result;
@@ -248,8 +242,8 @@ public class AVLTree<E extends Comparable<E>> {
      *         AVLTree è vuoto.
      */
     public E getMinimum() {
-        // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-        return null;
+      if(isEmpty()) return null;
+      return getRoot().getMinimum().getEl();
     }
 
     /**
@@ -259,8 +253,8 @@ public class AVLTree<E extends Comparable<E>> {
      *         AVLTree è vuoto.
      */
     public E getMaximum() {
-        // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-        return null;
+      if(isEmpty()) return null;
+      return getRoot().getMaximum().getEl();
     }
 
     /**
@@ -285,7 +279,23 @@ public class AVLTree<E extends Comparable<E>> {
       if(el == null){
         throw new NullPointerException("Impossibile restituire elementi null");
       }
-        return null;
+      AVLTreeNode nodeSearch = getRoot().search(el);
+      if(nodeSearch == null){
+        throw new IllegalArgumentException("L'elemento non è presente nell'albero AVLTree");
+      }
+      //if(nodeSearch.getMaximum(nodeSearch))
+      if(nodeSearch.getRight() != null){
+        return getMinimum();
+      }
+      else {
+        AVLTreeNode node = nodeSearch.getParent();
+        while(node != null && nodeSearch == node.getRight()){
+          nodeSearch = node;
+          node = node.getParent();
+        }
+        node.setEl(el);
+        return node.getEl();
+      }
     }
 
     /**
@@ -307,7 +317,14 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public E getPredecessor(E el) {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-        return null;
+      if(el == null){
+        throw new NullPointerException("Impossibile effettuare una ricerca per il nodo precedente");
+      }
+      AVLTreeNode nodeSearch = getRoot().search(el);
+      if(nodeSearch == null){
+        throw new IllegalArgumentException("L'elemento non è presente nell'albero AVLTree");
+      }
+      return null;
     }
 
     /**
@@ -390,6 +407,7 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public AVLTreeNode getSuccessor() {
             // TODO implementare
+
             return null;
         }
 
@@ -679,7 +697,7 @@ public class AVLTree<E extends Comparable<E>> {
             }
             else comparisonsCounter += right.insert(el);
           }
-          else{ // this.el = el, un nodo contenente el è già presente nell'albero
+          else{ // se esiste un nodo che è già contenuto in el
             setCount(count + 1);
             size++;
             // il metodo insert() può terminare, non essendoci nuovi nodi non è necessario alcun bilanciamento
@@ -692,11 +710,11 @@ public class AVLTree<E extends Comparable<E>> {
           int balanceFactor = getBalanceFactor();
           if (balanceFactor > 1) { // l'albero è sbilanciato verso destra
             if (left.getBalanceFactor() < 0) // il sotto-albero sinistro è sbilanciato verso destra
-              right_left_Rotation(); // rotazione DS
+              left_right_Rotation(); // rotazione DS
             else right_right_Rotation(); // rotazione DD
           }else if(balanceFactor < -1){ // l'albero è sbilanciato verso sinistra
             if (right.getBalanceFactor() > 0) // il sotto-albero destro è sbilanciato verso sinistra
-              left_right_Rotation(); // rotazione SD
+              right_left_Rotation(); // rotazione SD
             else left_left_Rotation(); // rotazione SS
           }
           return comparisonsCounter; // restituisce il numero di confronti effettuati
@@ -713,7 +731,7 @@ public class AVLTree<E extends Comparable<E>> {
        *
        * @author Giuseppe Calabrese
        * @throws IllegalArgumentException
-       *            se il nodo passato e il suo figlio destro sono null
+       *            se il figlio passato destro sono null
        */
       private void left_left_Rotation() {
         if (this.getRight() == null) {
