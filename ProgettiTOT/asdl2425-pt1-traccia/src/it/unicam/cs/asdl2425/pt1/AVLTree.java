@@ -657,86 +657,82 @@ public class AVLTree<E extends Comparable<E>> {
        * è minore rispetto al figlio destro
        *
        * @author Giuseppe Calabrese
-       * @param node
-       *            il nodo da dover roteare
        * @throws IllegalArgumentException
        *            se il nodo passato e il suo figlio destro sono null
        */
-      private void left_left_Rotation(AVLTreeNode node) {
-        if (node == null || node.getRight() == null) {
+      private void left_left_Rotation() {
+        if (this.getRight() == null) {
           throw new IllegalArgumentException("Impossibile effettuare la rotazione: nodo o figlio destro null.");
         }
 
         // Si prende il figlio destro del nodo
-        AVLTreeNode rightChild = node.getRight();
+        AVLTreeNode rightChild = this.getRight();
 
         // Si sposta il sotto-albero sinistro di rightChild come figlio destro di node
-        node.setRight(rightChild.getLeft());
+        this.setRight(rightChild.getLeft());
         if (rightChild.getLeft() != null) {
-          rightChild.getLeft().setParent(node);
+          rightChild.getLeft().setParent(this);
         }
 
         // Si aggiorna il parent di rightChild
-        rightChild.setParent(node.getParent());
-        if (node.getParent() == null) {
+        rightChild.setParent(this.getParent());
+        if (this.getParent() == null) {
           // Se il nodo è la radice, aggiorniamo la radice
           setRoot(rightChild);
-        } else if (node == node.getParent().getLeft()) {
+        } else if (this == this.getParent().getLeft()) {
           // Se il nodo è il figlio sinistro del suo genitore
-          node.getParent().setLeft(rightChild);
+          this.getParent().setLeft(rightChild);
         } else {
           // Se il nodo è il figlio destro del suo genitore
-          node.getParent().setRight(rightChild);
+          this.getParent().setRight(rightChild);
         }
 
         // Si collega il node come figlio sinistro di rightChild
-        rightChild.setLeft(node);
-        node.setParent(rightChild);
+        rightChild.setLeft(this);
+        this.setParent(rightChild);
         updateHeight();
         rightChild.updateHeight();
       }
 
       /**
-       * La rotazione right-right (rotazione a destra) consiste nello spostare il sotto-albero
+       * La rotazione right-right_Rotation (rotazione a destra) consiste nello spostare il sotto-albero
        * sinistro del nodo corrente per bilanciare un albero sbilanciato a sinistra.
        * Questo accade quando il sotto-albero sinistro del nodo corrente è più alto
        * rispetto al sotto-albero destro, con un fattore di bilanciamento fuori dai limiti.
 
        * @author Giuseppe Calabrese
-       * @param node
-       *            il nodo da ruotare verso destra
        * @throws IllegalArgumentException
-       *            se il nodo passato o il suo figlio sinistro sono null
+       *            se i suoi figli sono null
        */
-      private void right_right_Rotation(AVLTreeNode node) {
-        if (node == null || node.getLeft() == null) {
+      private void right_right_Rotation() {
+        if (this.getLeft() == null) {
           throw new IllegalArgumentException("Impossibile effettuare la rotazione con parametri null.");
         }
 
         // Recupera il figlio sinistro del nodo
-        AVLTreeNode leftChild = node.getLeft();
+        AVLTreeNode leftChild = this.getLeft();
 
         // Sposta il sotto-albero destro di leftChild come sotto-albero sinistro di node
-        node.setLeft(leftChild.getRight());
+        this.setLeft(leftChild.getRight());
         if (leftChild.getRight() != null) {
-          leftChild.getRight().setParent(node);
+          leftChild.getRight().setParent(this);
         }
         // Aggiorna il genitore di leftChild
-        leftChild.setParent(node.getParent());
-        if (node.getParent() == null) {
+        leftChild.setParent(this.getParent());
+        if (this.getParent() == null) {
           // Se il nodo è la radice, aggiorna la radice con leftChild
           setRoot(leftChild);
-        } else if (node == node.getParent().getRight()) {
+        } else if (this == this.getParent().getRight()) {
           // Se il nodo era il figlio destro del suo genitore
-          node.getParent().setRight(leftChild);
+          this.getParent().setRight(leftChild);
         } else {
           // Se il nodo era il figlio sinistro del suo genitore
-          node.getParent().setLeft(leftChild);
+          this.getParent().setLeft(leftChild);
         }
 
         // Collega node come figlio destro di leftChild
-        leftChild.setRight(node);
-        node.setParent(leftChild);
+        leftChild.setRight(this);
+        this.setParent(leftChild);
 
         // Aggiorna le altezze dei nodi coinvolti
         updateHeight();
@@ -744,31 +740,38 @@ public class AVLTree<E extends Comparable<E>> {
       }
 
       /**
-       *
+       * La rotazione left_right_Rotation bilancia un nodo sbilanciato
+       * quando il fattore di bilanciamento è maggiore di 1 e il figlio sinistro ha un fattore
+       * di bilanciamento minore di 0.
        *
        * @author Giuseppe Calabrese
-       * @param node il nodo da dover roteare
        * @throws IllegalArgumentException
-       *              se il nodo passato di riferimento oppure i suoi figli
-       *              sono null
+       *              se i suoi figli sono null
        */
-      private void left_right_Rotation(AVLTreeNode node){
-        if(node == null || node.getLeft() == null || node.getLeft().getRight() == null){
+      private void left_right_Rotation(){
+        if(this.getLeft() == null || this.getLeft().getRight() == null){
           throw new IllegalArgumentException("Impossibile roteare nodi per valori nulli.");
         }
-
-
-
+        this.getRight().right_right_Rotation();
+        left_left_Rotation();
       }
 
-
-
-
-
-
-
-
-
+      /**
+       * La rotazione right_left_Rotation bilancia un nodo sbilanciato
+       * quando il fattore di bilanciamento è maggiore di 1 e il figlio destro ha un fattore
+       * di bilanciamento minore di 0.
+       *
+       * @author Giuseppe Calabrese
+       * @throws IllegalArgumentException
+       *              se i suoi figli sono null
+       */
+      private void right_left_Rotation(){
+        if(this.getRight() == null || this.getRight().getLeft() == null){
+          throw new IllegalArgumentException("Impossibile roteare nodi per valori nulli.");
+        }
+        this.getLeft().left_left_Rotation();
+        right_right_Rotation();
+      }
     }
 
   /**
