@@ -853,11 +853,9 @@ public class AVLTree<E extends Comparable<E>> {
        * @param result La visita da dover effettuare in ordine
        */
       private void inOrder(List<E> result) {
-        if (this != null) {
-          if(left!=null) left.inOrder(result);
-          for (int i = 0; i < count; i++) result.add(el);
-          if(right!=null) right.inOrder(result);
-        }
+        if(left != null) getLeft().inOrder(result);
+        for (int i = 0; i < count; i++) result.add(el);
+        if(getRight()!=null) getRight().inOrder(result);
       }
     }
 
