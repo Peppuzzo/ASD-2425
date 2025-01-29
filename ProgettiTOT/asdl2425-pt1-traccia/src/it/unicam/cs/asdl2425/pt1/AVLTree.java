@@ -1,5 +1,6 @@
 package it.unicam.cs.asdl2425.pt1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -141,9 +142,14 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
       if(el == null)
         throw new NullPointerException("Impossibile inserire elementi nulli!");
-
-
-      return 0;
+      if(this.getRoot() == null){
+        setRoot(new AVLTreeNode(el));
+        this.numberOfNodes++;
+        this.size++;
+        return 0;
+      } else {
+        return getRoot().insert(el);
+      }
     }
 
     /**
@@ -201,6 +207,8 @@ public class AVLTree<E extends Comparable<E>> {
       if(el == null)
         throw new NullPointerException("Impossibile cercare il numero di occorrenze per valori NULL!");
 
+      
+
       return 0;
     }
 
@@ -228,7 +236,9 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public List<E> inOrderVisit() {
         // TODO implementare
-        return null;
+      List<E> result = new ArrayList<>();
+      root.inOrder(result);
+      return result;
     }
 
     /**
@@ -272,6 +282,9 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public E getSuccessor(E el) {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
+      if(el == null){
+        throw new NullPointerException("Impossibile restituire elementi null");
+      }
         return null;
     }
 
@@ -644,7 +657,49 @@ public class AVLTree<E extends Comparable<E>> {
          */
         public int insert(E el) {
             // TODO implementare
-            return 0;
+          int comparison = this.el.compareTo(el);
+          int comparisonsCounter = 1;
+          if(comparison > 0){
+            if(left == null){
+              setLeft(new AVLTreeNode(el, this));
+              size++;
+              numberOfNodes++;
+            }
+            else{
+              // restituisce il numero di confronti richiesti per inserire el nel sotto-albero sinistro
+              comparisonsCounter += left.insert(el);
+            }
+          }
+          else if(comparison < 0){
+            if(right == null){
+              setRight(new AVLTreeNode(el, this));
+              size++;
+              numberOfNodes++;
+              // restituisce il numero di confronti richiesti per inserire el nel sotto-albero destro
+            }
+            else comparisonsCounter += right.insert(el);
+          }
+          else{ // this.el = el, un nodo contenente el è già presente nell'albero
+            setCount(count + 1);
+            size++;
+            // il metodo insert() può terminare, non essendoci nuovi nodi non è necessario alcun bilanciamento
+            return comparisonsCounter;
+          }
+          // se ha aggiunto un nuovo nodo, risale ricorsivamente l'albero ed esegue le seguenti istruzioni
+          // su ogni nodo tra il nuovo nodo inserito e la radice
+          updateHeight();
+
+          int balanceFactor = getBalanceFactor();
+          if (balanceFactor > 1) { // l'albero è sbilanciato verso destra
+            if (left.getBalanceFactor() < 0) // il sotto-albero sinistro è sbilanciato verso destra
+              right_left_Rotation(); // rotazione DS
+            else right_right_Rotation(); // rotazione DD
+          }else if(balanceFactor < -1){ // l'albero è sbilanciato verso sinistra
+            if (right.getBalanceFactor() > 0) // il sotto-albero destro è sbilanciato verso sinistra
+              left_right_Rotation(); // rotazione SD
+            else left_left_Rotation(); // rotazione SS
+          }
+          return comparisonsCounter; // restituisce il numero di confronti effettuati
         }
 
         // TODO inserire i metodi per i quattro tipi di rotazioni
@@ -771,6 +826,20 @@ public class AVLTree<E extends Comparable<E>> {
         }
         this.getRight().right_right_Rotation();
         left_left_Rotation();
+      }
+
+      /**
+       * Metodo per ritornare la lista in un certo ordine per l'albero AVLTree
+       *
+       * @author Giuseppe Calabrese
+       * @param result La visita da dover effettuare in ordine
+       */
+      private void inOrder(List<E> result) {
+        if (this != null) {
+          if(left!=null) left.inOrder(result);
+          for (int i = 0; i < count; i++) result.add(el);
+          if(right!=null) right.inOrder(result);
+        }
       }
     }
 
