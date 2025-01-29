@@ -161,9 +161,8 @@ public class AVLTree<E extends Comparable<E>> {
         // AVLTreeNode
       if(el == null)
         throw new NullPointerException("WARNING: Impossibile effettuare la ricerca per elementi NULL!");
-
-
-      return false;
+      // ricerca dell'elemento
+      return (this.getRoot().search(el) != null);
     }
 
     /**
@@ -622,9 +621,13 @@ public class AVLTree<E extends Comparable<E>> {
          *         found
          */
         public AVLTreeNode search(E el) {
-            // TODO implementare
+          // effettua una visita inorder nell'albero per cercare un nodo dal valore pari a el,
+          // se non lo trova restituisce null
+          if(this.getEl().compareTo(el) > 0 && getLeft() != null) return getLeft().search(el);
+          if(this.getEl().equals(el)) return this;
+          if(this.getEl().compareTo(el) < 0 && getRight() != null) return getRight().search(el);
 
-            return null;
+          return null;
         }
 
         /**
