@@ -157,8 +157,6 @@ public class AVLTree<E extends Comparable<E>> {
      *                                  se l'elemento {@code el} è null
      */
     public boolean contains(E el) {
-        // TODO implementare e usare il metodo corrispondente (search) in
-        // AVLTreeNode
       if(el == null)
         throw new NullPointerException("WARNING: Impossibile effettuare la ricerca per elementi NULL!");
       // ricerca dell'elemento
@@ -621,7 +619,7 @@ public class AVLTree<E extends Comparable<E>> {
          *         found
          */
         public AVLTreeNode search(E el) {
-          // effettua una visita inorder nell'albero per cercare un nodo dal valore pari a el,
+          // effettua una visita inorder nell'albero per cercare un nodo dal valore uguale a el,
           // se non lo trova restituisce null
           if(this.getEl().compareTo(el) > 0 && getLeft() != null) return getLeft().search(el);
           if(this.getEl().equals(el)) return this;
@@ -652,7 +650,6 @@ public class AVLTree<E extends Comparable<E>> {
         // TODO inserire i metodi per i quattro tipi di rotazioni
         // sinistra-sinistra, sinistra-destra, destra-destra e destra-sinistra
         // come metodi private con gli opportuni parametri.
-
 
       /**
        * La rotazione left_left-Rotation consiste nella rotazione del sotto
