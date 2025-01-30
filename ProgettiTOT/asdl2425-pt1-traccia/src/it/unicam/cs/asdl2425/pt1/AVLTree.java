@@ -275,27 +275,29 @@ public class AVLTree<E extends Comparable<E>> {
      *                                      presente in questo AVLTree.
      */
     public E getSuccessor(E el) {
-        // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-      if(el == null){
-        throw new NullPointerException("Impossibile restituire elementi null");
-      }
+      if(el == null) throw new NullPointerException("Impossibile restituire elementi null");
+
       AVLTreeNode nodeSearch = getRoot().search(el);
-      if(nodeSearch == null){
-        throw new IllegalArgumentException("L'elemento non è presente nell'albero AVLTree");
-      }
-      //if(nodeSearch.getMaximum(nodeSearch))
+      if(nodeSearch == null) throw new IllegalArgumentException("L'elemento non è presente nell'albero AVLTree");
+
+      // L'elemento corrispondente è già max
+      if(nodeSearch.equals(getRoot().getMaximum())) return null;
+
       if(nodeSearch.getRight() != null){
-        return getMinimum();
+        // se esiste, ritorno il valore più piccolo che sia maggiore di el
+        return nodeSearch.getRight().getMinimum().getEl();
       }
       else {
-        AVLTreeNode node = nodeSearch.getParent();
-        while(node != null && nodeSearch == node.getRight()){
-          nodeSearch = node;
-          node = node.getParent();
+        // altrimenti, risalgo l'albero fintanto che non trovo
+        // il primo antenato per cui el è nel sotto-albero sinistro
+        for(int i = 0; i < getRoot().getHeight(); i++){
+          if(nodeSearch.getParent().getEl().compareTo(nodeSearch.getEl()) > 0){
+            return nodeSearch.getParent().getEl();
+          }
+          nodeSearch = nodeSearch.getParent();
         }
-        node.setEl(el);
-        return node.getEl();
       }
+      return null;
     }
 
     /**
@@ -317,12 +319,23 @@ public class AVLTree<E extends Comparable<E>> {
      */
     public E getPredecessor(E el) {
         // TODO implementare e usare il metodo corrispondente in AVLTreeNode
-      if(el == null){
-        throw new NullPointerException("Impossibile effettuare una ricerca per il nodo precedente");
-      }
+      if(el == null) throw new NullPointerException("Impossibile effettuare una ricerca per il nodo precedente");
+
       AVLTreeNode nodeSearch = getRoot().search(el);
-      if(nodeSearch == null){
-        throw new IllegalArgumentException("L'elemento non è presente nell'albero AVLTree");
+      if(nodeSearch == null) throw new IllegalArgumentException("L'elemento non è presente nell'albero AVLTree");
+
+      if(nodeSearch.equals(getRoot().getMinimum())) return null;
+
+      if(nodeSearch.getLeft() !=  null){
+        return nodeSearch.getLeft().getMaximum().getEl();
+      }
+      else{
+        for(int i = 0; i < getRoot().getHeight(); i++){
+          if(nodeSearch.getParent().getEl().compareTo(nodeSearch.getEl()) < 0){
+            return nodeSearch.getParent().getEl();
+          }
+          nodeSearch = nodeSearch.getParent();
+        }
       }
       return null;
     }
@@ -419,7 +432,6 @@ public class AVLTree<E extends Comparable<E>> {
          *         questo nodo è radice.
          */
         public AVLTreeNode getMaximum() {
-            // TODO implementare
           // memorizzo il nodo corrente
             AVLTreeNode nodeCurrent = this;
             while(nodeCurrent.getRight() != null){
@@ -656,7 +668,7 @@ public class AVLTree<E extends Comparable<E>> {
           if(this.getEl().equals(el)) return this;
           if(this.getEl().compareTo(el) < 0 && getRight() != null) return getRight().search(el);
 
-          return null;
+          return null; // se non è presente
         }
 
         /**
@@ -674,7 +686,6 @@ public class AVLTree<E extends Comparable<E>> {
          *         effettuati durante l'inserimento.
          */
         public int insert(E el) {
-            // TODO implementare
           int comparison = this.el.compareTo(el);
           int comparisonsCounter = 1;
           if(comparison > 0){
