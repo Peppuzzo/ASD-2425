@@ -20,4 +20,10 @@ class AVLTreeSortTest {
         fail("Not yet implemented");
     }
 
+    @Test
+    final void testSortNull() {
+      assertThrows(NullPointerException.class,
+        () -> new AVLTree<Integer>(null));
+    }
+
 }
