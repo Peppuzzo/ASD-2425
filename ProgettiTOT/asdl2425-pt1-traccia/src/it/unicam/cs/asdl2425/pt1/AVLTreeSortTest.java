@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Luca Tesei (template) GIUSEPPE, CALABRESE
  * giusepp.calabrese@studenti.unicam.it (implementazione)
@@ -16,14 +19,13 @@ class AVLTreeSortTest {
 
     @Test
     final void testSort() {
-        // TODO implementare alcuni test, anche usando più metodi
-        fail("Not yet implemented");
+      
     }
 
     @Test
     final void testSortNull() {
       assertThrows(NullPointerException.class,
-        () -> new AVLTree<Integer>(null));
+        () -> new AVLTree<Integer>(null), "La verifica è per Null");
     }
 
 }

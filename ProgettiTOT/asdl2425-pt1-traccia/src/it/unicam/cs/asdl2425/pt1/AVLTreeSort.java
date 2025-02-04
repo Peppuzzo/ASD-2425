@@ -23,9 +23,6 @@ public class AVLTreeSort<E extends Comparable<E>>
       if (l == null) {
         throw new NullPointerException("Impossibile eseguire il Sorting per liste null.");
       }
-      if(l.isEmpty()){
-        return new SortingAlgorithmResult<>(new ArrayList<>(), 0);
-      }
 
       // Si crea un albero AVLTree per molteplicità
       AVLTree<E> treeSort = new AVLTree<>();
@@ -41,8 +38,8 @@ public class AVLTreeSort<E extends Comparable<E>>
 
       // Creiamo il risultato dell'ordinamento
       return new SortingAlgorithmResult<>(list, comparisons);
-
     }
+
     public String getName() {
         return "AVLTreeSort";
     }
