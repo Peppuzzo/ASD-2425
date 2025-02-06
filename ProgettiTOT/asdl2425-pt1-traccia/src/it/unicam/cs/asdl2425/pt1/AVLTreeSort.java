@@ -3,7 +3,6 @@
  */
 package it.unicam.cs.asdl2425.pt1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +30,7 @@ public class AVLTreeSort<E extends Comparable<E>>
       // Inseriamo gli elementi nell'AVLTree e contiamo i confronti
       for (E element : l) {
         comparisons += treeSort.insert(element);
+        System.out.println(element);
       }
 
       // Recuperiamo gli elementi in ordine tramite una visita in-order
