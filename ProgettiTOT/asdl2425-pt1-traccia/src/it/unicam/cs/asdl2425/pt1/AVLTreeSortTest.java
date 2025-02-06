@@ -19,7 +19,7 @@ class AVLTreeSortTest {
 
     @Test
     final void testSort() {
-      
+
     }
 
     @Test
