@@ -909,4 +909,11 @@ public class AVLTree<E extends Comparable<E>> {
     return Math.max(leftHeight, rightHeight) + 1;  // Restituisce l'altezza del nodo
   }
 
+  /*private int getCountTree(this){
+    // Inseriamo gli elementi nell'AVLTree e contiamo i confronti
+    for (E element : l) {
+      comparisons += treeSort.insert(element);
+    }
+  }*/
+
 }

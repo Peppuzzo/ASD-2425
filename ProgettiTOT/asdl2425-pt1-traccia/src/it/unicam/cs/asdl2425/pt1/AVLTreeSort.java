@@ -4,6 +4,7 @@
 package it.unicam.cs.asdl2425.pt1;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Algoritmo di ordinamento che usa un albero AVL con molteplicità per ordinare
@@ -18,7 +19,7 @@ import java.util.List;
 public class AVLTreeSort<E extends Comparable<E>>
         implements SortingAlgorithm<E> {
 
-    public SortingAlgorithmResult<E> sort(List<E> l) {
+   public SortingAlgorithmResult<E> sort(List<E> l) {
       if (l == null) {
         throw new NullPointerException("Impossibile eseguire il Sorting per liste null.");
       }
@@ -30,7 +31,6 @@ public class AVLTreeSort<E extends Comparable<E>>
       // Inseriamo gli elementi nell'AVLTree e contiamo i confronti
       for (E element : l) {
         comparisons += treeSort.insert(element);
-        System.out.println(element);
       }
 
       // Recuperiamo gli elementi in ordine tramite una visita in-order
