@@ -508,8 +508,6 @@ public class AVLTree<E extends Comparable<E>> {
          * @return il fattore di bilanciamento di questo nodo.
          */
         public int getBalanceFactor() {
-            // TODO implementare
-
           int leftHeight = (this.left != null) ? this.left.getHeight() : -1;
           int rightHeight = (this.right != null) ? this.right.getHeight() : -1;
 
@@ -524,7 +522,6 @@ public class AVLTree<E extends Comparable<E>> {
          *         bilanciati, false altrimenti.
          */
         public boolean isBalanced() {
-            // TODO implementare
           int factor = getBalanceFactor();
           if(factor < -1 || factor > 1){
             return false;
@@ -665,7 +662,7 @@ public class AVLTree<E extends Comparable<E>> {
           if(this.getEl().equals(el)) return this;
           if(this.getEl().compareTo(el) < 0 && getRight() != null) return getRight().search(el);
 
-          return null; // se non è presente
+          return null; // se il nodo non è presente
         }
 
         /**
@@ -908,12 +905,5 @@ public class AVLTree<E extends Comparable<E>> {
 
     return Math.max(leftHeight, rightHeight) + 1;  // Restituisce l'altezza del nodo
   }
-
-  /*private int getCountTree(this){
-    // Inseriamo gli elementi nell'AVLTree e contiamo i confronti
-    for (E element : l) {
-      comparisons += treeSort.insert(element);
-    }
-  }*/
 
 }
