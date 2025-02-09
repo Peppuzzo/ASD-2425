@@ -37,7 +37,7 @@ public class Heap3Sort<E extends Comparable<E>> implements SortingAlgorithm<E> {
       setLengthHeap(l);
       this.compareInt = 0;
       // Costruzione del Heap ternario
-      for(int i = (getLengthHeap() / 3) - 1; i >= 0; i--) {
+      for(int i = (getLengthHeap() - 1) / 3; i >= 0; i--) {
         heapify(l, i);
       }
       // Ordinamento dell'Heap ternario
@@ -48,7 +48,7 @@ public class Heap3Sort<E extends Comparable<E>> implements SortingAlgorithm<E> {
         this.heapTreeSize--;
         heapify(l, 0);
       }
-      return new SortingAlgorithmResult<E>(l, this.compareInt);
+      return new SortingAlgorithmResult<>(l, this.compareInt);
     }
 
 
@@ -147,7 +147,7 @@ public class Heap3Sort<E extends Comparable<E>> implements SortingAlgorithm<E> {
    *
    * @param l la lista come argomento
    */
-  private void setLengthHeap(List l){
+  private void setLengthHeap(List<E> l){
     this.heapTreeSize = l.size();
   }
 

@@ -40,6 +40,8 @@ public class AVLTreeSort<E extends Comparable<E>>
       return new SortingAlgorithmResult<>(list, comparisons);
     }
 
+
+
     public String getName() {
         return "AVLTreeSort";
     }

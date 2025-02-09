@@ -14,11 +14,11 @@ import java.util.Random;
  * nanosecondi di ogni algoritmo su ogni sequenza sono scritti su un file .csv
  * (Comma Separated Values). In un altro file .csv sono riportate le sequenze
  * generate.
- * 
+ *
  * Il main può essere chiamato con il nome della directory di destinazione dei
  * file come parametro di linea di comando. Se non è presente nessun parametro
  * allora si assume la directory corrente.
- * 
+ *
  * @author Luca Tesei
  *
  */
