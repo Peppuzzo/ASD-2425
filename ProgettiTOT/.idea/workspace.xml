@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e5ae20c6-4528-4cc7-81f7-eba155653ec7" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Peppuzzo&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Peppuzzo/ASD-2425.git&quot;,
+    &quot;accountId&quot;: &quot;11bfde10-2b49-4bb2-af58-9d8e16a86b22&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2rdM80AzDZOXCwjx6VzhnNi6EP8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.SortingAlgorithmEvaluationFramework.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.AVLTreeSortTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AVLTreeSortTest.testSort.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.AVLTreeSortTest.testSortIsEmpty.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AVLTreeTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.AVLTreeTest.testAVLTreeE.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.AVLTreeTest.testGetHeight.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.AVLTreeTest.testInsertDS.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.AVLTreeTest.testIsEmpty.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.Heap3SortTest.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/UTENTE/Documents/GitHub/ASD2425-P1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.26206896&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.data.csv.formats&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="JUnit.AVLTreeSortTest">
+    <configuration name="SortingAlgorithmEvaluationFramework" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unicam.cs.asdl2425.pt1.SortingAlgorithmEvaluationFramework" />
+      <module name="ProgettiTOT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unicam.cs.asdl2425.pt1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AVLTreeSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettiTOT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unicam.cs.asdl2425.pt1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unicam.cs.asdl2425.pt1" />
+      <option name="MAIN_CLASS_NAME" value="it.unicam.cs.asdl2425.pt1.AVLTreeSortTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AVLTreeSortTest.testSortIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettiTOT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unicam.cs.asdl2425.pt1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unicam.cs.asdl2425.pt1" />
+      <option name="MAIN_CLASS_NAME" value="it.unicam.cs.asdl2425.pt1.AVLTreeSortTest" />
+      <option name="METHOD_NAME" value="testSortIsEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AVLTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettiTOT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unicam.cs.asdl2425.pt1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unicam.cs.asdl2425.pt1" />
+      <option name="MAIN_CLASS_NAME" value="it.unicam.cs.asdl2425.pt1.AVLTreeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Heap3SortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettiTOT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unicam.cs.asdl2425.pt1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unicam.cs.asdl2425.pt1" />
+      <option name="MAIN_CLASS_NAME" value="it.unicam.cs.asdl2425.pt1.Heap3SortTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AVLTreeSortTest" />
+        <item itemvalue="JUnit.Heap3SortTest" />
+        <item itemvalue="JUnit.AVLTreeTest" />
+        <item itemvalue="Application.SortingAlgorithmEvaluationFramework" />
+        <item itemvalue="JUnit.AVLTreeSortTest.testSortIsEmpty" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e5ae20c6-4528-4cc7-81f7-eba155653ec7" name="Changes" comment="" />
+      <created>1736884335412</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736884335412</updated>
+      <workItem from="1736884336800" duration="3234000" />
+      <workItem from="1736946951812" duration="4714000" />
+      <workItem from="1737646929478" duration="2000" />
+      <workItem from="1737715391105" duration="64000" />
+      <workItem from="1737715586620" duration="2708000" />
+      <workItem from="1737724719490" duration="9393000" />
+      <workItem from="1737736056732" duration="38000" />
+      <workItem from="1737810914564" duration="10592000" />
+      <workItem from="1737886675355" duration="73000" />
+      <workItem from="1737978419870" duration="12517000" />
+      <workItem from="1737992744961" duration="3163000" />
+      <workItem from="1738051476029" duration="9119000" />
+      <workItem from="1738066779739" duration="4592000" />
+      <workItem from="1738147749431" duration="5585000" />
+      <workItem from="1738160799081" duration="9166000" />
+      <workItem from="1738229047496" duration="496000" />
+      <workItem from="1738229564749" duration="13465000" />
+      <workItem from="1738255243621" duration="78000" />
+      <workItem from="1738404639878" duration="1736000" />
+      <workItem from="1738426489239" duration="846000" />
+      <workItem from="1738656472533" duration="732000" />
+      <workItem from="1738658238806" duration="7030000" />
+      <workItem from="1738767952192" duration="90000" />
+      <workItem from="1738849437144" duration="24000" />
+      <workItem from="1738850046849" duration="2000" />
+      <workItem from="1738852368834" duration="9000" />
+      <workItem from="1738858428493" duration="7183000" />
+      <workItem from="1738874441886" duration="1727000" />
+      <workItem from="1738881075985" duration="78000" />
+      <workItem from="1738946420460" duration="4364000" />
+      <workItem from="1738950846056" duration="29000" />
+      <workItem from="1739005420909" duration="421000" />
+      <workItem from="1739006181848" duration="292000" />
+      <workItem from="1739006777114" duration="165000" />
+      <workItem from="1739008091758" duration="325000" />
+      <workItem from="1739100165053" duration="107000" />
+      <workItem from="1739106485263" duration="2377000" />
+      <workItem from="1739109973443" duration="7078000" />
+      <workItem from="1739130898651" duration="41000" />
+      <workItem from="1739195123153" duration="11201000" />
+      <workItem from="1739261780727" duration="284000" />
+      <workItem from="1739262213634" duration="11008000" />
+      <workItem from="1739368662342" duration="1528000" />
+      <workItem from="1739452165251" duration="640000" />
+      <workItem from="1739497425867" duration="116000" />
+      <workItem from="1739527163416" duration="1430000" />
+      <workItem from="1739627184243" duration="711000" />
+      <workItem from="1739657160411" duration="674000" />
+      <workItem from="1739737273907" duration="2292000" />
+      <workItem from="1739779591687" duration="7932000" />
+      <workItem from="1739869697395" duration="270000" />
+      <workItem from="1739870503105" duration="77000" />
+      <workItem from="1739880813376" duration="423000" />
+      <workItem from="1741099550789" duration="138000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/asdl2425-pt1-traccia/src/it/unicam/cs/asdl2425/pt1/AVLTreeSortTest.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
