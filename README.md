@@ -1,5 +1,9 @@
 # Algorithm and Data Structures - University of Camerino
 
+<p align="center">
+  <img src="https://istituto.ingv.it/images/logo_unicam.jpg" alt="Diagramma del Progetto" width="180">
+</p>
+
 ### Course Repository
 
 This repository contains weekly exercises and mini projects developed as part of the **Algorithm and Data Structure** course at the **University of Camerino**.
